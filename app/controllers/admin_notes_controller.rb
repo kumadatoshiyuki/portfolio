@@ -1,0 +1,2 @@
+class AdminNotesController < ApplicationController
+end
