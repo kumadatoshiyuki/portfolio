@@ -1,0 +1,9 @@
+<h1>ここはadminのindex画面</h1>
+<%= link_to '新規登録画面', new_user_registration_path %>
+
+<% @admins.each do |admin| %>
+<div>
+<p><%= admin.kana_last_name + admin.kana_first_name%></p>
+<p><%= link_to admin.last_name + admin.first_name, admin_show_path(admin) %></p>
+</div>
+<% end %>

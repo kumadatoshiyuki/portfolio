@@ -5,7 +5,7 @@ class CreateMeals < ActiveRecord::Migration[5.2]
       t.string :main_dish
       t.string :side_dish
       t.string :fruit
-      t.date :record
+      t.date :record_date
       t.timestamps
     end
   end

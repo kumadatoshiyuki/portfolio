@@ -11,7 +11,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.integer :age, null: false
       t.integer :phone, null: false
       t.string :image_id
-      t.boolean :is_valid, null: false
+      t.boolean :is_valid, null: false, default:false
       t.string :login_id, null: false
       t.string :email,              null: false, default: ""
       t.references :affiliation, foreign_key: true

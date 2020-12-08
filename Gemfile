@@ -69,7 +69,6 @@ end
 
 gem 'devise'
 # 権限管理
-gem 'cancancan'
 gem 'kaminari'
 # 検索
 gem 'ransack'

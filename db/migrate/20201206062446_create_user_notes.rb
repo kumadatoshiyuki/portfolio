@@ -8,7 +8,7 @@ class CreateUserNotes < ActiveRecord::Migration[5.2]
       t.string :breakfast
       t.string :dinner
       t.string :message
-      t.date :record
+      t.date :record_date
       t.references :user, foreign_key: true
       t.timestamps
     end
