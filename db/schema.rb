@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_06_064500) do
+ActiveRecord::Schema.define(version: 2020_12_07_120301) do
 
   create_table "admin_notes", force: :cascade do |t|
     t.float "body_temperature"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_064500) do
     t.time "sleep_end"
     t.string "message"
     t.integer "creator_id"
-    t.date "record"
+    t.date "record_date"
     t.integer "user_id"
     t.integer "staple_food_amount_id"
     t.integer "main_dish_amount_id"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_064500) do
     t.string "main_dish"
     t.string "side_dish"
     t.string "fruit"
-    t.date "record"
+    t.date "record_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_064500) do
     t.string "breakfast"
     t.string "dinner"
     t.string "message"
-    t.date "record"
+    t.date "record_date"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_064500) do
     t.integer "age", null: false
     t.integer "phone", null: false
     t.string "image_id"
-    t.boolean "is_valid", null: false
+    t.boolean "is_valid", default: false, null: false
     t.string "login_id", null: false
     t.string "email", default: "", null: false
     t.integer "affiliation_id"
@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(version: 2020_12_06_064500) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role", default: 1, null: false
     t.index ["affiliation_id"], name: "index_users_on_affiliation_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
