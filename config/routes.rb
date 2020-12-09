@@ -5,16 +5,27 @@ Rails.application.routes.draw do
      sessions: 'users/sessions',
      passwords: 'users/passwords',
   }
+  devise_scope :user do
+    get '/', to: 'devise/sessions#new'
+    post 'login', to: 'devise/sessions#create'
+    delete 'logout', to: 'devise/sessions#destroy'
+    # post 'sigunup', to: 'devise/sessions#destroy'
+  end
+  resources :users
+
 
   namespace :admins do
     devise_for :users,
+    path_prefix: 'admins',
     path: '',
     controllers: {
       registrations: "admins/registrations",
       sessions: "admins/sessions",
-      passwords: 'admins/passwords'
+      # passwords: 'admins/passwords'
     }
   end
+  resources :admins
+
 
   scope :admins do
     resources :news
@@ -29,19 +40,8 @@ Rails.application.routes.draw do
 
 
 
-
-
-  devise_scope :user do
-    get '/', to: 'devise/sessions#new'
-    post 'login', to: 'devise/sessions#create'
-    delete 'logout', to: 'devise/sessions#destroy'
-    post 'sigunup', to: 'devise/sessions#destroy'
-  end
-
-
-
   # patch '/admin'
-  resources :users, only: [:top, :new, :create, :index, :show, :edit, :destroy]
+  # resources :users, only: [:top, :new, :create, :index, :show, :edit, :destroy]
   resources :user_notes, only: [:top, :new, :create, :index, :show, :edit, :destroy]
   # get '/user' => 'users#index', as: 'index_users
 
