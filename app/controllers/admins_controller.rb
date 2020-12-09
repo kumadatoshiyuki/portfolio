@@ -10,7 +10,7 @@ class AdminsController < ApplicationController
 
   def index
     # 管理者の一覧ページ
-    @admins = User.where(role: 99)
+    @admins = User.get_admin()
 
     # @chats = Chat.where(room_id: @chat.room_id)
 
@@ -37,7 +37,7 @@ class AdminsController < ApplicationController
     #   redirect_to admin_show_path
     # end
   end
-  
+
   def confirm
     @admin = User.new(user_params)
     @admin.user_id = current_user.id
@@ -45,14 +45,17 @@ class AdminsController < ApplicationController
     # render :new
     # end
   end
-  
-  
-  
-  # def update
-  #   @admin = User.find(params[:id])
-  #   @admin.update(user_params)
-  #   redirect_to user_path(@admin)
-  # end
+
+
+
+  def update
+    @admin = User.find(params[:id])
+    if @admin.update(user_params)
+       redirect_to admins_path()
+    else
+       redirect_to user_path(@admin)
+    end
+  end
 
   def destroy
     # 管理者の削除
