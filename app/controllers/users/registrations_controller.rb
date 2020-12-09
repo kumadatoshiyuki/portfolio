@@ -14,10 +14,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    super
-    current_user.add_role :user
-  end
+  # def create
+  #   super
+  #   current_user.add_role :user
+  # end
 
   # GET /resource/edit
   # def edit
@@ -45,16 +45,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  def current_user_is_admin?
-    user_signed_in? && current_user.has_role?(:admin)
-  end
+  # def current_user_is_admin?
+  #   user_signed_in? && current_user.has_role?(:admin)
+  # end
 
 
-  def sign_up(resource_name, resource)
-    if !current_user_is_admin?
-      sign_in(resource_name, resource)
-    end
-  end
+  # def sign_up(resource_name, resource)
+  #   if !current_user_is_admin?
+  #     sign_in(resource_name, resource)
+  #   end
+  # end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])

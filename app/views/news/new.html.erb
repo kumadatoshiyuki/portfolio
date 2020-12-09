@@ -1,0 +1,19 @@
+<h1>お知らせ登録</h1>
+
+<%= form_with model:@news, local:true do |f| %>
+    <div class="field">
+      <%= f.label :日付 %><br />
+      <%= f.text_field :creation_date %>
+    </div>
+    <div class="field">
+      <%= f.label :クラス %><br />
+      <%= collection_check_boxes :news, :affiliation_ids, Affiliation.all, :id, :affiliation_name do |affiliation| %>
+        <%= affiliation.label { affiliation.check_box + affiliation.text } %>
+      <% end %>
+    </div>
+    <div class="field">
+      <%= f.label :お知らせ内容 %><br />
+      <%= f.text_area :message %>
+    </div>
+    <%= f.submit "新規登録" %>
+<% end %>

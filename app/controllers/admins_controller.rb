@@ -32,8 +32,27 @@ class AdminsController < ApplicationController
 
   def edit
     # 管理者の編集
-
+    @admin = User.find(params[:id])
+    # if @admin.user != current_user
+    #   redirect_to admin_show_path
+    # end
   end
+  
+  def confirm
+    @admin = User.new(user_params)
+    @admin.user_id = current_user.id
+    # if @order.invalid?
+    # render :new
+    # end
+  end
+  
+  
+  
+  # def update
+  #   @admin = User.find(params[:id])
+  #   @admin.update(user_params)
+  #   redirect_to user_path(@admin)
+  # end
 
   def destroy
     # 管理者の削除

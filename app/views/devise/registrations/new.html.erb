@@ -37,7 +37,9 @@
   </div>
   <div class="field">
     <%= f.label :クラス %><br />
-    <%= f.text_field :affiliation_id, autofocus: true, autocomplete: "affiliation_id" %>
+    <%= f.collection_select :affiliation_id, Affiliation.all, :id, :affiliation_name, include_blank: "選択して下さい" %>
+    <!--保存先のカラム名, テーブル（モデル）名.all, :実際にDB保存してある選択肢のID, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>-->
+    <!--今回の場合はAffiliationテーブルなので選択肢として使いたいIDが1番から４番-->
   </div>
 
   <div class="field">
