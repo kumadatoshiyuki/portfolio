@@ -1,0 +1,11 @@
+<h1>お知らせ詳細</h1>
+
+<% @news.affiliation.each do |affiliation| %>
+  <p><%= affiliation.affiliation_name%></p>
+<% end %>
+
+
+<p><%= @news.message%></p>
+<p><%= @news.creation_date%></p>
+
+<%= link_to "編集画面へ", edit_news_path(@news), class: "btn btn-success"%>

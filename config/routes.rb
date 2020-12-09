@@ -6,6 +6,31 @@ Rails.application.routes.draw do
      passwords: 'users/passwords',
   }
 
+  namespace :admins do
+    devise_for :users,
+    path: '',
+    controllers: {
+      registrations: "admins/registrations",
+      sessions: "admins/sessions",
+      passwords: 'admins/passwords'
+    }
+  end
+
+  scope :admins do
+    resources :news
+    get '/' => 'admins#top'
+    # get '/admin/new' => 'admins#new'
+    get '/index' => 'admins#index'
+    get '/:id' => 'admins#show', as: 'admins_show'
+    # get '/admin/edit/:id' => 'admins#edit', as: 'admin_edit'
+    post '/confirm' => 'admins#confirm', as: 'admins_confirm'
+  end
+
+
+
+
+
+
   devise_scope :user do
     get '/', to: 'devise/sessions#new'
     post 'login', to: 'devise/sessions#create'
@@ -14,14 +39,14 @@ Rails.application.routes.draw do
   end
 
 
-  get '/about' => 'homes#about'
-  get '/admin' => 'admins#top'
-  get '/admin/new' => 'admins#new'
-  get '/admin/index' => 'admins#index'
-  get '/admin/:id' => 'admins#show', as: 'admin_show'
+
+  # patch '/admin'
   resources :users, only: [:top, :new, :create, :index, :show, :edit, :destroy]
   resources :user_notes, only: [:top, :new, :create, :index, :show, :edit, :destroy]
-  # get '/user' => 'users#index', as: 'index_users'
+  # get '/user' => 'users#index', as: 'index_users
+
+
+  # get '/news' => 'news/index'
 
 
   # root 'users#top'

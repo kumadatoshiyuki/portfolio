@@ -1,1 +1,40 @@
-<h1>ここはadminのindex画面</h1>
+<h1>ここはadminの編集画面</h1>
+
+
+<%= form_with model:@admin, local:true do |f| %>
+<div class="field">
+    <%= f.label :苗字 %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :名前 %><br />
+    <%= f.text_field :first_name %>
+  </div>
+    <div class="field">
+    <%= f.label :苗字カナ %><br />
+    <%= f.text_field :kana_last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :名前カナ %><br />
+    <%= f.text_field :kana_first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :年齢 %><br />
+    <%= f.text_field :age %>
+  </div>
+  <div class="field">
+    <%= f.label :電話番号 %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :メール %><br />
+    <%= f.email_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :クラス %><br />
+    <%= f.collection_select :affiliation_id, Affiliation.all, :id, :affiliation_name, include_blank: "選択して下さい" %>
+    <!--保存先のカラム名, テーブル（モデル）名.all, :実際にDB保存してある選択肢のID, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>-->
+    <!--今回の場合はAffiliationテーブルなので選択肢として使いたいIDが1番から４番-->
+  </div>
+  <%= f.submit "確認画面へ" %>
+<% end %>
