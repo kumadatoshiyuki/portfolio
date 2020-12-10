@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Admins::SessionsController < Devise::SessionsController
+  before_action :reject_inactive_user, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -17,6 +18,19 @@ class Admins::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+
+protected
+
+  def reject_inactive_user
+    @user = User.find_by(login_id: params[:user][:login_id])
+    if @user
+      if @user.valid_password?(params[:user][:password]) && !@user.is_valid
+        redirect_to user_registration_path
+      end
+    end
+  end
+
+
 
   # protected
 

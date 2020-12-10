@@ -3,30 +3,16 @@ class AdminsController < ApplicationController
     # 管理者のページを表示させる
   end
 
-  def new
-    # 新規登録ページ
-
-  end
-
   def index
     # 管理者の一覧ページ
     @admins = User.get_admin()
 
     # @chats = Chat.where(room_id: @chat.room_id)
-
   end
 
   def show
     # 管理者詳細
     @admin = User.find(params[:id])
-
-  end
-
-  def create
-    # 管理者の登録
-    # user = User.new(user_params)
-    # user.role = 99
-    # user.save()
 
   end
 
@@ -38,13 +24,13 @@ class AdminsController < ApplicationController
     # end
   end
 
-  def confirm
-    @admin = User.new(user_params)
-    @admin.user_id = current_user.id
-    # if @order.invalid?
-    # render :new
-    # end
-  end
+  # def confirm
+  #   @admin = User.new(user_params)
+  #   @admin.user_id = current_user.id
+  #   # if @order.invalid?
+  #   # render :new
+  #   # end
+  # end
 
 
 
@@ -53,7 +39,7 @@ class AdminsController < ApplicationController
     if @admin.update(user_params)
        redirect_to admins_path()
     else
-       redirect_to user_path(@admin)
+       redirect_to admin_path(@admin)
     end
   end
 

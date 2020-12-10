@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 2020_12_07_120301) do
     t.integer "age", null: false
     t.integer "phone", null: false
     t.string "image_id"
-    t.boolean "is_valid", default: false, null: false
+    t.boolean "is_valid", default: true, null: false
     t.string "login_id", null: false
     t.string "email", default: "", null: false
     t.integer "affiliation_id"

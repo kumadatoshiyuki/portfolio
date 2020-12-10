@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {
      registrations: 'users/registrations',
-     sessions: 'users/sessions',
+    sessions: 'users/sessions',
      passwords: 'users/passwords',
   }
   devise_scope :user do
@@ -10,6 +10,11 @@ Rails.application.routes.draw do
     post 'login', to: 'devise/sessions#create'
     delete 'logout', to: 'devise/sessions#destroy'
     # post 'sigunup', to: 'devise/sessions#destroy'
+  end
+  # patch '/user/:id/soft_destroy/' => 'users#soft_destroy', as: 'user_soft_destroy'
+  scope :users do
+    resources :user_notes, only: [:new, :create, :show, :confirm]
+    
   end
   resources :users
 
@@ -42,7 +47,6 @@ Rails.application.routes.draw do
 
   # patch '/admin'
   # resources :users, only: [:top, :new, :create, :index, :show, :edit, :destroy]
-  resources :user_notes, only: [:top, :new, :create, :index, :show, :edit, :destroy]
   # get '/user' => 'users#index', as: 'index_users
 
 

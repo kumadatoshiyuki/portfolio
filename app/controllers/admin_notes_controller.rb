@@ -26,11 +26,11 @@ class AdminNotesController < ApplicationController
   # body:
   # user_id:
 
-    def create
-    book = Book.new(book_params)
-    book.user_id = current_user.id
-    book.save()
-  end
+  # def create
+  #   book = Book.new(book_params)
+  #   book.user_id = current_user.id
+  #   book.save()
+  # end
 
 
 end
