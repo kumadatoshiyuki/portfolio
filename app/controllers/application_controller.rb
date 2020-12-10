@@ -12,17 +12,36 @@ class ApplicationController < ActionController::Base
   # RESPONSIBLE = ["ひよこ","うさぎ","こあら"]
   # @responsible = RESPONSIBLE
 
+    def after_sign_up_path_for(resource)
+      if current_user.nil? == false
+          path(current_user)
+      elsif current_admins_user.nil? == false
+          path(current_admins_user)
+      else
+        logout_path
+      end
+    end
+
   def after_sign_in_path_for(resource)
-    if current_user.is_admin? == true
-      # //管理者画面
-      admins_path
-    elsif current_user.is_user? == true
-      # //ユーザー画面
-      users_path
+    if current_user.nil? == false
+        path(current_user)
+    elsif current_admins_user.nil? == false
+        path(current_admins_user)
     else
       # //ログアウト
       logout_path
+    end
+  end
 
+  def path(current_type)
+    if current_type.is_admin? == true
+      # //管理者画面
+      admins_path
+    elsif current_type.is_user? == true
+      # //ユーザー画面
+      users_path
+    else
+      logout_path
     end
   end
 

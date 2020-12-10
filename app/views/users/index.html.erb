@@ -1,1 +1,12 @@
-<h1>ここはUserのindex</h1>
+<h1>ここは管理者でみれるUserのindex2</h1>
+
+<%= link_to 'ユーザー　新規登録画面', new_user_registration_path %>
+
+<% @users.each do |user| %>
+<div>
+<p><%= user.affiliation.affiliation_name%>クラス</p>
+<p><%= user.kana_last_name + user.kana_first_name %></p>
+<p><%= user.last_name + user.first_name %></p>
+<%= link_to '詳細', user_path(user) %>
+</div>
+<% end %>
