@@ -8,10 +8,6 @@ class ApplicationController < ActionController::Base
   #   redirect_to singin_path
   # end
 
-
-  # RESPONSIBLE = ["ひよこ","うさぎ","こあら"]
-  # @responsible = RESPONSIBLE
-
     def after_sign_up_path_for(resource)
       if current_user.nil? == false
           path(current_user)

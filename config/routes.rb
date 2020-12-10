@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   end
   resources :users
 
-
   namespace :admins do
     devise_for :users,
     path_prefix: 'admins',
@@ -29,9 +28,8 @@ Rails.application.routes.draw do
       # passwords: 'admins/passwords'
     }
   end
+  
   resources :admins
-
-
   scope :admins do
     resources :news
     get '/' => 'admins#top'
@@ -41,19 +39,6 @@ Rails.application.routes.draw do
     # get '/admin/edit/:id' => 'admins#edit', as: 'admin_edit'
     post '/confirm' => 'admins#confirm', as: 'admins_confirm'
   end
-
-
-
-
-  # patch '/admin'
-  # resources :users, only: [:top, :new, :create, :index, :show, :edit, :destroy]
-  # get '/user' => 'users#index', as: 'index_users
-
-
-  # get '/news' => 'news/index'
-
-
-  # root 'users#top'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 # root "users#top"

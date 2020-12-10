@@ -5,9 +5,9 @@ class AdminsController < ApplicationController
 
   def index
     # 管理者の一覧ページ
-    @admins = User.get_admin()
+    # without_deletedを使用することでtureのユーザのみ表示される
+    @admins = User.get_admin().without_deleted
 
-    # @chats = Chat.where(room_id: @chat.room_id)
   end
 
   def show
@@ -19,20 +19,7 @@ class AdminsController < ApplicationController
   def edit
     # 管理者の編集
     @admin = User.find(params[:id])
-    # if @admin.user != current_user
-    #   redirect_to admin_show_path
-    # end
   end
-
-  # def confirm
-  #   @admin = User.new(user_params)
-  #   @admin.user_id = current_user.id
-  #   # if @order.invalid?
-  #   # render :new
-  #   # end
-  # end
-
-
 
   def update
     @admin = User.find(params[:id])
@@ -45,7 +32,13 @@ class AdminsController < ApplicationController
 
   def destroy
     # 管理者の削除
-
+    @admin = User.find(params[:id])
+    # soft_deleteメソッドをユーザモデルに作成し、is_validをfalseに変えることをしている。
+     if @admin.soft_delete
+       redirect_to admins_path()
+     else
+       redirect_to admins_path()
+     end
   end
 end
 
