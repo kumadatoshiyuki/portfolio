@@ -1,11 +1,28 @@
 class User < ApplicationRecord
   enum role: { user: 1, admin: 99 }
   ROLE = {'user' => 1,'admin'=> 99}
-  enum is_valid: { '有効': true, '退会済': false }
+  
+  # 物理削除の代わりにユーザーの`deleted_at`をタイムスタンプで更新
+  def soft_delete  
+    update_attribute(:is_valid, false)  
+  end
 
-def active_for_authentication?
-  super && self.is_valid == '有効'
-end
+  # ユーザーのアカウントが有効であることを確認 
+  def active_for_authentication? 
+    super && is_valid
+  end  
+  
+  # without_deletedメソッドを使いis_validがtrueのユーザを探している。
+  def self.without_deleted
+    self.where(is_valid: true)
+  end
+
+  # 削除したユーザーにカスタムメッセージを追加します  
+  # def inactive_message   
+  #   !deleted_at ? super : :deleted_account  
+  # end 
+  
+  
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

@@ -7,7 +7,8 @@ class UsersController < ApplicationController
 
   def index
     # 保護者の一覧ページ
-    @users = User.get_user()
+    # without_deletedを使用することでtureのユーザのみ表示される
+    @users = User.get_user().without_deleted
 
   end
 
@@ -32,22 +33,16 @@ class UsersController < ApplicationController
     end
   end
 
-
   def destroy
     # 保護者の削除
-
+    @user = User.find(params[:id])
+    # soft_deleteメソッドをユーザモデルに作成し、is_validをfalseに変えることをしている。
+     if @user.soft_delete
+       redirect_to users_path()
+     else
+       redirect_to users_path()
+     end
   end
-
-  # def soft_destroy
-  #   @user = User.find(params[:id])
-  #   if @user.update(is_valid: false)
-  #     reset_session
-  #     redirect_to users_path
-  #   else
-  #     redirect_to users_path
-  #   end
-  # end
-
 
 private
   def user_params
