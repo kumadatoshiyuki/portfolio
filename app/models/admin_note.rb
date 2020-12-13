@@ -5,4 +5,5 @@ class AdminNote < ApplicationRecord
   belongs_to :main_dish_amount, class_name: "Amount"
   belongs_to :side_dish_amount, class_name: "Amount"
   belongs_to :fruit_amount, class_name: "Amount"
+  belongs_to :soup_amount, class_name: "Amount"
 end

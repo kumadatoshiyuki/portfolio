@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_07_120301) do
+ActiveRecord::Schema.define(version: 2020_12_12_071723) do
 
   create_table "admin_notes", force: :cascade do |t|
     t.float "body_temperature"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_12_07_120301) do
     t.integer "side_dish_amount_id"
     t.integer "fruit_amount_id"
     t.integer "timestamps"
+    t.integer "soup_amount_id"
     t.index ["fruit_amount_id"], name: "index_admin_notes_on_fruit_amount_id"
     t.index ["main_dish_amount_id"], name: "index_admin_notes_on_main_dish_amount_id"
     t.index ["side_dish_amount_id"], name: "index_admin_notes_on_side_dish_amount_id"
@@ -61,6 +62,7 @@ ActiveRecord::Schema.define(version: 2020_12_07_120301) do
     t.date "record_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "soup"
   end
 
   create_table "news", force: :cascade do |t|
@@ -98,6 +100,7 @@ ActiveRecord::Schema.define(version: 2020_12_07_120301) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "attendance_confirmation"
     t.index ["user_id"], name: "index_user_notes_on_user_id"
   end
 

@@ -1,1 +1,32 @@
 <h1>ここはadminのトップ画面</h1>
+
+
+<h1>今日の保育</h1>
+<h2>今日の出席人数</h2>
+<h2>今日の欠席人数</h2>
+<h1>休みの子</h1>
+<% @absence.each do |attendance| %>
+<p><%= attendance.user.last_name + attendance.user.first_name %></p>
+<% end %>
+
+
+<h1>表示しているお知らせ</h1>
+<% @news.each do |news| %>
+<div>
+<!--1:N-->
+<% news.affiliation.each do |affiliation| %>
+  <p><%= affiliation.affiliation_name%></p>
+<% end %>
+
+<p><%= news.message%></p>
+<p><%= link_to news.creation_date, news_path(news)%></p>
+
+<% end %>
+
+
+
+<p><%= link_to '園児一覧', users_path() %></p>
+<p><%= link_to '連絡帳', admin_notes_path() %></p>
+<p><%= link_to '献立一覧', meals_calendar_path() %></p>
+<p><%= link_to '管理者一覧', admins_path() %></p>
+<p><%= link_to 'お知らせ一覧', news_index_path %></p>

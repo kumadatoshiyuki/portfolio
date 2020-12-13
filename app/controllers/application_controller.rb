@@ -8,6 +8,9 @@ class ApplicationController < ActionController::Base
   #   redirect_to singin_path
   # end
 
+    CONFIRMATION = {true => '出席',false=> '欠席'}
+    
+    
     def after_sign_up_path_for(resource)
       if current_user.nil? == false
           path(current_user)
@@ -32,10 +35,10 @@ class ApplicationController < ActionController::Base
   def path(current_type)
     if current_type.is_admin? == true
       # //管理者画面
-      admins_path
+      admins_top_path
     elsif current_type.is_user? == true
       # //ユーザー画面
-      users_path
+      top_path
     else
       logout_path
     end
