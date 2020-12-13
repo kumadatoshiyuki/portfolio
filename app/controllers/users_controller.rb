@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   # 管理者の登録はこの画面で行う
   def top
     # 保護者の個人topページ
-
   end
 
   def index

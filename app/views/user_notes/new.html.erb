@@ -1,0 +1,39 @@
+<h1>user側の連絡帳</h1>
+<%= form_with model: @user_note, local: true, url: {action: 'confirm'} do |f| %>
+  <div class="field">
+    <%= f.radio_button :attendance_confirmation, :ture %>
+    <%= f.label :attendance_confirmation, "出席", {value: :ture, style: "display: inline-block;"} %>
+    <%= f.radio_button :attendance_confirmation, :false %>
+    <%= f.label :attendance_confirmation, "欠席", {value: :false, style: "display: inline-block;"} %>
+  </div>
+  <div class="field">
+      <%= f.label :体温 %><br />
+      <%= f.text_field :body_temperature %>
+    </div>
+    <div class="field">
+      <%= f.label :排泄回数 %><br />
+      <%= f.text_field :number_toilet %>
+    </div>
+      <div class="field">
+      <%= f.label :睡眠時間, class: 'control-label' %><br />
+      <%= f.time_select :sleep_start, class: 'form-control' %>〜
+      <%= f.time_select :sleep_end, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :朝食 %><br />
+      <%= f.text_field :breakfast %>
+    </div>
+    <div class="field">
+      <%= f.label :夕食 %><br />
+      <%= f.text_field :dinner %>
+    </div>
+    <div class="field">
+      <%= f.label :おうちでの様子 %><br />
+      <%= f.text_field :message %>
+    </div>
+    <div class="form-group">
+      <%=f.label :日付, class: 'control-label'%><br />
+      <%= f.date_field :record_date, class: 'form-control' %>
+    </div>
+    <%= f.submit "確認画面へ" %>
+<% end %>

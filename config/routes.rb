@@ -11,10 +11,13 @@ Rails.application.routes.draw do
     delete 'logout', to: 'devise/sessions#destroy'
     # post 'sigunup', to: 'devise/sessions#destroy'
   end
-  # patch '/user/:id/soft_destroy/' => 'users#soft_destroy', as: 'user_soft_destroy'
   scope :users do
-    resources :user_notes, only: [:new, :create, :show, :confirm]
-    
+    get '/top' => 'users#top'
+    post 'user_notes/confirm' => 'user_notes#confirm'
+    resources :user_notes, only: [:new, :index, :create, :show]
+    get '/meals/calendar' => 'meals#calendar'
+    get '/meals/chart' => 'meals#chart'
+    resources :meals, only: [:index]
   end
   resources :users
 
@@ -28,17 +31,12 @@ Rails.application.routes.draw do
       # passwords: 'admins/passwords'
     }
   end
-  
-  resources :admins
   scope :admins do
+    get '/top' => 'admins#top', as: 'admins_top'
     resources :news
-    get '/' => 'admins#top'
-    # get '/admin/new' => 'admins#new'
-    get '/index' => 'admins#index'
-    get '/:id' => 'admins#show', as: 'admins_show'
-    # get '/admin/edit/:id' => 'admins#edit', as: 'admin_edit'
-    post '/confirm' => 'admins#confirm', as: 'admins_confirm'
+    resources :admin_notes
   end
+  resources :admins
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 # root "users#top"

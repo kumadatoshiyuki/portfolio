@@ -5,9 +5,10 @@
 <p><%= @user.age %></p>
 <p><%= @user.phone %></p>
 <p><%= @user.login_id %></p>
+<p><%= @user.password %></p>
 <p><%= @user.email %></p>
 <p><%= @user.affiliation_id %></p>
 <p><%= @user.image_id %></p>
 
+
 <div><%= link_to '編集', edit_user_path(@user) %></div>
-<p> <%= button_to "アカウント削除", user_path(@user), data: { confirm: "本当に削除しますか?" }, method: :delete %></p>

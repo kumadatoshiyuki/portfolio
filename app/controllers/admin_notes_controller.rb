@@ -1,36 +1,32 @@
 class AdminNotesController < ApplicationController
-  # enum role: { user: 1, admin: 99 }
-  # adminのコントローラーの場合
-  def create
-    user = User.new(user_params)
-    user.role = 99
-    user.save()
+  def top
   end
 
-
-  # userのコントローラーの場合
-  def create
-    user = User.new(user_params)
-    user.role = 1
-    user.save()
+  def index
+    @users = User.all.get_user().without_deleted
+    # @user_notes = UserNote.all
   end
 
+  def show
 
-  # User:1
-  # id:
-  # name:
+  end
 
-  # Book:N
-  # id:
-  # title:
-  # body:
-  # user_id:
+  def edit
 
-  # def create
-  #   book = Book.new(book_params)
-  #   book.user_id = current_user.id
-  #   book.save()
-  # end
+  end
 
+  def update
 
+  end
+
+  def destroy
+    
+  end
+
+private
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :kana_first_name, :kana_last_name, :age, :phone, :image_id, :login_id, :email, :affiliation_id, :password, :role)
+  end
+  
+  
 end
