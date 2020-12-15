@@ -2,12 +2,20 @@ class AdminsController < ApplicationController
   def top
     # 管理者のページを表示させる
      @news = News.all
-     date = DateTime.now()
-     today = date.strftime("%Y-%m-%d")
-    # 変数の中にUserNoteを検索record_dateのtodayをカラムのattendance_confirmationをグループ(group)化をcountでカウントする。
-     @attendance = UserNote.where(record_date: today).group(:attendance_confirmation).count(:attendance_confirmation)
+    # 変数の中にUserNoteを検索record_dateのヘルパーから持ってきたtodayをカラムのattendance_confirmationをグループ(group)化をcountでカウントする。
+     res = UserNote.where(record_date: get_today).group(:attendance_confirmation).count(:attendance_confirmation)
      @absence = UserNote.where(attendance_confirmation: false)
-     @attendance = UserNote.where(attendance_confirmation: false)
+     
+     if res[true].nil?
+       res[true] = 0
+     end
+     
+     if res[false].nil?
+       res[false] = 0 
+     end
+     @attendance = res
+     
+    # @attendance = UserNote.where(attendance_confirmation: true)
   end
 
   def index

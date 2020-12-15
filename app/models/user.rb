@@ -32,6 +32,7 @@ class User < ApplicationRecord
   has_many :admin_notes, dependent: :destroy
   has_many :user_notes, dependent: :destroy
   belongs_to :affiliation, optional: true
+  attachment :image
 
 
   def is_admin?
@@ -57,6 +58,20 @@ class User < ApplicationRecord
   def self.get_user
     self.where(role: ROLE['user'])
   end
+
+  def User.search(search, user_or_post)
+    if user_or_post == "2"
+       User.get_user().without_deleted.where(['last_name LIKE ?', "%#{search}%"],)
+       .or(User.get_user().without_deleted.where(['first_name LIKE ?', "%#{search}%"]))
+       .or(User.get_user().without_deleted.where(['kana_last_name LIKE ?', "%#{search}%"]))
+       .or(User.get_user().without_deleted.where(['kana_first_name LIKE ?', "%#{search}%"]))
+       
+    else
+       User.get_user().without_deleted
+    end
+  end
+
+
 
   # def self.is_valid
   #   self.update(is_valid: false)

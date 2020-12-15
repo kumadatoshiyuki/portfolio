@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
 
     CONFIRMATION = {true => '出席',false=> '欠席'}
     
+    # アプリケーションヘルパーを使用して呼び出せる
+    include ApplicationHelper
+    
+    
     
     def after_sign_up_path_for(resource)
       if current_user.nil? == false
@@ -56,10 +60,9 @@ class ApplicationController < ActionController::Base
   #   end
   # end
 
-
   protected
     def configure_permitted_parameters
-      added_attrs = [:first_name, :last_name, :kana_first_name, :kana_last_name, :age, :phone, :login_id, :email, :affiliation_id, :password, :role, ]
+      added_attrs = [:first_name, :last_name, :kana_first_name, :kana_last_name, :age, :phone, :login_id, :email, :affiliation_id, :password, :role, :image ]
       devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
       devise_parameter_sanitizer.permit :account_update, keys: added_attrs
 

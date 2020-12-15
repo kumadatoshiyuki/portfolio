@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get '/meals/chart' => 'meals#chart'
     resources :meals, only: [:index]
   end
+  get '/events' => 'meals#events'
   resources :users
 
   namespace :admins do
@@ -31,12 +32,18 @@ Rails.application.routes.draw do
       # passwords: 'admins/passwords'
     }
   end
+
+
   scope :admins do
     get '/top' => 'admins#top', as: 'admins_top'
+    get '/admin_notes' => 'admin_notes#top'
+    post 'admin_notes/confirm' => 'admin_notes#confirm'
     resources :news
-    resources :admin_notes
   end
-  resources :admins
+
+  resources :admins do
+    resources :admin_notes, only: [:new, :create, :index, :show, :update, :destroy]
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 # root "users#top"

@@ -2,12 +2,25 @@ class UsersController < ApplicationController
   # 管理者の登録はこの画面で行う
   def top
     # 保護者の個人topページ
+    @meal = Meal.find_by(record_date: get_today)
+    @news = News.all
   end
 
   def index
+    @users = User.get_user().without_deleted
     # 保護者の一覧ページ
     # without_deletedを使用することでtureのユーザのみ表示される
-    @users = User.get_user().without_deleted
+    @user_or_post = params[:option]
+    if @user_or_post == "1"
+      @affiliation = Affiliation.search(params[:search], @user_or_post).first
+      if @affiliation.nil?
+        render template: "users/index"
+      else
+        @users = User.get_user().without_deleted.where(affiliation_id: @affiliation.id).all
+      end
+    else
+      @users = User.search(params[:search], @user_or_post)
+    end
 
   end
 
@@ -45,6 +58,6 @@ class UsersController < ApplicationController
 
 private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :kana_first_name, :kana_last_name, :age, :phone, :image_id, :login_id, :email, :affiliation_id, :password, :role)
+    params.require(:user).permit(:first_name, :last_name, :kana_first_name, :kana_last_name, :age, :phone, :image, :login_id, :email, :affiliation_id, :password, :role)
   end
 end

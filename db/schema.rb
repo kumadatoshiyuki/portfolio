@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2020_12_12_071723) do
     t.index ["fruit_amount_id"], name: "index_admin_notes_on_fruit_amount_id"
     t.index ["main_dish_amount_id"], name: "index_admin_notes_on_main_dish_amount_id"
     t.index ["side_dish_amount_id"], name: "index_admin_notes_on_side_dish_amount_id"
+    t.index ["soup_amount_id"], name: "index_admin_notes_on_soup_amount_id"
     t.index ["staple_food_amount_id"], name: "index_admin_notes_on_staple_food_amount_id"
     t.index ["user_id"], name: "index_admin_notes_on_user_id"
   end
