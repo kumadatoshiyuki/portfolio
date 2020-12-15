@@ -2,9 +2,19 @@
 
 <%= link_to 'ユーザー　新規登録画面', new_user_registration_path %>
 
+<%= form_tag(users_path, :method => 'get') do %>
+    <%= select_tag(:option, options_for_select([["クラス", "1"],["名前","2"]]))%> 
+    <%= text_field_tag :search %>
+    <%= submit_tag 'Search' %>
+<% end %>
+
+
+
+
 <% @users.each do |user| %>
 <div>
 <p><%= user.affiliation.affiliation_name%>クラス</p>
+<p><%= attachment_image_tag user, :image, format: 'jpeg', size: "100x100" %></p>
 <p><%= user.kana_last_name + user.kana_first_name %></p>
 <p><%= user.last_name + user.first_name %></p>
 <%= link_to '詳細', user_path(user) %>

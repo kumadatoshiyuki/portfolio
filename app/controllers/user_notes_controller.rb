@@ -13,6 +13,7 @@ class UserNotesController < ApplicationController
   def show
     @user_note = UserNote.find(params[:id])
     @user = User.find(current_user.id)
+    
   end
 
   def confirm

@@ -7,7 +7,7 @@
 <p><%= @admin.login_id %></p>
 <p><%= @admin.email %></p>
 <p><%= @admin.affiliation_id %></p>
-<p><%= @admin.image_id %></p>
+<p><%= attachment_image_tag @admin, :image, format: 'jpeg', size: "100x100" %></p>
 
 
 <div><%= link_to '編集', edit_admin_path(@admin) %></div>

@@ -10,10 +10,10 @@ class CreateAdminNotes < ActiveRecord::Migration[5.2]
       t.date :record_date
       t.references :user, foreign_key: true
       # 同じテーブルの際の記述
-      t.references :staple_food_amount, foreign_key: { to_table: :amount }
-      t.references :main_dish_amount, foreign_key: { to_table: :amount }
-      t.references :side_dish_amount, foreign_key: { to_table: :amount }
-      t.references :fruit_amount, foreign_key: { to_table: :amount }
+      t.references :staple_food_amount, foreign_key: { to_table: :amounts }
+      t.references :main_dish_amount, foreign_key: { to_table: :amounts }
+      t.references :side_dish_amount, foreign_key: { to_table: :amounts }
+      t.references :fruit_amount, foreign_key: { to_table: :amounts }
       t.integer :timestamps
     end
   end

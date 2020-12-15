@@ -1,0 +1,95 @@
+<h1 class="masashi">確認画面</h1>
+
+<h1>おうちでの
+<%= @user.last_name + @user.first_name %>さんの様子</h1>
+<p><%= @user_notes.body_temperature %></p>
+<p><%= @user_notes.number_toilet %></p>
+<p><%= @user_notes.sleep_start %></p>
+<p><%= @user_notes.sleep_end %></p>
+<p><%= @user_notes.breakfast %></p>
+<p><%= @user_notes.dinner %></p>
+保護者<p><%= @user_notes.message %></p>
+<p><%= @user_notes.record_date %></p>
+
+
+
+
+
+
+
+<%= @toilet_time.toilet_time %>
+<%= @admin_note.body_temperature %>
+<p><%= @admin_note.sleep_start %>〜<%= @admin_note.sleep_end %></p>
+<%= @admin_note.staple_food_amount_id %>
+<%= @admin_note.main_dish_amount_id %>
+<%= @admin_note.side_dish_amount_id %>
+<%= @admin_note.soup_amount_id %>
+<%= @admin_note.fruit_amount_id %>
+<%= @admin_note.message %>
+<%= @admin_note.creator_id %>
+<%= @admin_note.record_date %>
+
+
+<%= form_for @admin_note do |f| %>
+  <%= f.fields_for :toilet_times do |h| %>
+    <%= @toilet_time.toilet_time %>
+    <%= h.hidden_field :toilet_time %>
+  <% end %>
+
+    <div class="field">
+      <%= f.label :体温 %><br />
+      <%= f.hidden_field :body_temperature %>
+    </div>
+    <div class="field">
+      <%= f.label :排泄時間 %><br />
+      <div class="toilet_time">
+
+      </div>
+        <button type="button" id="btn-clone">clone</button>
+        <button type="button" id="btn-remove">remove</button>
+    </div>
+    <div class="field">
+      <%= f.label :睡眠時間, class: 'control-label' %><br />
+
+      <%= f.hidden_field :sleep_start, class: 'form-control' %>〜
+      <%= f.hidden_field :sleep_end, class: 'form-control' %>
+    </div>
+      <div class="field">
+        <%= f.label :主食 %>：<%= @meal.staple_food %><br />
+        <%= @Amount[@admin_note.staple_food_amount_id][:amount_type] %>
+        <%= f.hidden_field :staple_food_amount_id %>
+      </div>
+      <div class="field">
+        <%= f.label :主菜 %>：<%= @meal.main_dish %><br />
+        <%= @Amount[@admin_note.main_dish_amount_id][:amount_type] %>
+        <%= f.hidden_field :main_dish_amount_id%>
+      </div>
+      <div class="field">
+        <%= f.label :副菜 %>：<%= @meal.side_dish %><br />
+        <%= @Amount[@admin_note.side_dish_amount_id][:amount_type] %>
+        <%= f.hidden_field :side_dish_amount_id%>
+      </div>
+      <div class="field">
+        <%= f.label :汁物 %>：<%= @meal.fruit %><br />
+        <%= @Amount[@admin_note.soup_amount_id][:amount_type] %>
+        <%= f.hidden_field :soup_amount_id%>
+      </div>
+      <div class="field">
+        <%= f.label :果物 %>：<%= @meal.soup %><br />
+        <%= @Amount[@admin_note.fruit_amount_id][:amount_type] %>
+        <%= f.hidden_field :fruit_amount_id%>
+      </div>
+    <div class="field">
+      <%= f.label :保育園での様子 %><br />
+      <%= f.hidden_field :message, readonly: true %>
+    </div>
+    <div class="field">
+      <%= f.label :記入者 %><br />
+      <%= f.hidden_field :creator_id, readonly: true %>
+    </div>
+    <div class="form-group">
+      <%=f.label :日付, class: 'control-label'%><br />
+      <%= f.hidden_field :record_date, class: 'form-control', readonly: true %>
+    </div>
+    <%= f.submit "連絡帳登録へ" %>
+  <% end %>

@@ -3,10 +3,14 @@
 
 <h1>今日の保育</h1>
 <h2>今日の出席人数</h2>
+<%= @attendance[true] %>人
+
 <h2>今日の欠席人数</h2>
+<%= @attendance[false] %>人
+
 <h1>休みの子</h1>
-<% @absence.each do |attendance| %>
-<p><%= attendance.user.last_name + attendance.user.first_name %></p>
+<% @absence.each do |absence| %>
+<p><%= absence.user.last_name + absence.user.first_name %></p>
 <% end %>
 
 

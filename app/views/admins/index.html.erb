@@ -1,10 +1,10 @@
 <h1>ここはadminのindex画面</h1>
 
 <%= link_to '管理者　新規登録画面', new_admins_user_registration_path %>
-
 <% @admins.each do |admin| %>
 <div>
 <p><%= admin.affiliation.affiliation_name%>担任</p>
 <p><%= link_to admin.last_name + admin.first_name, admin_path(admin) %></p>
+ <%= attachment_image_tag admin, :image, format: 'jpeg', size: "100x100" %>
 </div>
 <% end %>

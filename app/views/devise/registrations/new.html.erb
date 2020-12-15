@@ -41,7 +41,12 @@
     <!--保存先のカラム名, テーブル（モデル）名.all, :実際にDB保存してある選択肢のID, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>-->
     <!--今回の場合はAffiliationテーブルなので選択肢として使いたいIDが1番から４番-->
   </div>
-
+  
+  <div class="field">
+    <%= f.label :画像 %><br />
+    <%= f.attachment_field :image, autocomplete: "image" %>
+  </div>
+  
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
