@@ -1,10 +1,6 @@
 class ApplicationController < ActionController::Base
-<<<<<<< HEAD
-   before_action :configure_permitted_parameters, if: :devise_controller?
-=======
   before_action :configure_permitted_parameters, if: :devise_controller?
   layout :layout_by_resource
->>>>>>> origin/layout
 
   # authorize_resource :class => false
   #   # 権限が無いページへアクセス時の例外処理
@@ -14,21 +10,12 @@ class ApplicationController < ActionController::Base
   # end
 
     CONFIRMATION = {true => '出席',false=> '欠席'}
-<<<<<<< HEAD
 
     # アプリケーションヘルパーを使用して呼び出せる
     include ApplicationHelper
 
 
 
-=======
-
-    # アプリケーションヘルパーを使用して呼び出せる
-    include ApplicationHelper
-
-
-
->>>>>>> origin/layout
     def after_sign_up_path_for(resource)
       if current_user.nil? == false
           path(current_user)

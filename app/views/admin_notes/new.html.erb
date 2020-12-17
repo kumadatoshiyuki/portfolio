@@ -4,11 +4,7 @@
 <p><%= @user.last_name + @user.first_name %></p>さん
 
 
-<<<<<<< HEAD
-<h1>今日のもの</h1>
-=======
 <h1>保護者より</h1>
->>>>>>> origin/layout
 <% @user_notes.each do |user_note| %>
 <p><%= user_note.body_temperature %></p>
 <p><%= user_note.number_toilet %></p>
@@ -24,39 +20,19 @@
 
 
 
-<<<<<<< HEAD
-  <%= form_with model: @admin_note, local: true, url: {action: 'confirm'} do |f| %>
-    <%= f.hidden_field :user_id, value: @user.id %>
-=======
   <%= form_with model: @admin_note, url: admin_admin_notes_path, local: true do |f| %>
->>>>>>> origin/layout
     <!--user_idに対してvalueの値を与えている。-->
     <div class="field">
       <%= f.label :体温 %><br />
       <%= f.text_field :body_temperature %>
     </div>
-<<<<<<< HEAD
-    <div class="field">
-      <%= f.label :排泄時間 %><br />
-      <div class="toilet_time">
 
-      <%= f.time_select :toilet_time, class:'text_class' %>
-      </div>
-        <button type="button" id="btn-clone">clone</button>
-        <button type="button" id="btn-remove">remove</button>
-    </div>
-=======
-
->>>>>>> origin/layout
     <div class="field">
       <%= f.label :睡眠時間, class: 'control-label' %><br />
       <%= f.time_select :sleep_start, class: 'form-control' %>〜
       <%= f.time_select :sleep_end, class: 'form-control' %>
     </div>
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/layout
       <div class="field">
         <%= f.label :主食 %>：<%= @meal.staple_food %><br />
         <%= f.collection_select :staple_food_amount_id, Amount.all, :id, :amount_type, include_blank: "選択して下さい" %>
@@ -78,13 +54,7 @@
         <%= f.collection_select :fruit_amount_id, Amount.all, :id, :amount_type, include_blank: "選択して下さい" %>
       </div>
     <div class="field">
-<<<<<<< HEAD
-      <%= f.label :記入者 %><br />
-      <%= f.text_field :creator_id %>
-    </div>
-    <div class="field">
-=======
->>>>>>> origin/layout
+
       <%= f.label :保育園での様子 %><br />
       <%= f.text_field :message %>
     </div>
@@ -92,9 +62,5 @@
       <%=f.label :日付, class: 'control-label'%><br />
       <%= f.date_field :record_date, class: 'form-control' %>
     </div>
-<<<<<<< HEAD
-    <%= f.submit "確認画面へ" %>
-=======
     <%= f.submit "登録" %>
->>>>>>> origin/layout
   <% end %>
