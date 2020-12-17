@@ -1,0 +1,14 @@
+<h1>ここはUserのShow</h1>
+
+<p><%= @user.kana_last_name + @user.kana_first_name%></p>
+<p><%= @user.last_name + @user.first_name %></p>
+<p><%= @user.age %></p>
+<p><%= @user.phone %></p>
+<p><%= @user.login_id %></p>
+<p><%= @user.password %></p>
+<p><%= @user.email %></p>
+<p><%= @user.affiliation.affiliation_name %></p>
+<p><%= attachment_image_tag @user, :image, format: 'jpeg', size: "100x100" %></p>
+
+
+<div><%= link_to '編集', edit_user_path(@user) %></div>

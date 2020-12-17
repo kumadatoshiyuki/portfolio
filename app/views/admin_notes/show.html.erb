@@ -1,0 +1,33 @@
+<h1>保護者が書いてきた今日の様子</h1>
+
+<h1><%= @admin_note.user.last_name %>の連絡帳</h1>
+<h1>今日のもの</h1>
+<p><%= @user_note.body_temperature %></p>
+<p><%= @user_note.number_toilet %></p>
+<p><%= @user_note.sleep_start %></p>
+<p><%= @user_note.sleep_end %></p>
+<p><%= @user_note.breakfast %></p>
+<p><%= @user_note.dinner %></p>
+<p><%= @user_note.message %></p>
+<p><%= @user_note.record_date %></p>
+
+<h1>保育士記述したもの</h1>
+<p>記入者：<%= @admin_note.creator.last_name %></p>
+
+
+
+<p><%= @admin_note.sleep_start %></p>
+<p><%= @admin_note.sleep_end %></p>
+<p><%= @admin_note.message %></p>
+<p><%= @admin_note.creator_id %></p>
+<p><%= @admin_note.record_date %></p>
+<p><%= @admin_note.user_id %></p>
+<p><%= @admin_note.staple_food_amount_id %></p>
+<p><%= @admin_note.main_dish_amount_id %></p>
+<p><%= @admin_note.side_dish_amount_id %></p>
+<p><%= @admin_note.fruit_amount_id %></p>
+<p><%= @admin_note.timestamps %></p>
+<p><%= @admin_note.soup_amount_id %></p>
+
+<div><%= link_to '編集', edit_admin_admin_note_path(@admin_note) %></div>
+<div><%= link_to '戻る', admin_admin_notes_path() %></div>

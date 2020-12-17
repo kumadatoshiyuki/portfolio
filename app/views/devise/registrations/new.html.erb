@@ -1,0 +1,144 @@
+<div class="col-md-12 col-xs-12">
+      <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>園児　新規登録 <small>入力画面</small></h2>
+              <ul class="nav navbar-right panel_toolbox">
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Settings 1</a>
+              </li>
+              <li><a href="#">Settings 2</a>
+              </li>
+            </ul>
+          </li>
+          <li><a class="close-link"><i class="fa fa-close"></i></a>
+          </li>
+        </ul>
+              <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+        <br>
+        <!--<form class="form-horizontal form-label-left input_mask">-->
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+          <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+            <!--<input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="First Name">-->
+            <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control has-feedback-left", :placeholder => "苗字"%>
+            <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+          </div>
+
+          <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+            <!--<input type="text" class="form-control" id="inputSuccess3" placeholder="Last Name">-->
+            <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control", :placeholder => "名前"%>
+            <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+          </div>
+
+          <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+            <!--<input type="text" class="form-control has-feedback-left" id="inputSuccess4" placeholder="Email">-->
+            <%= f.text_field :kana_last_name, autofocus: true, autocomplete: "kana_last_name", class: "form-control has-feedback-left", :placeholder => "苗字カナ"%>
+            <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+          </div>
+
+          <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+            <!--<input type="text" class="form-control" id="inputSuccess5" placeholder="Phone">-->
+            <%= f.text_field :kana_first_name, autofocus: true, autocomplete: "kana_first_name", class: "form-control", :placeholder => "名前カナ"%>
+            <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
+          </div>
+
+          <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+            <!--<input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="First Name">-->
+            <%= f.text_field :age, autofocus: true, autocomplete: "age", class: "form-control has-feedback-left", :placeholder => "年齢"%>
+            <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+          </div>
+
+          <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+            <!--<input type="text" class="form-control" id="inputSuccess3" placeholder="Last Name">-->
+            <%= f.text_field :phone, autofocus: true, autocomplete: "phone", class: "form-control", :placeholder => "電話番号"%>
+            <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+          </div>
+
+          <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+            <!--<input type="text" class="form-control has-feedback-left" id="inputSuccess4" placeholder="Email">-->
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control has-feedback-left", :placeholder => "メール"%>
+            <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+          </div>
+
+          <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+            <!--<input type="text" class="form-control" id="inputSuccess5" placeholder="Phone">-->
+            <%= f.attachment_field :image, autocomplete: "image" %>
+            <!--<span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>-->
+          </div>
+
+
+
+
+
+
+
+
+
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="form-group row">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">クラス</label>
+              <div class="col-md-9 col-sm-9 col-xs-12">
+                <%= f.collection_select :affiliation_id, Affiliation.all, :id, :affiliation_name, include_blank: "選択して下さい" %>
+                <!--保存先のカラム名, テーブル（モデル）名.all, :実際にDB保存してある選択肢のID, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>-->
+                  <!--今回の場合はAffiliationテーブルなので選択肢として使いたいIDが1番から４番-->
+              </div>
+          </div>
+          
+          
+          <div class="form-group row">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">ログインID</label>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+              <%= f.text_field :login_id, autofocus: true, autocomplete: "login_id", class: "form-control", :placeholder => "ログインID"%>
+              <!--<input type="text" class="form-control" readonly="readonly" placeholder="Read-Only Input">-->
+            </div>
+          </div>
+          <div class="form-group row">
+            <% if @minimum_password_length %>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">パスワード
+            <em>(<%= @minimum_password_length %> characters minimum)</em></label>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+              <!--<input type="text" class="form-control" placeholder="Default Input">-->
+                <% end %>
+                <%= f.password_field :password, autocomplete: "new-password",class: "form-control", :placeholder => "パスワード" %>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">確認パスワード</label>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+              <!--<input type="text" class="form-control" disabled="disabled" placeholder="Disabled Input">-->
+              <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "form-control", :placeholder => "確認パスワード" %>
+            </div>
+          </div>
+
+
+          <%= f.hidden_field :role, :value => "user" %>
+          <!--<div class="form-group">-->
+          <!--  <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>-->
+          <!--  </label>-->
+          <!--  <div class="col-md-9 col-sm-9 col-xs-12">-->
+          <!--    <input class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">-->
+          <!--  </div>-->
+          <!--</div>-->
+          <div class="ln_solid"></div>
+          <div class="form-group row">
+            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-5">
+              <!--<button type="button" class="btn btn-primary">Cancel</button>-->
+              <!--<button class="btn btn-primary" type="reset">Reset</button>-->
+              <!--<button type="submit" class="btn btn-success">Submit</button>-->
+              <%= link_to("戻る", user_notes_path, { class: "btn btn-primary"}) %>
+              <%= f.submit "園児登録", class: "btn btn-success" %>
+            </div>
+          </div>
+          </div>
+    <% end %>
+        <!--</form>-->
+      </div>
+        </div>
+  </div>

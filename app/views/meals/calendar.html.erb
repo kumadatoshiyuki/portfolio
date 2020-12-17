@@ -1,0 +1,38 @@
+<head>
+    <%= javascript_include_tag "meal_calendar.js" %>
+</head>
+<style>
+.staple_food,
+.main_dish,
+.side_dish,
+.soup,
+.fruit{
+    background-color: #fff;
+}
+
+.staple_food{
+    border-left: 5px solid red;
+    border-color:red;
+}
+.main_dish{
+    border-left: 5px solid skyblue;
+    border-color:skyblue;
+}
+.side_dish{
+    border-left: 5px solid gold;
+    border-color:gold;
+}
+.fruit{
+    border-left: 5px solid grey;
+    border-color:grey;
+}
+.soup{
+    border-left: 5px solid #99ff99;
+    border-color: #99ff99;
+}
+</style>
+
+
+<h3 class="text-center">カレンダー</h3>
+<!-- カレンダーの表示 -->
+<div id="meal_calendar"></div>

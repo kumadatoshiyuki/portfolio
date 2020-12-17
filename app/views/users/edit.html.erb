@@ -1,0 +1,56 @@
+<h1>ここはuserの編集画面</h1>
+
+
+<h2>Edit <%= @user.first_name %></h2>
+<%= form_for(@user, url: user_path(@user), html: { method: :put }) do |f| %>
+  <%= render "admins/shared/error_messages", resource: @user %>
+
+  <div class="field">
+    <%= f.label :苗字 %><br />
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+  </div>
+  <div class="field">
+    <%= f.label :名前 %><br />
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+  </div>
+    <div class="field">
+    <%= f.label :苗字カナ %><br />
+    <%= f.text_field :kana_last_name, autofocus: true, autocomplete: "kana_last_name" %>
+  </div>
+  <div class="field">
+    <%= f.label :名前カナ %><br />
+    <%= f.text_field :kana_first_name, autofocus: true, autocomplete: "kana_first_name" %>
+  </div>
+  <div class="field">
+    <%= f.label :年齢 %><br />
+    <%= f.text_field :age, autofocus: true, autocomplete: "age" %>
+  </div>
+  <div class="field">
+    <%= f.label :電話番号 %><br />
+    <%= f.text_field :phone, autofocus: true, autocomplete: "phone" %>
+  </div>
+  <div class="field">
+    <%= f.label :ログインID %><br />
+    <%= f.text_field :login_id, autofocus: true, autocomplete: "login_id" %>
+  </div>
+  <div class="field">
+    <%= f.label :メール %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+  <div class="field">
+    <%= f.label :クラス %><br />
+    <%= f.text_field :affiliation_id, autofocus: true, autocomplete: "affiliation_id" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "更新する" %>
+  </div>
+<% end %>
+
+
+<h3></h3>
+
+
+
+
+<%= link_to "Back", :back %>

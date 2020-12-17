@@ -1,0 +1,10 @@
+<h1>管理者側からみた連絡帳一覧</h1>
+<p>ユーザ一覧</p>
+
+
+
+<% @users.each do |user| %>
+<div>
+<p><%= link_to user.last_name + user.first_name, admin_admin_notes_path(user)%></p>
+</div>
+<% end %>
