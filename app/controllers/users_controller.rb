@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
+  # layout 'user.application', except: [:index,:top]
+  layout 'user.application', only:  [:show,:edit]
   # 管理者の登録はこの画面で行う
   def top
     # 保護者の個人topページ
     @meal = Meal.find_by(record_date: get_today)
     @news = News.all
+    @admin_note = AdminNote.where(user_id: current_user.id).find_by(record_date: get_today)
+
   end
 
   def index

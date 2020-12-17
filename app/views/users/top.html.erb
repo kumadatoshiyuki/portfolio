@@ -1,40 +1,128 @@
-<h1>ここはUserのTopページです</h1>
-<div>
-  <%= link_to '食事管理', meals_path %>
+<head>
+    <%= javascript_include_tag "user_calendar.js" %>
+</head>
+<div class="col-md-3 col-sm-6">
+<div class="x_panel">
+<div class="x_title">
+<h2>リンク先 </h2>
+<ul class="nav navbar-right panel_toolbox">
+<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+</li>
+<li class="dropdown">
+<!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>-->
+<ul class="dropdown-menu" role="menu">
+<li><a href="#">Settings 1</a>
+</li>
+<li><a href="#">Settings 2</a>
+</li>
+</ul>
+</li>
+<!--<li><a class="close-link"><i class="fa fa-close"></i></a>-->
+</li>
+</ul>
+<div class="clearfix"></div>
 </div>
-<div>
-  <%= link_to '連絡帳作成ページ', new_user_note_path %>
+<div class="x_content" style="display: block;">
+<button type="button" class="btn btn-secondary">Default</button>
+<button type="button" class="btn btn-primary">Primary</button>
+<%= link_to("連絡帳作成ページ", new_user_note_path, { class: "btn btn-success"}) %>
+<%= link_to("食事管理", meals_path, { class: "btn btn-info"}) %>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-dark">Dark</button>
+
+</div>
+</div>
 </div>
 
-<h1>お知らせ一覧</h1>
-<% @news.each do |news| %>
-<div>
-<!--1:N-->
-<% news.affiliation.each do |affiliation| %>
-  <p><%= affiliation.affiliation_name%></p>
-<% end %>
+<div class="col-md-6 col-sm-6">
+<div class="x_panel">
+<div class="x_title">
+<h2>保育士からのコメント<small>Sessions</small></h2>
+<ul class="nav navbar-right panel_toolbox">
+<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+</li>
+<li class="dropdown">
+<!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>-->
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<a class="dropdown-item" href="#">Settings 1</a>
+<a class="dropdown-item" href="#">Settings 2</a>
+</div>
+</li>
+<!--<li><a class="close-link"><i class="fa fa-close"></i></a>-->
+</li>
+</ul>
+<div class="clearfix"></div>
+</div>
+<div class="x_content">
+<ul class="list-unstyled msg_list">
+<li>
+<a>
+<span class="image">
+<!--<img src="images/img.jpg" alt="img">-->
+<%= attachment_image_tag @admin_note.creator, :image, format: 'jpeg', fallback: "user.png", class: "img-circle img-fluid" %>
+</span>
+<span>
+<span>記入者：<%= @admin_note.creator.last_name %></span>
+<!--<span class="time">3 mins ago</span>-->
+</span>
+<span class="message"><%= @admin_note.message %>
 
-<p><%= news.message%></p>
-<% end %>
+</span>
+</a>
+</li>
 
-<h1>今日の保育園での様子</h1>
-<p>今日のご飯食べた量</p>
-<%= @meal.staple_food %>
-<%= @meal.main_dish %>
-<%= @meal.side_dish %>
-<%= @meal.soup %>
-<%= @meal.fruit %>
-<p>排泄回数</p>
-<p>睡眠時間</p>
-<p>体温</p>
+</ul>
+</div>
+</div>
+</div>
 
 
-<h1>保育士からのコメント</h1>
-<p>写真とメッセージ</p>
-
-
-<h1>カレンダーをクリックすると連絡帳の詳細へ飛ぶ</h1>
-  <%= link_to '連絡帳', user_notes_path %>
-<h3 class="text-center">カレンダー</h3>
-<!-- カレンダーの表示 -->
-<div id="calendar"></div>
+<div class="col-md-6 col-sm-6">
+<div class="x_panel">
+<div class="x_title">
+<h2>今日の喫食量<small>Sessions</small></h2>
+<ul class="nav navbar-right panel_toolbox">
+<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+</li>
+<li class="dropdown">
+<!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>-->
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<a class="dropdown-item" href="#">Settings 1</a>
+<a class="dropdown-item" href="#">Settings 2</a>
+</div>
+</li>
+<!--<li><a class="close-link"><i class="fa fa-close"></i></a>-->
+</li>
+</ul>
+<div class="clearfix"></div>
+</div>
+<div class="x_content bs-example-popovers">
+<div class="alert alert-success alert-dismissible " role="alert">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+</button>
+<strong><%= @meal.staple_food %></strong>　　　　　<%= @admin_note.staple_food_amount.amount_type %>
+</div>
+<div class="alert alert-info alert-dismissible " role="alert">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+</button>
+<strong><%= @meal.main_dish %></strong>　　　　　<%= @admin_note.main_dish_amount.amount_type %>
+</div>
+<div class="alert alert-warning alert-dismissible " role="alert">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+</button>
+<strong><%= @meal.side_dish %> </strong>　　　　　<%= @admin_note.side_dish_amount.amount_type %>
+</div>
+<div class="alert alert-danger alert-dismissible " role="alert">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+</button>
+<strong><%= @meal.soup %></strong>　　　　　<%= @admin_note.soup_amount.amount_type %>
+</div>
+<div class="alert alert-success alert-dismissible " role="alert">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+</button>
+<strong><%= @meal.fruit %></strong>　　　　　<%= @admin_note.fruit_amount.amount_type %>
+</div>
+</div>
+</div>
+</div>

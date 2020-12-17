@@ -1,29 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>CommunicationNotebook</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css">
+    <title><%= yield :title %></title>
+
   </head>
 
-  <body>
-    <div id="slidemenu">
-  <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
-      <li class="">
-        <%= link_to "ログアウト", logout_path, method: :delete %>
-      </li>
-      <li class="">
-        <%= link_to "ログイン", login_path, method: :post %>
-      </li>
-  </ul>
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <%= render partial: 'layouts/shared/leftnav' %>
+          </div>
+        </div>
 
-</div>
-    <%= yield %>
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <%= render partial: 'layouts/shared/topnav' %>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <%= yield %>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <%= render partial: 'layouts/shared/footer' %>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
   </body>
 </html>

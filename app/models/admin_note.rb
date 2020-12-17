@@ -2,6 +2,7 @@ class AdminNote < ApplicationRecord
   has_many :toilet_times
   accepts_nested_attributes_for :toilet_times
   belongs_to :user, optional: true
+  belongs_to :creator, class_name: 'User'
 
   # belongs_to :main_dish_amount, class_name: "Amount"
 belongs_to :main_dish_amount, class_name: 'Amount', :foreign_key => 'main_dish_amount_id'

@@ -1,5 +1,17 @@
 <h1>管理者側からみた連絡帳一覧</h1>
-<p>〜〜くんの連絡帳一覧</p>
+<p><%=@user.last_name%>くんの連絡帳一覧</p>
 
 
 <%= link_to '連絡帳作成する', new_admin_admin_note_path() %>
+
+
+
+
+<% @user.admin_notes.each do |note| %>
+
+<!--スラの次は/admins/:admin_id/admin_notes/:id(.:format)-->
+　　　　　　　　　　<!--user_id admin_note admin_id-->
+　　　　　　　　　　<!--ここでは@userがuserの情報を持っておりidがadmin_noteのidになる。-->
+<%= link_to note.record_date, admin_admin_note_path(@user,note) %>
+
+<% end %>

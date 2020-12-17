@@ -1,22 +1,102 @@
-<h1>ここは管理者でみれるUserのindex2</h1>
+<style>
+#search{
+    width: 60%;
+}
+#option{
+    width: 40%;
+}
+.submit {
+    border-right: 0;
+    box-shadow: inset 0 1px 0px rgba(0, 0, 0, 0.075);
+    border-radius:  0px 25px 25px 0px;
+    border: 1px solid rgba(221, 226, 232, 0.49);
+}
+</style>
 
-<%= link_to 'ユーザー　新規登録画面', new_user_registration_path %>
 
-<%= form_tag(users_path, :method => 'get') do %>
-    <%= select_tag(:option, options_for_select([["クラス", "1"],["名前","2"]]))%> 
-    <%= text_field_tag :search %>
-    <%= submit_tag 'Search' %>
-<% end %>
-
-
-
-
-<% @users.each do |user| %>
-<div>
-<p><%= user.affiliation.affiliation_name%>クラス</p>
-<p><%= attachment_image_tag user, :image, format: 'jpeg', size: "100x100" %></p>
-<p><%= user.kana_last_name + user.kana_first_name %></p>
-<p><%= user.last_name + user.first_name %></p>
-<%= link_to '詳細', user_path(user) %>
+<div class="page-title">
+ <div class="title_left">
+  <h3>全園児一覧</h3>
+ </div>
+ <div class="title_right">
+    <%= form_tag(users_path, :method => 'get') do %>
+    <div class="col-md-6 col-sm-6  form-group pull-right top_search">
+    <div class="input-group">
+    <%= text_field_tag :search, '', class: 'form-control form-text', placeholder: "Search for..." %>
+        <%= select_tag 'option', options_for_select([["クラス", "1"],["名前","2"]]), :class => 'form-control form-select' %>
+        <span class="input-group-btn">
+            <%= submit_tag '検索' ,class:"submit btn btn-secondary" %>
+        </span>
+    </div>
+    </div>
+    <% end %>
 </div>
-<% end %>
+</div>
+
+<div class="clearfix"></div>
+<div class="row">
+ <div class="x_panel">
+  <div class="x_content">
+
+   <div class="col-md-12 col-sm-12  text-right">
+    <%= link_to("新規登録画面", new_user_registration_path, { class: "btn btn-success btn-sm"}) %>
+   </div>
+
+   <div class="clearfix"></div>
+
+
+   <% @users.each do |user| %>
+   <div class="col-md-4 col-sm-4  profile_details">
+    <div class="well profile_view">
+     <div class="col-sm-12">
+      <h4 class="brief"><i><%= user.affiliation.affiliation_name%>クラス</i></h4>
+      <div class="left col-sm-7">
+       <h2><%= user.last_name + user.first_name %></h2>
+       <p><strong><%= user.kana_last_name + user.kana_first_name %></strong> Web Designer / UI. </p>
+       <ul class="list-unstyled">
+        <li><i class="fa fa-building"></i> Address: </li>
+<li><i class="fa fa-phone"></i> Phone #: </li>
+       </ul>
+      </div>
+      <div class="right col-sm-5 text-center">
+       <%= attachment_image_tag user, :image, format: 'jpeg', fallback: "user.png", class: "img-circle img-fluid"%>
+
+      </div>
+     </div>
+     <div class=" bottom text-center">
+      <div class=" col-sm-6 emphasis">
+       <p class="ratings">
+        <a>4.0</a>
+        <a href="#"><span class="fa fa-star"></span></a>
+        <a href="#"><span class="fa fa-star"></span></a>
+        <a href="#"><span class="fa fa-star"></span></a>
+        <a href="#"><span class="fa fa-star"></span></a>
+        <a href="#"><span class="fa fa-star-o"></span></a>
+       </p>
+      </div>
+      <div class=" col-sm-6 emphasis">
+       <button type="button" class="btn btn-success btn-sm"> <i class="fa fa-user">
+       </i> <i class="fa fa-comments-o"></i> </button>
+       <%= link_to("詳細", user_path(user), { class: " btn btn-primary btn-sm  fa fa-user" }) %>
+      </div>
+     </div>
+    </div>
+   </div>
+   <% end %>
+    <div class="col-md-12 col-sm-12  text-center">
+    <ul class="pagination pagination-split">
+     <li><a href="#">1</a></li>
+     <li><a href="#">2</a></li>
+     <li><a href="#">3</a></li>
+     <li><a href="#">4</a></li>
+     <li><a href="#">5</a></li>
+     <li>...</li>
+     <li><a href="#">6</a></li>
+     <li><a href="#">7</a></li>
+     <li><a href="#">8</a></li>
+     <li><a href="#">9</a></li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</div>

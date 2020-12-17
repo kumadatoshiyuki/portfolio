@@ -1,5 +1,5 @@
-<h1>userの連絡帳</h1>
-<h1>今日のもの</h1>
+<h1><%= @user.last_name %>の連絡帳</h1>
+<h1><%= @user_note.record_date %>のもの</h1>
 
 <p><%= @user_note.body_temperature %></p>
 <p><%= @user_note.number_toilet %></p>
@@ -11,16 +11,20 @@
 <p><%= @user_note.record_date %></p>
 
 
-<%= link_to '連絡帳', user_notes_path %>
+
+<h1><%= @admin_note.record_date %>保育園での<%= @user.last_name %>さんの様子</h1>
+<p>記入者：<%= @admin_note.creator.last_name %></p>
+<p>体温:<%= @admin_note.body_temperature %></p>
+<p>睡眠時間<%= @admin_note.sleep_start %></p>-<p><%= @admin_note.sleep_end %></p>
+<p>保育士より：<%= @admin_note.message %></p>
+<h4>今日の食事量</h4>
+<p><%= @meal.staple_food %>  :  <%= @admin_note.staple_food_amount.amount_type %></p>
+<p><%= @meal.main_dish %>  :  <%= @admin_note.main_dish_amount.amount_type %></p>
+<p><%= @meal.side_dish %>  :  <%= @admin_note.side_dish_amount.amount_type %></p>
+<p><%= @meal.fruit %>  :  <%= @admin_note.fruit_amount.amount_type %></p>
+<p><%= @meal.soup %>  :  <%= @admin_note.soup_amount.amount_type %></p>
 
 
 
-
-
-
-
-
-
-
-
+<%= link_to '戻る', top_path() %>
 

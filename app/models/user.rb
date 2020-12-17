@@ -29,10 +29,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :admin_notes, dependent: :destroy
+
+  has_many :admin_notes, class_name: 'AdminNote', dependent: :destroy
   has_many :user_notes, dependent: :destroy
   belongs_to :affiliation, optional: true
   attachment :image
+
 
 
   def is_admin?
@@ -65,7 +67,7 @@ class User < ApplicationRecord
        .or(User.get_user().without_deleted.where(['first_name LIKE ?', "%#{search}%"]))
        .or(User.get_user().without_deleted.where(['kana_last_name LIKE ?', "%#{search}%"]))
        .or(User.get_user().without_deleted.where(['kana_first_name LIKE ?', "%#{search}%"]))
-       
+
     else
        User.get_user().without_deleted
     end

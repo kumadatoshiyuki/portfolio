@@ -179,7 +179,7 @@ UserNote.create!(
       breakfast: "ご飯・お味噌汁・シャケ",
       dinner: "タラコスパゲッティー",
       message: "体調変わりなく元気です！お休みの日はスカイツリーへ行きました！すごい高いと怖がりながらも気になっていた太郎でした。",
-      record_date: "2020/12/1"
+      record_date: "2020/12/17"
     },
     {
       user_id: 3,
@@ -191,7 +191,7 @@ UserNote.create!(
       breakfast: "パン・コーンスープ・スクランブルエッグ",
       dinner: "ハンバーグ・ご飯・中華スープ",
       message: "昨日は公園で転びました。様子みてください。",
-      record_date: "2020/12/1"
+      record_date: "2020/12/17"
     }
     ]
   )
@@ -200,13 +200,13 @@ UserNote.create!(
   [
     {
       id:1,
-      user_id: 2,
+      user_id: 1,
       body_temperature: 36.7,
       sleep_start: 12,
       sleep_end: 15,
       message: "今日は保育園で沢山遊びました！！",
-      creator_id: 1,
-      record_date: "2020/12/1",
+      creator_id: 2,
+      record_date: "2020/12/17",
       staple_food_amount_id: 1,
       main_dish_amount_id: 1,
       side_dish_amount_id: 2,
@@ -215,13 +215,13 @@ UserNote.create!(
     },
     {
       id:2,
-      user_id: 4,
+      user_id: 3,
       body_temperature: 36.7,
       sleep_start: 12,
       sleep_end: 15,
       message: "今日は公園にいきました",
-      creator_id: 2,
-      record_date: "2020/12/1",
+      creator_id: 4,
+      record_date: "2020/12/17",
       staple_food_amount_id: 1,
       main_dish_amount_id: 1,
       side_dish_amount_id: 2,
