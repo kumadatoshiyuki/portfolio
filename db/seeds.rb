@@ -178,7 +178,7 @@ UserNote.create!(
       breakfast: "ご飯・お味噌汁・シャケ",
       dinner: "タラコスパゲッティー",
       message: "体調変わりなく元気です！お休みの日はスカイツリーへ行きました！すごい高いと怖がりながらも気になっていた太郎でした。",
-      record_date: "2020/12/17"
+      record_date: "2020/12/18"
     },
     {
       user_id: 3,
@@ -190,7 +190,7 @@ UserNote.create!(
       breakfast: "パン・コーンスープ・スクランブルエッグ",
       dinner: "ハンバーグ・ご飯・中華スープ",
       message: "昨日は公園で転びました。様子みてください。",
-      record_date: "2020/12/17"
+      record_date: "2020/12/18"
     }
     ]
   )
@@ -205,7 +205,7 @@ UserNote.create!(
       sleep_end: 15,
       message: "今日は保育園で沢山遊びました！！",
       creator_id: 2,
-      record_date: "2020/12/17",
+      record_date: "2020/12/18",
       staple_food_amount_id: 1,
       main_dish_amount_id: 1,
       side_dish_amount_id: 2,
@@ -220,7 +220,7 @@ UserNote.create!(
       sleep_end: 15,
       message: "今日は公園にいきました",
       creator_id: 4,
-      record_date: "2020/12/17",
+      record_date: "2020/12/18",
       staple_food_amount_id: 1,
       main_dish_amount_id: 1,
       side_dish_amount_id: 2,
@@ -294,7 +294,7 @@ Meal.create!(
       side_dish: "枝豆",
       soup: "味噌汁",
       fruit: "りんご",
-      record_date: "2020/12/14"
+      record_date: "2020/12/18"
     },
     {
       id: 2,
@@ -303,7 +303,7 @@ Meal.create!(
       side_dish: "サラダ",
       soup: "味噌汁",
       fruit: "みかん",
-      record_date: "2020/12/15"
+      record_date: "2020/12/19"
     },
         {
       id: 3,
@@ -312,7 +312,7 @@ Meal.create!(
       side_dish: "バンバンジー",
       soup: "味噌汁",
       fruit: "桃",
-      record_date: "2020/12/16"
+      record_date: "2020/12/20"
     },
     {
       id: 4,
@@ -321,7 +321,7 @@ Meal.create!(
       side_dish: "サラダ",
       soup: "味噌汁",
       fruit: "どんぐり",
-      record_date: "2020/12/17"
+      record_date: "2020/12/2"
     }
     ]
   )

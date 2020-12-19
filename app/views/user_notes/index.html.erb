@@ -3,10 +3,5 @@
 
 <p>日付をクリックしてその日の連絡帳をみれる。</p>
 
-<% @user.user_notes.each do |note| %>
-
-<%= link_to note.record_date, user_note_path(note) %>
 
 
-
-<% end %>

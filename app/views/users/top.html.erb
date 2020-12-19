@@ -56,22 +56,39 @@
 </div>
 <div class="x_content">
 <ul class="list-unstyled msg_list">
-<li>
-<a>
-<span class="image">
-<!--<img src="images/img.jpg" alt="img">-->
-<%= attachment_image_tag @admin_note.creator, :image, format: 'jpeg', fallback: "user.png", class: "img-circle img-fluid" %>
-</span>
-<span>
-<span>記入者：<%= @admin_note.creator.last_name %></span>
-<!--<span class="time">3 mins ago</span>-->
-</span>
-<span class="message"><%= @admin_note.message %>
 
-</span>
-</a>
-</li>
 
+<% if @admin_note.nil? %>
+  <!--データある時-->
+  <li>
+  <a>
+  <span class="image">
+    <%= attachment_image_tag @admin_note, :image, format: 'jpeg', fallback: "user.png", class: "img-circle img-fluid" %>
+  </span>
+  <span>
+  <span></span>
+  <!--<span class="time">3 mins ago</span>-->
+  </span>
+  <span class="message">本日のメッセージはありません。</span>
+  </a>
+  </li>
+<% else %>
+  <!--データない時-->
+  <li>
+  <a>
+  <span class="image">
+  <!--<img src="images/img.jpg" alt="img">-->
+  <%= attachment_image_tag @admin_note.creator, :image, format: 'jpeg', fallback: "user.png", class: "img-circle img-fluid" %>
+  </span>
+  <span>
+  <span>記入者：<%= @admin_note.creator.last_name %></span>
+  <!--<span class="time">3 mins ago</span>-->
+  </span>
+  <span class="message"><%= @admin_note.message %>
+  </span>
+  </a>
+  </li>
+<% end %>
 </ul>
 </div>
 </div>
@@ -101,27 +118,52 @@
 <div class="alert alert-success alert-dismissible " role="alert">
 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 </button>
-<strong><%= @meal.staple_food %></strong>　　　　　<%= @admin_note.staple_food_amount.amount_type %>
-</div>
-<div class="alert alert-info alert-dismissible " role="alert">
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-</button>
-<strong><%= @meal.main_dish %></strong>　　　　　<%= @admin_note.main_dish_amount.amount_type %>
-</div>
-<div class="alert alert-warning alert-dismissible " role="alert">
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-</button>
-<strong><%= @meal.side_dish %> </strong>　　　　　<%= @admin_note.side_dish_amount.amount_type %>
-</div>
-<div class="alert alert-danger alert-dismissible " role="alert">
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-</button>
-<strong><%= @meal.soup %></strong>　　　　　<%= @admin_note.soup_amount.amount_type %>
-</div>
-<div class="alert alert-success alert-dismissible " role="alert">
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-</button>
-<strong><%= @meal.fruit %></strong>　　　　　<%= @admin_note.fruit_amount.amount_type %>
+  <% if @admin_note.nil? %>
+  <strong><%= @meal.staple_food %></strong>
+  </div>
+  <div class="alert alert-info alert-dismissible " role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  </button>
+  <strong><%= @meal.main_dish %></strong>
+  </div>
+  <div class="alert alert-warning alert-dismissible " role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  </button>
+  <strong><%= @meal.side_dish %> </strong>
+  </div>
+  <div class="alert alert-danger alert-dismissible " role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  </button>
+  <strong><%= @meal.soup %></strong>
+  </div>
+  <div class="alert alert-success alert-dismissible " role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  </button>
+  <strong><%= @meal.fruit %></strong>
+  <% else %>
+  <strong><%= @meal.staple_food %></strong>　　　　　<%= @admin_note.staple_food_amount.amount_type %>
+  </div>
+  <div class="alert alert-info alert-dismissible " role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  </button>
+  <strong><%= @meal.main_dish %></strong>　　　　　<%= @admin_note.main_dish_amount.amount_type %>
+  </div>
+  <div class="alert alert-warning alert-dismissible " role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  </button>
+  <strong><%= @meal.side_dish %> </strong>　　　　　<%= @admin_note.side_dish_amount.amount_type %>
+  </div>
+  <div class="alert alert-danger alert-dismissible " role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  </button>
+  <strong><%= @meal.soup %></strong>　　　　　<%= @admin_note.soup_amount.amount_type %>
+  </div>
+  <div class="alert alert-success alert-dismissible " role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  </button>
+  <strong><%= @meal.fruit %></strong>　　　　　<%= @admin_note.fruit_amount.amount_type %>
+  <% end %>
+
 </div>
 </div>
 </div>

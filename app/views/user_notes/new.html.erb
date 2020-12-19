@@ -1,39 +1,68 @@
-<h1>user側の連絡帳</h1>
+<div class="x_panel">
+<div class="x_title">
+<h2>userの連絡帳</h2>
+<!--<ul class="nav navbar-right panel_toolbox">-->
+<!--<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>-->
+<!--</li>-->
+<!--<li class="dropdown">-->
+<!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>-->
+<!--<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
+<!--<a class="dropdown-item" href="#">Settings 1</a>-->
+<!--<a class="dropdown-item" href="#">Settings 2</a>-->
+<!--</div>-->
+</li>
+<!--<li><a class="close-link"><i class="fa fa-close"></i></a>-->
+</li>
+</ul>
+<div class="clearfix"></div>
+</div>
+<div class="x_content">
 <%= form_with model: @user_note, local: true, url: {action: 'confirm'} do |f| %>
+<p>
+<label>出席確認：</label>
   <div class="field">
     <%= f.radio_button :attendance_confirmation, :ture %>
     <%= f.label :attendance_confirmation, "出席", {value: :ture, style: "display: inline-block;"} %>
     <%= f.radio_button :attendance_confirmation, :false %>
     <%= f.label :attendance_confirmation, "欠席", {value: :false, style: "display: inline-block;"} %>
   </div>
+<!--M:-->
+<!--/<div class="iradio_flat-green checked" style="position: relative;"><input type="radio" class="flat" name="gender" id="genderM" value="M" checked="" required="" data-parsley-multiple="gender" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> F:-->
+<!--<div class="iradio_flat-green" style="position: relative;"><input type="radio" class="flat" name="gender" id="genderF" value="F" data-parsley-multiple="gender" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>-->
+</p>
+
+<!--<form id="demo-form" data-parsley-validate="" novalidate="">-->
+<label>体温 :</label>
+  <%= f.text_field :body_temperature, class: "form-control"%>
+<!--<input type="text" id="fullname" class="form-control" name="fullname" required="">-->
+<label>排泄回数 :</label>
+  <%= f.text_field :number_toilet, class: "form-control" %>
   <div class="field">
-      <%= f.label :体温 %><br />
-      <%= f.text_field :body_temperature %>
-    </div>
-    <div class="field">
-      <%= f.label :排泄回数 %><br />
-      <%= f.text_field :number_toilet %>
-    </div>
-      <div class="field">
       <%= f.label :睡眠時間, class: 'control-label' %><br />
       <%= f.time_select :sleep_start, class: 'form-control' %>〜
       <%= f.time_select :sleep_end, class: 'form-control' %>
-    </div>
-    <div class="field">
-      <%= f.label :朝食 %><br />
-      <%= f.text_field :breakfast %>
-    </div>
-    <div class="field">
-      <%= f.label :夕食 %><br />
-      <%= f.text_field :dinner %>
-    </div>
-    <div class="field">
-      <%= f.label :おうちでの様子 %><br />
-      <%= f.text_field :message %>
-    </div>
-    <div class="form-group">
+  </div>
+<!--<input type="email" id="email" class="form-control" name="email" data-parsley-trigger="change" required="">-->
+<label>朝食 :</label>
+  <%= f.text_field :breakfast, class: 'form-control' %>
+<!--<input type="text" id="fullname" class="form-control" name="fullname" required="">-->
+<label>夕食 :</label>
+<%= f.text_field :dinner, class: 'form-control' %>
+<div class="form-group">
       <%=f.label :日付, class: 'control-label'%><br />
       <%= f.date_field :record_date, class: 'form-control' %>
-    </div>
-    <%= f.submit "確認画面へ" %>
+</div>
+
+<p>
+<label for="message">おうちでの様子 :</label>
+<%= f.text_field :message, class: "form-control" %>
+
+<!--<textarea id="message" required="required" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.." data-parsley-validation-threshold="10"></textarea>-->
+<br>
+<!--<span class="btn btn-primary">Validate form</span>-->
+<%= f.submit "確認画面へ", class: "btn btn-success" %>
+</p></form>
+
+</div>
+</div>
 <% end %>

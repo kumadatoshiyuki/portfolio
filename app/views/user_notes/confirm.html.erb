@@ -1,43 +1,73 @@
-<h1 class="masashi">確認画面</h1>
-
+<div class="col-md-12">
+<div class="x_panel">
+<div class="x_title">
+<h2>確認画面<small>※登録後は削除できません</small></h2>
+<!--<ul class="nav navbar-right panel_toolbox">-->
+<!--<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>-->
+<!--</li>-->
+<!--<li class="dropdown">-->
+<!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>-->
+<!--<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
+<!--<a class="dropdown-item" href="#">Settings 1</a>-->
+<!--<a class="dropdown-item" href="#">Settings 2</a>-->
+<!--</div>-->
+<!--</li>-->
+<!--<li><a class="close-link"><i class="fa fa-close"></i></a>-->
+<!--</li>-->
+<!--</ul>-->
+<div class="clearfix"></div>
+</div>
 <%= form_for @user_note do |f| %>
-    <div class="field">
-      <%= f.label :出欠席： %>
-      <!--表示用-->
-      <%= @confirmation[@user_note.attendance_confirmation] %>
-      <!--データ送信用-->
-      <%= f.hidden_field :attendance_confirmation %>
-    </div>
-  <div class="field">
-      <%= f.label :体温 %><br />
-      <%= f.text_field :body_temperature, readonly: true %>
-    </div>
-    <div class="field">
-      <%= f.label :排泄回数 %><br />
-      <%= f.number_field :number_toilet, readonly: true %>
-    </div>
-      <div class="field">
-      <%= f.label :睡眠開始時間 %><br />
-      <%= f.time_select :sleep_start, class: 'form-control', readonly: true %>〜
-      <%= f.time_select :sleep_end, class: 'form-control', readonly: true %>
-    </div>
-    <div class="field">
-      <%= f.label :朝食 %><br />
-      <%= f.text_field :breakfast, readonly: true %>
-    </div>
-    <div class="field">
-      <%= f.label :夕食 %><br />
-      <%= f.text_field :dinner, readonly: true %>
-    </div>
-    <div class="field">
-      <%= f.label :おうちでの様子 %><br />
-      <%= f.text_field :message, readonly: true %>
-    </div>
-    <div class="form-group">
-      <%=f.label :日付, class: 'control-label'%><br />
-      <%= f.date_field :record_date, class: 'form-control', readonly: true %>
-    </div>
-    <%= f.submit "連絡帳登録" %>
+<div class="x_content">
+<table class="table table-striped">
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+
+</thead>
+<tbody>
+
+<tr>
+<td>日付：</td>
+<td><%= @user_note.record_date %></td>
+</tr>
+
+<tr>
+<td>出欠席：</td>
+<td><%= @confirmation[@user_note.attendance_confirmation] %><%= f.hidden_field :attendance_confirmation %></td>
+</tr>
+
+<tr>
+<td>体温：</td>
+<td><%= @user_note.body_temperature %></td>
+</tr>
+
+<tr>
+<td>排泄回数：</td>
+<td><%= @user_note.number_toilet %>回</td>
+</tr>
+
+<tr>
+<td>朝食：</td>
+<td><%= @user_note.sleep_start %>〜<%= @user_note.sleep_end %></td>
+</tr>
+
+<tr>
+<td>夕食：</td>
+<td><%= @user_note.dinner %></td>
+</tr>
+
+<tr>
+<td>おうちでの様子：</td>
+<td><%= @user_note.message %></td>
+</tr>
+
+</tbody>
+</table>
+<%= f.submit "連絡帳登録", class: "btn btn-success" %>
+</div>
 <% end %>
-
-
+</div>
+</div>

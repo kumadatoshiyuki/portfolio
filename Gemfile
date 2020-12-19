@@ -69,6 +69,7 @@ group :production do
 end
 
 gem 'devise'
+gem 'cancancan'
 # 権限管理
 gem 'kaminari'
 # 検索

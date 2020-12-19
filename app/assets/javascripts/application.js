@@ -6,7 +6,6 @@
 //= require gentelella-custom
 //= require gentelella-custom
 //= require activestorage
-//= require turbolinks
 //= require jquery
 //= require moment
 //= require fullcalendar

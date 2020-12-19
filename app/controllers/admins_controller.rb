@@ -1,4 +1,5 @@
 class AdminsController < ApplicationController
+  before_action :if_not_admin
   def top
     # 管理者のページを表示させる
      @news = News.all
@@ -58,6 +59,11 @@ class AdminsController < ApplicationController
 end
 
 private
+
   def user_params
     params.require(:user).permit(:first_name, :last_name, :kana_first_name, :kana_last_name, :age, :phone, :image_id, :login_id, :email, :affiliation_id, :password, :role)
+  end
+  
+  def if_not_admin
+    redirect_to top_path unless current_user.admin?
   end

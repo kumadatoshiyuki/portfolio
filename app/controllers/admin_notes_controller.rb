@@ -23,6 +23,7 @@ class AdminNotesController < ApplicationController
     @user = User.find(params[:admin_id])
     @user_note = UserNote.where(record_date: get_today).find_by(user_id: params[:admin_id])
     @admin_note = AdminNote.find(params[:id])
+    @meal = Meal.find_by(record_date: get_today)
   end
 
   # def confirm

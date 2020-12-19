@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :if_not_user, only: [:top]
   # layout 'user.application', except: [:index,:top]
   layout 'user.application', only:  [:show,:edit]
   # 管理者の登録はこの画面で行う
@@ -64,4 +65,10 @@ private
   def user_params
     params.require(:user).permit(:first_name, :last_name, :kana_first_name, :kana_last_name, :age, :phone, :image, :login_id, :email, :affiliation_id, :password, :role)
   end
+  
+  def if_not_user
+    redirect_to admins_top_path unless current_user.user?
+  end
+  
+  
 end
