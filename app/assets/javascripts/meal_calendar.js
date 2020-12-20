@@ -1,19 +1,15 @@
+
+
 $(function () {
     // 画面遷移を検知
-    $(document).on('turbolinks:load', function () {
         // lengthを呼び出すことで、#meal_calendarが存在していた場合はtrueの処理がされ、無い場合はnillを返す
         if ($('#meal_calendar').length) {
-            function eventCalendar() {
-                return $('#meal_calendar').fullCalendar({
-                });
-            };
+
             function clearCalendar() {
                 $('#meal_calendar').html('');
             };
 
-            $(document).on('turbolinks:load', function () {
-                eventCalendar();
-            });
+
 
             $(document).on('turbolinks:before-cache', clearCalendar);
 
@@ -125,5 +121,5 @@ $(function () {
             });
 
         }
-    });
+    
 });

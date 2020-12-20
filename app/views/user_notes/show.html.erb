@@ -1,30 +1,260 @@
-<h1><%= @user.last_name %>の連絡帳</h1>
-<h1><%= @user_note.record_date %>のもの</h1>
+<h1><%= @user.last_name %>さんの連絡帳</h1>
+<% if @user_note.nil? %>
+<div class="col-md-6 ">
+<div class="x_panel">
+<div class="x_title">
+<h2>入力がありません<small></small></h2>
+<div class="clearfix"></div>
 
-<p><%= @user_note.body_temperature %></p>
-<p><%= @user_note.number_toilet %></p>
-<p><%= @user_note.sleep_start %></p>
-<p><%= @user_note.sleep_end %></p>
-<p><%= @user_note.breakfast %></p>
-<p><%= @user_note.dinner %></p>
-<p><%= @user_note.message %></p>
-<p><%= @user_note.record_date %></p>
+</div>
+<div class="x_content">
+<table class="table table-striped">
+<thead>
+<tr>
+
+<th></th>
+<th></th>
+
+</tr>
+</thead>
+<tbody>
+  
+<tr>
+<td>体温</td>
+<td>入力がありません</td>
+</tr>
+
+<tr>
+<td>排泄回数</td>
+<td>入力がありません</td>
+</tr>
+
+<tr>
+<td>睡眠時間</td>
+<td>入力がありません</td>
+</tr>
+
+<tr>
+<td>朝食</td>
+<td>入力がありません</td>
+</tr>
+
+<tr>
+<td>夕食</td>
+<td>入力がありません</td>
+</tr>
+
+<tr>
+<td>おうちでの様子</td>
+<td>入力がありません</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
 
 
 
-<h1><%= @admin_note.record_date %>保育園での<%= @user.last_name %>さんの様子</h1>
-<p>記入者：<%= @admin_note.creator.last_name %></p>
-<p>体温:<%= @admin_note.body_temperature %></p>
-<p>睡眠時間<%= @admin_note.sleep_start %></p>-<p><%= @admin_note.sleep_end %></p>
-<p>保育士より：<%= @admin_note.message %></p>
-<h4>今日の食事量</h4>
-<p><%= @meal.staple_food %>  :  <%= @admin_note.staple_food_amount.amount_type %></p>
-<p><%= @meal.main_dish %>  :  <%= @admin_note.main_dish_amount.amount_type %></p>
-<p><%= @meal.side_dish %>  :  <%= @admin_note.side_dish_amount.amount_type %></p>
-<p><%= @meal.fruit %>  :  <%= @admin_note.fruit_amount.amount_type %></p>
-<p><%= @meal.soup %>  :  <%= @admin_note.soup_amount.amount_type %></p>
+<% else %>
+<div class="col-md-6 ">
+<div class="x_panel">
+<div class="x_title">
+<h2><%= @user_note.record_date %><small>のもの</small></h2>
+<div class="clearfix"></div>
+
+</div>
+<div class="x_content">
+<table class="table table-striped">
+<thead>
+<tr>
+
+<th></th>
+<th></th>
+
+</tr>
+</thead>
+<tbody>
+  
+<tr>
+<td>体温</td>
+<td><%= @user_note.body_temperature %></td>
+</tr>
+
+<tr>
+<td>排泄回数</td>
+<td><%= @user_note.number_toilet %></td>
+</tr>
+
+<tr>
+<td>睡眠時間</td>
+<td><%= @user_note.sleep_start %>〜<%= @user_note.sleep_end %></td>
+</tr>
+
+<tr>
+<td>朝食</td>
+<td><%= @user_note.breakfast %></td>
+</tr>
+
+<tr>
+<td>夕食</td>
+<td><%= @user_note.dinner %></td>
+</tr>
+
+<tr>
+<td>おうちでの様子</td>
+<td><%= @user_note.message %></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+<% end %>
+
+
+<% if @admin_note.nil? %>
+<div class="col-md-6 ">
+<div class="x_panel">
+<div class="x_title">
+<h2>保育園での<%= @user.last_name %>さんの様子<small>記入者：入力がありません</small></h2>
+<div class="clearfix"></div>
+
+</div>
+<div class="x_content">
+<table class="table table-striped">
+<thead>
+<tr>
+
+<th></th>
+<th></th>
+
+</tr>
+</thead>
+<tbody>
+  
+<tr>
+<td>体温</td>
+<td>入力がありません</td>
+</tr>
+
+<tr>
+<td>排泄回数</td>
+<td>入力がありません</td>
+</tr>
+
+<tr>
+<td>睡眠時間</td>
+<td>入力がありません</td>
+</tr>
+
+<tr>
+<td>主食：献立情報がありません</td>
+<td>入力がありません</td>
+</tr>
+
+<tr>
+<td>主菜：献立情報がありません</td>
+<td>入力がありません</td>
+</tr>
+
+<tr>
+<td>副菜：献立情報がありません</td>
+<td>入力がありません</td>
+</tr>
+
+<tr>
+<td>汁物：献立情報がありません</td>
+<td>入力がありません</td>
+</tr>
+
+<tr>
+<td>果物：献立情報がありません</td>
+<td>入力がありません</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+</div>
 
 
 
-<%= link_to '戻る', top_path() %>
 
+<% else %>
+<div class="col-md-6 ">
+<div class="x_panel">
+<div class="x_title">
+<h2><%= @admin_note.record_date %>保育園での<%= @user.last_name %>さんの様子<small>記入者：<%= @admin_note.creator.last_name %></small></h2>
+<div class="clearfix"></div>
+
+</div>
+<div class="x_content">
+<table class="table table-striped">
+<thead>
+<tr>
+
+<th></th>
+<th></th>
+
+</tr>
+</thead>
+<tbody>
+  
+<tr>
+<td>体温</td>
+<td><%= @admin_note.body_temperature %></td>
+</tr>
+
+<tr>
+<td>排泄回数</td>
+<td><%= @admin_note.number_toilet %></td>
+</tr>
+
+<tr>
+<td>睡眠時間</td>
+<td><%= @admin_note.sleep_start %>〜<%= @admin_note.sleep_end %></td>
+</tr>
+
+<tr>
+<td>主食：<%= @meal.staple_food %></td>
+<td><%= @admin_note.staple_food_amount.amount_type %></td>
+</tr>
+
+<tr>
+<td>主菜：<%= @meal.main_dish %></td>
+<td><%= @admin_note.main_dish_amount.amount_type %></td>
+</tr>
+
+<tr>
+<td>副菜：<%= @meal.side_dish %></td>
+<td><%= @admin_note.side_dish_amount.amount_type %></td>
+</tr>
+
+<tr>
+<td>汁物：<%= @meal.soup %></td>
+<td><%= @admin_note.soup_amount.amount_type %></td>
+</tr>
+
+<tr>
+<td>果物：<%= @meal.fruit %></td>
+<td><%= @admin_note.fruit_amount.amount_type %></td>
+</tr>
+
+<tr>
+<td>保育園での様子</td>
+<td><%= @admin_note.message %></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<% end %>
+<%= link_to("戻る", top_path(), { class: "btn btn btn-primary"}) %>

@@ -1,17 +1,34 @@
-<h1>管理者側からみた連絡帳一覧</h1>
-<p><%=@user.last_name%>くんの連絡帳一覧</p>
+<div class="col-md-12">
+<div class="x_panel">
+<div class="x_title">
+<h2><%=@user.last_name%>さんの連絡帳一覧</h2>
+<ul class="nav navbar-right panel_toolbox">
+<li><%= link_to '連絡帳作成する', new_admin_admin_note_path() %></li>
+</ul>
 
 
-<%= link_to '連絡帳作成する', new_admin_admin_note_path() %>
+<div class="clearfix"></div>
+</div>
+<div class="x_content">
+<table class="table">
+<thead>
+<tr>
+<th></th>
+<th></th>
 
-
-
-
+</tr>
+</thead>
 <% @user.admin_notes.each do |note| %>
-
-<!--スラの次は/admins/:admin_id/admin_notes/:id(.:format)-->
-　　　　　　　　　　<!--user_id admin_note admin_id-->
-　　　　　　　　　　<!--ここでは@userがuserの情報を持っておりidがadmin_noteのidになる。-->
-<%= link_to note.record_date, admin_admin_note_path(@user,note) %>
-
+<tbody>
+<tr onclick='window.location="<%= '/admins/' + @user.id.to_s + '/admin_notes/' + note.id.to_s %>"' role="link" class="cursor">
+<td><%= link_to note.record_date, admin_admin_note_path(@user,note) %></td>
+<td>記入者：<%= note.creator.last_name %></td>
+</tr>
+<tr>
 <% end %>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+

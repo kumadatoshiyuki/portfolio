@@ -15,6 +15,7 @@ class UserNotesController < ApplicationController
         # 2ログインしているユーザのuserノートのデータ（日付）を取得
         @user_note = UserNote.where(user_id: current_user.id).pluck(:record_date)
 
+
         # １と２を合体
         @admin_note.push(@user_note)
         # 一つの配列にまとめる

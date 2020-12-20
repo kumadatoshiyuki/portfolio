@@ -1,19 +1,17 @@
+
+
 $(function () {
     // 画面遷移を検知
-    $(document).on('turbolinks:load', function () {
         // lengthを呼び出すことで、#user_calendarが存在していた場合はtrueの処理がされ、無い場合はnillを返す
         if ($('#user_calendar').length) {
-            function eventCalendar() {
-                return $('#user_calendar').fullCalendar({
-                });
-            };
+
             function clearCalendar() {
                 $('#user_calendar').html('');
             };
 
-            $(document).on('turbolinks:load', function () {
-                eventCalendar();
-            });
+            
+                
+            
 
             $(document).on('turbolinks:before-cache', clearCalendar);
 
@@ -125,5 +123,4 @@ $(function () {
             });
 
         }
-    });
 });

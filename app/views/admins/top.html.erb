@@ -3,32 +3,28 @@
     <div class="tile-stats">
       <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
       <div class="count"><%= @attendance[true] %>人</div>
-      <h3>今日の出席人数</h3>
-      <p>Lorem ipsum psdea itgum rixt.</p>
+      <h3>今日の出席人数</h3></br>
     </div>
   </div>
   <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
     <div class="tile-stats">
       <div class="icon"><i class="fa fa-comments-o"></i></div>
       <div class="count"><%= @attendance[false] %>人</div>
-      <h3>今日の欠席人数</h3>
-      <p>Lorem ipsum psdea itgum rixt.</p>
+      <h3>今日の欠席人数</h3></br>
     </div>
   </div>
   <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
     <div class="tile-stats">
       <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-      <div class="count">179</div>
-      <h3>New Sign ups</h3>
-      <p>Lorem ipsum psdea itgum rixt.</p>
+      <div class="count"><%= @kids["user"] %>人</div>
+      <h3>在園児数</h3></br>
     </div>
   </div>
   <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
     <div class="tile-stats">
-      <div class="icon"><i class="fa fa-check-square-o"></i></div>
-      <div class="count">179</div>
-      <h3>New Sign ups</h3>
-      <p>Lorem ipsum psdea itgum rixt.</p>
+      <div></div>
+      <div class="count"><%= Date.today.strftime('%Y年/%m月/%d日') %></div>
+      <h3>本日も素敵な笑顔で！！</h3></br>
     </div>
   </div>
 </div>
@@ -46,29 +42,29 @@
           <div class="demo-container" style="height:280px">
             <div id="chart_plot_02" class="demo-placeholder"></div>
           </div>
-          <div class="tiles">
-            <div class="col-md-4 tile">
-              <span>Total Sessions</span>
-              <h2>231,809</h2>
-              <span class="sparkline11 graph" style="height: 160px;">
-                <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-              </span>
-            </div>
-            <div class="col-md-4 tile">
-              <span>Total Revenue</span>
-              <h2>$231,809</h2>
-              <span class="sparkline22 graph" style="height: 160px;">
-                <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-              </span>
-            </div>
-            <div class="col-md-4 tile">
-              <span>Total Sessions</span>
-              <h2>231,809</h2>
-              <span class="sparkline11 graph" style="height: 160px;">
-                <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-              </span>
-            </div>
-          </div>
+          <!--<div class="tiles">-->
+          <!--  <div class="col-md-4 tile">-->
+          <!--    <span>Total Sessions</span>-->
+          <!--    <h2>231,809</h2>-->
+          <!--    <span class="sparkline11 graph" style="height: 160px;">-->
+          <!--      <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>-->
+          <!--    </span>-->
+          <!--  </div>-->
+          <!--  <div class="col-md-4 tile">-->
+          <!--    <span>Total Revenue</span>-->
+          <!--    <h2>$231,809</h2>-->
+          <!--    <span class="sparkline22 graph" style="height: 160px;">-->
+          <!--      <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>-->
+          <!--    </span>-->
+          <!--  </div>-->
+          <!--  <div class="col-md-4 tile">-->
+          <!--    <span>Total Sessions</span>-->
+          <!--    <h2>231,809</h2>-->
+          <!--    <span class="sparkline11 graph" style="height: 160px;">-->
+          <!--      <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>-->
+          <!--    </span>-->
+          <!--  </div>-->
+          <!--</div>-->
 
         </div>
 
@@ -85,9 +81,11 @@
                   <i class="fa fa-user aero"></i>
                 </a>
                 <div class="media-body">
-                  <a class="title" href="#"><%= absence.user.last_name + absence.user.first_name %></a>
-                  <p><strong>$2300. </strong> Agent Avarage Sales </p>
-                  <p> <small>12 Sales Today</small>
+                  <div class="title" href="#">
+                    <%= absence.user.last_name + absence.user.first_name %>
+                  </div>
+                  <p><%= absence.user.affiliation.affiliation_name %></p>
+                  <p> <small>欠席</small>
                   </p>
                 </div>
               </li>
@@ -122,7 +120,7 @@
           </a>
           <div class="media-body">
             <% news.affiliation.each do |affiliation| %>
-            <p class="title"><%= affiliation.affiliation_name%></p>
+            <p class="title"><%= affiliation.affiliation_name %></p>
             <% end %>
               <%= link_to news.message, news_path(news)%>
 
@@ -134,9 +132,3 @@
     </div>
   </div>
 </div>
-
-<p><%= link_to '園児一覧', users_path() %></p>
-<p><%= link_to '連絡帳', admin_notes_path() %></p>
-<p><%= link_to '献立一覧', meals_calendar_path() %></p>
-<p><%= link_to '管理者一覧', admins_path() %></p>
-<p><%= link_to 'お知らせ一覧', news_index_path %></p>
