@@ -1,15 +1,32 @@
-<h1>お知らせ一覧</h1>
-<% @news.each do |news| %>
-<div>
-<!--1:N-->
-<% news.affiliation.each do |affiliation| %>
-  <p><%= affiliation.affiliation_name%></p>
-<% end %>
-
-<p><%= news.message%></p>
-<p><%= link_to news.creation_date, news_path(news)%></p>
-
-<% end %>
-
-<p><%= link_to '新規登録', new_news_path() %></p>
+<div class="col-md-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <ul class="nav navbar-right panel_toolbox">
+          <%= link_to("新規登録", new_news_path(), { class: "btn btn-success"}) %>
+        </ul>
+        <h2>表示しているお知らせ 一覧</h2>
+        <div class="clearfix"></div>
+      </div>
+      <% @news.each do |news| %>
+        <div class="x_content">
+          <ul class="list-unstyled timeline">
+            <div class="block">
+              <div class="tags">
+                <!--<a class="tag">-->
+                <% news.affiliation.each  do |affiliation| %>
+                  <%= affiliation.affiliation_name %></br>
+                <% end %>
+              </div>
+              <div class="block_content">
+                <h2 class="title">
+                  <%= link_to news.creation_date, news_path(news) %>
+                </h2>
+                  </br>
+                <p><%= news.message%></p>
+              </div>
+            </div>
+          </ul>
+        </div>
+      <% end %>
+    </div>
 </div>

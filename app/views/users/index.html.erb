@@ -52,11 +52,11 @@
       <h4 class="brief"><i><%= user.affiliation.affiliation_name%>クラス</i></h4>
       <div class="left col-sm-7">
        <h2><%= user.last_name + user.first_name %></h2>
-       <p><strong><%= user.kana_last_name + user.kana_first_name %></strong> Web Designer / UI. </p>
-       <ul class="list-unstyled">
-        <li><i class="fa fa-building"></i> Address: </li>
-<li><i class="fa fa-phone"></i> Phone #: </li>
-       </ul>
+       <strong><%= user.kana_last_name + user.kana_first_name %></strong>
+       <!--<ul class="list-unstyled">-->
+        <!--<li><i class="fa fa-building"></i> Address: </li>-->
+<!--<li><i class="fa fa-phone"></i> Phone #: </li>-->
+       <!--</ul>-->
       </div>
       <div class="right col-sm-5 text-center">
        <%= attachment_image_tag user, :image, format: 'jpeg', fallback: "user.png", class: "img-circle img-fluid"%>
@@ -65,19 +65,19 @@
      </div>
      <div class=" bottom text-center">
       <div class=" col-sm-6 emphasis">
-       <p class="ratings">
-        <a>4.0</a>
-        <a href="#"><span class="fa fa-star"></span></a>
-        <a href="#"><span class="fa fa-star"></span></a>
-        <a href="#"><span class="fa fa-star"></span></a>
-        <a href="#"><span class="fa fa-star"></span></a>
-        <a href="#"><span class="fa fa-star-o"></span></a>
-       </p>
+       <!--<p class="ratings">-->
+        <!--<a>4.0</a>-->
+        <!--<a href="#"><span class="fa fa-star"></span></a>-->
+        <!--<a href="#"><span class="fa fa-star"></span></a>-->
+        <!--<a href="#"><span class="fa fa-star"></span></a>-->
+        <!--<a href="#"><span class="fa fa-star"></span></a>-->
+        <!--<a href="#"><span class="fa fa-star-o"></span></a>-->
+       <!--</p>-->
       </div>
       <div class=" col-sm-6 emphasis">
-       <button type="button" class="btn btn-success btn-sm"> <i class="fa fa-user">
-       </i> <i class="fa fa-comments-o"></i> </button>
-       <%= link_to("詳細", user_path(user), { class: " btn btn-primary btn-sm  fa fa-user" }) %>
+       <button type="button" class="btn btn-success btn-sm">退会 <i class="fa fa-user">
+      </i> <i class="fa fa-comments-o"></i> </button>
+       <%= link_to("詳細", user_path(user), { class: " btn btn-primary " }) %>
       </div>
      </div>
     </div>

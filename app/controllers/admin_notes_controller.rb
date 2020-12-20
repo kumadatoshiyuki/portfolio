@@ -23,6 +23,7 @@ class AdminNotesController < ApplicationController
     @user = User.find(params[:admin_id])
     @user_note = UserNote.where(record_date: get_today).find_by(user_id: params[:admin_id])
     @admin_note = AdminNote.find(params[:id])
+    @meal = Meal.find_by(record_date: get_today)
   end
 
   # def confirm
@@ -66,16 +67,26 @@ class AdminNotesController < ApplicationController
 
 
   def edit
-
-
+     @user = User.find(params[:admin_id])
+     @user_notes = UserNote.where(record_date: get_today).where(user_id: params[:admin_id])
+     @admin_note = AdminNote.find(params[:id])
+     @meal = Meal.find_by(record_date: get_today)
   end
 
   def update
-
+    @user = User.find(params[:admin_id])
+    @admin_note = AdminNote.find(params[:id])
+    if @admin_note.update(admin_note_params)
+      redirect_to admin_admin_note_path(@admin_note)
+    else
+      render action: :edit
+    end
   end
 
   def destroy
-
+    @admin_note = AdminNote.find(params[:id])
+    @admin_note.destroy
+    redirect_to admin_admin_notes_path
   end
 
 
@@ -83,7 +94,7 @@ class AdminNotesController < ApplicationController
 
   def admin_note_params
     # formから送られてくるパラメータの取得（ストロングパラメーター）
-    params.require(:admin_note).permit(:body_temperature, :sleep_start, :sleep_end, :message, :record_date, :staple_food_amount_id, :main_dish_amount_id, :side_dish_amount_id, :fruit_amount_id, :soup_amount_id)
+    params.require(:admin_note).permit(:body_temperature, :number_toilet, :sleep_start, :sleep_end, :message, :record_date, :staple_food_amount_id, :main_dish_amount_id, :side_dish_amount_id, :fruit_amount_id, :soup_amount_id)
 
   end
 end

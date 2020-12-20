@@ -6,4 +6,8 @@ module ApplicationHelper
      today = date.strftime("%Y-%m-%d")
     return today    
     end
+    
+    
+    
+    
 end

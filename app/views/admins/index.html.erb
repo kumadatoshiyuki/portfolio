@@ -1,10 +1,40 @@
-<h1>ここはadminのindex画面</h1>
-
-<%= link_to '管理者　新規登録画面', new_admins_user_registration_path %>
-<% @admins.each do |admin| %>
-<div>
-<p><%= admin.affiliation.affiliation_name%>担任</p>
-<p><%= link_to admin.last_name + admin.first_name, admin_path(admin) %></p>
- <%= attachment_image_tag admin, :image, format: 'jpeg', size: "100x100" %>
+<div class="col-md-12 col-sm-12  ">
+<div class="x_panel">
+<div class="x_title">
+<h2>保育士一覧</h2>
+<!--<ul class="nav navbar-right panel_toolbox">-->
+<!--<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>-->
+<!--</li>-->
+<!--<li class="dropdown">-->
+<!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>-->
+<!--<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
+<!--<a class="dropdown-item" href="#">Settings 1</a>-->
+<!--<a class="dropdown-item" href="#">Settings 2</a>-->
+<!--</div>-->
+<!--</li>-->
+<!--<li><a class="close-link"><i class="fa fa-close"></i></a>-->
+<!--</li>-->
+<!--</ul>-->
+<div class="clearfix"></div>
 </div>
+<div class="x_content">
+<table class="table table-hover">
+  <%= link_to("新規登録画面", new_admins_user_registration_path, { class: "btn btn-success"}) %>
+<thead>
+<tr>
+<th>クラス</th>
+<th>名前</th>
+</tr>
+ </thead>
+<tbody>
+  <% @admins.each do |admin| %>
+   <tr onclick='window.location="<%= '/admins/' + admin.id.to_s %>"' role="link" class="cursor">
+      <td><%= admin.affiliation.affiliation_name%></td>
+      <td><%= admin.last_name + admin.first_name %></td>
+  </tr>
 <% end %>
+</tbody>
+</table>
+</div>
+</div>
+</div>

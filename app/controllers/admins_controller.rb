@@ -1,6 +1,8 @@
 class AdminsController < ApplicationController
+  before_action :if_not_admin
   def top
     # 管理者のページを表示させる
+    @users = User.get_user().without_deleted
      @news = News.all
     # 変数の中にUserNoteを検索record_dateのヘルパーから持ってきたtodayをカラムのattendance_confirmationをグループ(group)化をcountでカウントする。
      res = UserNote.where(record_date: get_today).group(:attendance_confirmation).count(:attendance_confirmation)
@@ -14,6 +16,15 @@ class AdminsController < ApplicationController
        res[false] = 0 
      end
      @attendance = res
+     
+     
+      @kids = User.group(:role).count
+      if @kids["user"].nil?
+       @kids["user"] = 0
+     end
+     
+     
+    
      
     # @attendance = UserNote.where(attendance_confirmation: true)
   end
@@ -58,6 +69,11 @@ class AdminsController < ApplicationController
 end
 
 private
+
   def user_params
     params.require(:user).permit(:first_name, :last_name, :kana_first_name, :kana_last_name, :age, :phone, :image_id, :login_id, :email, :affiliation_id, :password, :role)
+  end
+  
+  def if_not_admin
+    redirect_to top_path unless current_user.admin?
   end

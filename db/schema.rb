@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_12_071723) do
+ActiveRecord::Schema.define(version: 2020_12_19_084246) do
 
   create_table "admin_notes", force: :cascade do |t|
     t.float "body_temperature"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_12_12_071723) do
     t.integer "fruit_amount_id"
     t.integer "timestamps"
     t.integer "soup_amount_id"
+    t.integer "number_toilet"
     t.index ["fruit_amount_id"], name: "index_admin_notes_on_fruit_amount_id"
     t.index ["main_dish_amount_id"], name: "index_admin_notes_on_main_dish_amount_id"
     t.index ["side_dish_amount_id"], name: "index_admin_notes_on_side_dish_amount_id"

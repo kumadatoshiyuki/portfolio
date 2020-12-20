@@ -1,65 +1,179 @@
-<h1>管理者連絡帳作成画面</h1>
 
-<p><%= @user.kana_last_name + @user.kana_first_name %></p>さん
-<p><%= @user.last_name + @user.first_name %></p>さん
+<div class="title_left">
+<h3>連絡帳入力フォーム </h3>
+</div>
+<div class="col-md-6 ">
+<div class="x_panel">
+<div class="x_title">
+ 
+<h2><%= @user.last_name + @user.first_name %> <small>保護者より</small></h2>
 
+<div class="clearfix"></div>
+<% if @user_notes.nil? %>
+</div>
+<div class="x_content">
+<table class="table table-striped">
+<thead>
+<tr>
 
-<h1>保護者より</h1>
+<th></th>
+<th></th>
+
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td>体温</td>
+<td>入力がありません</td>
+</tr>
+
+<tr>
+<td>排泄回数</td>
+<td>入力がありません</td>
+</tr>
+
+<tr>
+<td>睡眠時間</td>
+<td>入力がありません</td>
+</tr>
+
+<tr>
+<td>朝食</td>
+<td>入力がありません</td>
+</tr>
+
+<tr>
+<td>夕食</td>
+<td>入力がありません</td>
+</tr>
+
+<tr>
+<td>おうちでの様子</td>
+<td>入力がありません</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<% else %>
+
 <% @user_notes.each do |user_note| %>
-<p><%= user_note.body_temperature %></p>
-<p><%= user_note.number_toilet %></p>
-<p><%= user_note.sleep_start %></p>
-<p><%= user_note.sleep_end %></p>
-<p><%= user_note.breakfast %></p>
-<p><%= user_note.dinner %></p>
-<p><%= user_note.message %></p>
-<p><%= user_note.record_date %></p>
+</div>
+<div class="x_content">
+<table class="table table-striped">
+<thead>
+<tr>
+
+<th><%= user_note.record_date %></th>
+<th></th>
+
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td>体温</td>
+<td><%= user_note.body_temperature %></td>
+</tr>
+
+<tr>
+<td>排泄回数</td>
+<td><%= user_note.number_toilet %></td>
+</tr>
+
+<tr>
+<td>睡眠時間</td>
+<td><%= user_note.sleep_start %>〜<%= user_note.sleep_end %></td>
+</tr>
+
+<tr>
+<td>朝食</td>
+<td><%= user_note.breakfast %></td>
+</tr>
+
+<tr>
+<td>夕食</td>
+<td><%= user_note.dinner %></td>
+</tr>
+
+<tr>
+<td>おうちでの様子</td>
+<td><%= user_note.message %></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+<% end %>
+</div>
+
 <% end %>
 
 
 
+<%= form_with model: @admin_note, url: admin_admin_notes_path, local: true do |f| %>
+<div class="col-md-6 ">
+<div class="x_panel">
+<div class="x_title">
+<h2>連絡長入力画面 <small>保育士記入欄</small></h2>
+
+<div class="clearfix"></div>
+</div>
+<div class="x_content">
+
+<label>体温 :</label>
+<%= f.text_field :body_temperature, class: "form-control" %>
+
+<label>排泄回数 :</label>
+<%= f.text_field :number_toilet, class: "form-control" %>
+
+ <div class="field">
+  <%= f.label :睡眠時間：, class: 'control-label' %>
+  <%= f.time_select :sleep_start, class: 'form-control' %>〜
+  <%= f.time_select :sleep_end, class: 'form-control' %>
+</div>
+
+<label>主食 :</label>
+<%= @meal.staple_food %>
+<%= f.select :staple_food_amount_id,Amount.all.collect { |p| [ p.amount_type, p.id ] }, {include_blank: "選択して下さい"}, {class: 'form-control'} %>
+
+<label>主菜 :</label>
+<%= @meal.main_dish %>
+<%= f.select :main_dish_amount_id,Amount.all.collect { |p| [ p.amount_type, p.id ] }, {include_blank: "選択して下さい"}, {class: 'form-control'} %>
+
+<label>副菜 :</label>
+<%= @meal.side_dish %>
+<%= f.select :side_dish_amount_id,Amount.all.collect { |p| [ p.amount_type, p.id ] }, {include_blank: "選択して下さい"}, {class: 'form-control'} %>
+
+<label>汁物 :</label>
+<%= @meal.soup %>
+<%= f.select :soup_amount_id,Amount.all.collect { |p| [ p.amount_type, p.id ] }, {include_blank: "選択して下さい"}, {class: 'form-control'} %>
+
+<label>果物 :</label>
+<%= @meal.fruit %>
+<%= f.select :fruit_amount_id,Amount.all.collect { |p| [ p.amount_type, p.id ] }, {include_blank: "選択して下さい"}, {class: 'form-control'} %>
 
 
-  <%= form_with model: @admin_note, url: admin_admin_notes_path, local: true do |f| %>
-    <!--user_idに対してvalueの値を与えている。-->
-    <div class="field">
-      <%= f.label :体温 %><br />
-      <%= f.text_field :body_temperature %>
-    </div>
+<label for="message">保育園での様子:</label>
+<%= f.text_field :message, class: "form-control" %>
 
-    <div class="field">
-      <%= f.label :睡眠時間, class: 'control-label' %><br />
-      <%= f.time_select :sleep_start, class: 'form-control' %>〜
-      <%= f.time_select :sleep_end, class: 'form-control' %>
-    </div>
+<%=f.label :日付, class: 'control-label'%>
+<%= f.date_field :record_date, class: 'form-control' %>
 
-      <div class="field">
-        <%= f.label :主食 %>：<%= @meal.staple_food %><br />
-        <%= f.collection_select :staple_food_amount_id, Amount.all, :id, :amount_type, include_blank: "選択して下さい" %>
-      </div>
-      <div class="field">
-        <%= f.label :主菜 %>：<%= @meal.main_dish %><br />
-        <%= f.collection_select :main_dish_amount_id, Amount.all, :id, :amount_type, include_blank: "選択して下さい" %>
-      </div>
-      <div class="field">
-        <%= f.label :副菜 %>：<%= @meal.side_dish %><br />
-        <%= f.collection_select :side_dish_amount_id, Amount.all, :id, :amount_type, include_blank: "選択して下さい" %>
-      </div>
-      <div class="field">
-        <%= f.label :汁物 %>：<%= @meal.fruit %><br />
-        <%= f.collection_select :soup_amount_id, Amount.all, :id, :amount_type, include_blank: "選択して下さい" %>
-      </div>
-      <div class="field">
-        <%= f.label :果物 %>：<%= @meal.soup %><br />
-        <%= f.collection_select :fruit_amount_id, Amount.all, :id, :amount_type, include_blank: "選択して下さい" %>
-      </div>
-    <div class="field">
-      <%= f.label :保育園での様子 %><br />
-      <%= f.text_field :message %>
-    </div>
-    <div class="form-group">
-      <%=f.label :日付, class: 'control-label'%><br />
-      <%= f.date_field :record_date, class: 'form-control' %>
-    </div>
-    <%= f.submit "登録" %>
-  <% end %>
+
+
+
+<!--<textarea id="message" required="required" class="form-control name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.." data-parsley-validation-threshold="10"></textarea>-->
+<br>
+<%= f.submit "登録" ,class: "btn btn-primary" %>
+
+
+</div>
+</div>
+</div>
+<% end %>

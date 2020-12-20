@@ -1,16 +1,77 @@
-<h1>adminの詳細</h1>
+<div class="col-md-12 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>詳細 <small>くま保育園の先生たち</small></h2>
+        <!--<ul class="nav navbar-right panel_toolbox">-->
+          <!--<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>-->
+          <!--</li>-->
+          <!--<li class="dropdown">-->
+            <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>-->
+            <!--<ul class="dropdown-menu" role="menu">-->
+              <!--<li><a href="#">Settings 1</a>-->
+              <!--</li>-->
+              <!--<li><a href="#">Settings 2</a>-->
+              <!--</li>-->
+            <!--</ul>-->
+          <!--</li>-->
+          <!--<li><a class="close-link"><i class="fa fa-close"></i></a>-->
+          <!--</li>-->
+        <!--</ul>-->
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
 
-<p><%= @admin.kana_last_name + @admin.kana_first_name%></p>
-<p><%= @admin.last_name + @admin.first_name %></p>
-<p><%= @admin.age %></p>
-<p><%= @admin.phone %></p>
-<p><%= @admin.login_id %></p>
-<p><%= @admin.email %></p>
-<p><%= @admin.affiliation_id %></p>
-<p><%= attachment_image_tag @admin, :image, format: 'jpeg', size: "100x100" %></p>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">名前カナ</th>
+              <td><%= @admin.kana_last_name + @admin.kana_first_name%></td>
 
+            </tr>
+            <tr>
+              <th scope="row">名前</th>
+              <td><%= @admin.last_name + @admin.first_name %></td>
 
-<div><%= link_to '編集', edit_admin_path(@admin) %></div>
+            </tr>
+            <tr>
+              <th scope="row">年齢</th>
+              <td><%= @admin.age %>さい</td>
+            </tr>
+            
+            <tr>
+              <th scope="row">電話番号</th>
+              <td><%= @admin.phone %></td>
+            </tr>
+            
+            <tr>
+              <th scope="row">ログインID</th>
+              <td><%= @admin.login_id %></td>
+            </tr>
+            
+            <tr>
+              <th scope="row">メール</th>
+              <td><%= @admin.email %></td>
+            </tr>
+            
+            <tr>
+              <th scope="row">クラス</th>
+              <td><%= @admin.affiliation.affiliation_name %></td>
+            </tr>
+              <div class="form-group row">
+<div class="col-md-9 offset-md-3">
+  <%= link_to("戻る", admins_path(), { class: "btn btn-primary"}) %>
+  <%= link_to("編集", edit_admin_path(@admin), { class: "btn btn-success"}) %>
+  <%= link_to("アカウント削除", admin_path(@admin), data: { confirm: "本当に削除しますか?", }, class: "btn btn btn-danger", method: :delete) %>
+          </tbody>
+        </table>
 
-
-<p> <%= button_to "アカウント削除", admin_path(@admin), data: { confirm: "本当に削除しますか?" }, method: :delete %></p>
+      </div>
+    </div>
+  </div>

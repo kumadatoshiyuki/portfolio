@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   enum role: { user: 1, admin: 99 }
   ROLE = {'user' => 1,'admin'=> 99}
-
   # 物理削除の代わりにユーザーの`deleted_at`をタイムスタンプで更新
   def soft_delete
     update_attribute(:is_valid, false)
