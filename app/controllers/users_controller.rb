@@ -8,12 +8,11 @@ class UsersController < ApplicationController
     @meal = Meal.find_by(record_date: get_today)
     @news = News.all
     @admin_note = AdminNote.where(user_id: current_user.id).find_by(record_date: get_today)
-    
+
 
   end
 
   def index
-    @users = User.get_user().without_deleted
     # 保護者の一覧ページ
     # without_deletedを使用することでtureのユーザのみ表示される
     @user_or_post = params[:option]
@@ -22,12 +21,15 @@ class UsersController < ApplicationController
       if @affiliation.nil?
         render template: "users/index"
       else
-        @users = User.get_user().without_deleted.where(affiliation_id: @affiliation.id).all
+        users = User.get_user().without_deleted.where(affiliation_id: @affiliation.id)
       end
+    elsif @user_or_post == "2"
+      users = User.search(params[:search], @user_or_post)
     else
-      @users = User.search(params[:search], @user_or_post)
+      users = User.get_user().without_deleted
     end
 
+    @users = users.page(params[:page])
   end
 
   def show

@@ -221,6 +221,38 @@
 <td><%= @admin_note.sleep_start %>〜<%= @admin_note.sleep_end %></td>
 </tr>
 
+<% if @meal.nil? %>
+<tr>
+<td>主食：情報がありません</td>
+<td><%= @admin_note.staple_food_amount.amount_type %></td>
+</tr>
+
+<tr>
+<td>主菜：情報がありません></td>
+<td><%= @admin_note.main_dish_amount.amount_type %></td>
+</tr>
+
+<tr>
+<td>副菜：情報がありません</td>
+<td><%= @admin_note.side_dish_amount.amount_type %></td>
+</tr>
+
+<tr>
+<td>汁物：情報がありません</td>
+<td><%= @admin_note.soup_amount.amount_type %></td>
+</tr>
+
+<tr>
+<td>果物：情報がありません</td>
+<td><%= @admin_note.fruit_amount.amount_type %></td>
+</tr>
+
+<tr>
+<td>保育園での様子</td>
+<td><%= @admin_note.message %></td>
+</tr>
+
+<% else %>
 <tr>
 <td>主食：<%= @meal.staple_food %></td>
 <td><%= @admin_note.staple_food_amount.amount_type %></td>
@@ -250,7 +282,7 @@
 <td>保育園での様子</td>
 <td><%= @admin_note.message %></td>
 </tr>
-
+<% end %>
 </tbody>
 </table>
 </div>
