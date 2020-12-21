@@ -1,6 +1,8 @@
 <h1>保育士　編集画面</h1>
-  
 <div class="col-md-12 col-xs-12">
+
+  <%= render 'layouts/error_messages', item: @admin %>
+  
 <%= form_for(@admin, url: admin_path(@admin), html: { method: :put }) do |f| %>
   <%= render "admins/shared/error_messages", resource: @admin %>
         <div class="x_panel">
@@ -96,7 +98,7 @@
             </div>
           </div>
 
-          <%= f.hidden_field :role, :value => "user" %>
+          <%= f.hidden_field :role, :value => "admin" %>
           <!--<div class="form-group">-->
           <!--  <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>-->
           <!--  </label>-->

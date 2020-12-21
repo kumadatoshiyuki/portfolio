@@ -17,7 +17,7 @@ class NewsController < ApplicationController
     if @news.save 
       redirect_to news_index_path 
     else 
-      render ("admins/news")
+      render ("news/new")
     end
   end
 

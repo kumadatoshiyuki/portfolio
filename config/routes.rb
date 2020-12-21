@@ -46,6 +46,10 @@ Rails.application.routes.draw do
     resources :news
   end
 
+# /admins/admin_idネストさせたからadmin_idが入るようになった。
+# /admins/admin_id/admin_note/:id => show
+# params(admin_id)でURLからadmin_idを取得できる
+
   resources :admins do
     resources :admin_notes, only: [:new, :create, :index, :show, :edit, :update, :destroy]
   end

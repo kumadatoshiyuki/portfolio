@@ -71,7 +71,7 @@ end
 gem 'devise'
 gem 'cancancan'
 # 権限管理
-gem 'kaminari'
+gem 'kaminari','~> 1.2.1'
 # 検索
 gem 'ransack'
 # カレンダー機能
@@ -84,3 +84,5 @@ gem 'momentjs-rails'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 # 画像加工用（サイズ調整など）gem
 gem "refile-mini_magick"
+# gonを使ったRailsとJavascriptの連携
+gem 'gon'

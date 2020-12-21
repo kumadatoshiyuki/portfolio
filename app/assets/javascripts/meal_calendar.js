@@ -1,6 +1,6 @@
 
 
-$(function () {
+window.addEventListener('DOMContentLoaded', function(){
     // 画面遷移を検知
         // lengthを呼び出すことで、#meal_calendarが存在していた場合はtrueの処理がされ、無い場合はnillを返す
         if ($('#meal_calendar').length) {
