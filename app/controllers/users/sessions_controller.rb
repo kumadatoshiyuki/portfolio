@@ -5,6 +5,11 @@ class Users::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
   # def new
+  #     binding.pry
+  #   if resource.nil?
+  #     redirect_to user_registration_path
+  #     return
+  #   end
   #   super
   # end
 

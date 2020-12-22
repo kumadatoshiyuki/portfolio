@@ -106,7 +106,7 @@ class AdminsController < ApplicationController
   def destroy
     # 管理者の削除
     @admin = User.find(params[:id])
-    # soft_deleteメソッドをユーザモデルに作成し、is_validをfalseに変えることをしている。
+      # soft_deleteメソッドをユーザモデルに作成し、is_validをfalseに変えることをしている。
      if @admin.soft_delete
        redirect_to admins_path()
      else

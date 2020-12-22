@@ -98,7 +98,7 @@
 
               <tr>
                 <td>睡眠時間</td>
-                <td><%= @user_note.sleep_start %>〜<%= @user_note.sleep_end %></td>
+                <td><%= get_time(@user_note.sleep_start) %>〜<%= get_time(@user_note.sleep_end) %></td>
               </tr>
 
               <tr>
@@ -257,7 +257,7 @@
 
               <tr>
                 <td>睡眠時間</td>
-                <td><%= @admin_note.sleep_start %>〜<%= @admin_note.sleep_end %>
+                <td><%= get_time(@user_note.sleep_start) %>〜<%= get_time(@user_note.sleep_end) %>
                 </td>
               </tr>
 

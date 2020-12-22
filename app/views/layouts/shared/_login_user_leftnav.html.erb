@@ -1,5 +1,8 @@
 <div class="navbar nav_title" style="border: 0;">
-  <a href="index.html" class="site_title"><i class="fa fa-paw"></i><span>○○保育園</span></a>
+  <%= link_to(top_path(), class: 'site_title', method: :get) do %>
+  <i class="fa fa-home"></i>
+    ○○保育園
+  <% end %>
 </div>
 
 <div class="clearfix"></div>
@@ -22,13 +25,13 @@
 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
   <div class="menu_section">
     <ul class="nav side-menu">
-      <li><a><i class="fa fa-home"></i> 連絡帳 <span class="fa fa-chevron-down"></span></a>
+      <li><a><i class="fa fa-edit"></i> 連絡帳 <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><%= link_to '連絡帳一覧', user_notes_path() %></li>
           <li><%= link_to '連絡帳を作成する', new_user_note_path() %></li>
         </ul>
       </li>
-      <li><a><i class="fa fa-edit"></i> 食事管理 <span class="fa fa-chevron-down"></span></a>
+      <li><a><i class="fa  fa-cutlery"></i> 食事管理 <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><%= link_to '献立一覧', meals_calendar_path() %></li>
           <li><%= link_to '喫食チャート', meals_chart_path() %></li>
