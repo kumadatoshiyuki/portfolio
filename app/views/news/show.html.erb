@@ -23,7 +23,7 @@
     </div>
   </div>
 <%= link_to "編集画面へ", edit_news_path(@news), class: "btn btn-success"%>
-<%= link_to("お知らせ削除", news_index_path(), data: { confirm: "本当に削除しますか?", }, class: "btn btn btn-danger", method: :delete) %>
+<%= link_to("お知らせ削除", news_path(), data: { confirm: "本当に削除しますか?", }, class: "btn btn btn-danger", method: :delete) %>
 <%= link_to "戻る", news_index_path(), class: "btn btn-primary"%>
 </div>
 

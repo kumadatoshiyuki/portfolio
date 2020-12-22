@@ -9,4 +9,6 @@ class UserNote < ApplicationRecord
   validates :dinner, presence: true
   validates :message, presence: true, length: { in: 0..600 }
   validates :record_date, presence: true
+  
+  
 end

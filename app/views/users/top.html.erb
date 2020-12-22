@@ -1,38 +1,235 @@
-<div class="col-md-3 col-sm-6">
-<div class="x_panel">
-<div class="x_title">
-<h2>リンク先 </h2>
-<ul class="nav navbar-right panel_toolbox">
-<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-</li>
-<li class="dropdown">
-<!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>-->
-<ul class="dropdown-menu" role="menu">
-<li><a href="#">Settings 1</a>
-</li>
-<li><a href="#">Settings 2</a>
-</li>
-</ul>
-</li>
-<!--<li><a class="close-link"><i class="fa fa-close"></i></a>-->
-</li>
-</ul>
+<style>
+ul.list__count {
+    width: 100%;
+    margin-left: 1px;
+    border: 1px solid #ddd;
+    border-left: 0;
+    border-right: 0;
+    padding: 10px 0;
+}
+
+ul.list__count li {
+    width: 30%;
+    text-align: center;
+}
+
+.staple_food,
+.main_dish,
+.side_dish,
+.soup,
+.fruit{
+    background-color: #fff;
+}
+
+.staple_food{
+    border-left: 5px solid red;
+    border-color:red;
+}
+.main_dish{
+    border-left: 5px solid skyblue;
+    border-color:skyblue;
+}
+.side_dish{
+    border-left: 5px solid gold;
+    border-color:gold;
+}
+.fruit{
+    border-left: 5px solid grey;
+    border-color:grey;
+}
+.soup{
+    border-left: 5px solid #99ff99;
+    border-color: #99ff99;
+}
+
+.media .date .day {
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    margin: 0;
+    line-height: 40px;
+    font-weight: bold;
+}
+
+.media .date {
+    background: #ccc;
+    width: 52px;
+    margin-right: 10px;
+    border-radius: 10px;
+    padding: 5px;
+    height: 52px;
+}
+
+</style>
+
+
+
+
+<div class="page-title">
+  <div class="title_left">
+    <h3>ホーム</h3>
+  </div>
+</div>
+
 <div class="clearfix"></div>
-</div>
-<div class="x_content" style="display: block;">
-<button type="button" class="btn btn-secondary">Default</button>
-<button type="button" class="btn btn-primary">Primary</button>
-<%= link_to("連絡帳作成ページ", new_user_note_path, { class: "btn btn-success"}) %>
-<%= link_to("食事管理", meals_path, { class: "btn btn-info"}) %>
-<button type="button" class="btn btn-warning">Warning</button>
-<button type="button" class="btn btn-danger">Danger</button>
-<button type="button" class="btn btn-dark">Dark</button>
 
-</div>
-</div>
+<div class="col-md-6">
+  <div class="x_panel">
+    <div class="x_title">
+      <h2><i class="fa fa-align-left"></i>喫食量</h2>
+      <ul class="nav navbar-right panel_toolbox">
+        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+        <!--</li>-->
+        <!--<li class="dropdown">-->
+        <!--  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>-->
+        <!--  <ul class="dropdown-menu" role="menu">-->
+        <!--    <li><a href="#">Settings 1</a>-->
+        <!--    </li>-->
+        <!--    <li><a href="#">Settings 2</a>-->
+        <!--    </li>-->
+        <!--  </ul>-->
+        <!--</li>-->
+        <!--<li><a class="close-link"><i class="fa fa-close"></i></a>-->
+        <!--</li>-->
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+      <p>Bootstrap progress bar with animated loading bar, add right to .progress to align right</p>
+      <% if @meal.nil? %>
+            <div class="row">
+        <div class="col-md-12">
+          <div class="col-md-4">
+          <span>情報がありません</span>
+          </div>
+          <div class="col-md-8">
+            <div class="progress">
+              <div class="progress-bar <%= get_amount_color(@admin_note.staple_food_amount_id) %>" data-transitiongoal=<%= get_amount(@admin_note.staple_food_amount_id) %>></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+          <span>情報がありません</span>
+          </div>
+          <div class="col-md-8">
+            <div class="progress">
+              <div class="progress-bar <%= get_amount_color(@admin_note.main_dish_amount_id) %>" data-transitiongoal=<%= get_amount(@admin_note.main_dish_amount_id) %>></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+          <span>情報がありません</span>
+          </div>
+          <div class="col-md-8">
+            <div class="progress">
+              <div class="progress-bar <%= get_amount_color(@admin_note.side_dish_amount_id) %>" data-transitiongoal=<%= get_amount(@admin_note.side_dish_amount_id) %>></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+          <span>情報がありません</span>
+          </div>
+          <div class="col-md-8">
+            <div class="progress">
+              <div class="progress-bar <%= get_amount_color(@admin_note.soup_amount_id) %>" data-transitiongoal=<%= get_amount(@admin_note.soup_amount_id) %>></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+          <span>情報がありません</span>
+          </div>
+          <div class="col-md-8">
+            <div class="progress">
+              <div class="progress-bar <%= get_amount_color(@admin_note.fruit_amount_id) %>" data-transitiongoal=<%= get_amount(@admin_note.fruit_amount_id) %>></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% else %>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="col-md-4">
+          <span><%= @meal.staple_food %></span>
+          </div>
+          <div class="col-md-8">
+            <div class="progress">
+              <div class="progress-bar <%= get_amount_color(@admin_note.staple_food_amount_id) %>" data-transitiongoal=<%= get_amount(@admin_note.staple_food_amount_id) %>></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+          <span><%= @meal.main_dish %></span>
+          </div>
+          <div class="col-md-8">
+            <div class="progress">
+              <div class="progress-bar <%= get_amount_color(@admin_note.main_dish_amount_id) %>" data-transitiongoal=<%= get_amount(@admin_note.main_dish_amount_id) %>></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+          <span><%= @meal.side_dish %></span>
+          </div>
+          <div class="col-md-8">
+            <div class="progress">
+              <div class="progress-bar <%= get_amount_color(@admin_note.side_dish_amount_id) %>" data-transitiongoal=<%= get_amount(@admin_note.side_dish_amount_id) %>></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+          <span><%= @meal.soup %></span>
+          </div>
+          <div class="col-md-8">
+            <div class="progress">
+              <div class="progress-bar <%= get_amount_color(@admin_note.soup_amount_id) %>" data-transitiongoal=<%= get_amount(@admin_note.soup_amount_id) %>></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+          <span><%= @meal.fruit %></span>
+          </div>
+          <div class="col-md-8">
+            <div class="progress">
+              <div class="progress-bar <%= get_amount_color(@admin_note.fruit_amount_id) %>" data-transitiongoal=<%= get_amount(@admin_note.fruit_amount_id) %>></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 
-<div class="col-md-6 col-sm-6">
+
+
+
+
+
+
+
+
+
+
+
+  <div class="col-md-6 col-xs-12 widget_tally_box">
+    <div class="x_panel">
+      <div class="x_content">
+        <h3 class="name">今日の様子</h3>
+        <div class="flex">
+          <ul class="list-inline list__count">
+            <li>
+              <h3>3times</h3>
+              <span>排泄</span>
+            </li>
+            <li>
+              <h3>3h</h3>
+              <span>睡眠</span>
+            </li>
+            <li>
+              <h3>36.5</h3>
+              <span>体温</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+
+<div class="col-md-12 col-sm-12">
 <div class="x_panel">
 <div class="x_title">
 <h2>保育士からのコメント<small>Sessions</small></h2>
@@ -92,85 +289,39 @@
 </div>
 
 
-<div class="col-md-6 col-sm-6">
-<div class="x_panel">
-<div class="x_title">
-<h2>今日の喫食量<small>Sessions</small></h2>
-<ul class="nav navbar-right panel_toolbox">
-<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-</li>
-<li class="dropdown">
-<!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>-->
-<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-<a class="dropdown-item" href="#">Settings 1</a>
-<a class="dropdown-item" href="#">Settings 2</a>
-</div>
-</li>
-<!--<li><a class="close-link"><i class="fa fa-close"></i></a>-->
-</li>
-</ul>
 <div class="clearfix"></div>
-</div>
-<div class="x_content bs-example-popovers">
-<div class="alert alert-success alert-dismissible " role="alert">
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-</button>
-  <% if @admin_note.nil? %>
-  <strong><%= @meal.staple_food %></strong>
-  </div>
-  <div class="alert alert-info alert-dismissible " role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  </button>
-  <strong><%= @meal.main_dish %></strong>
-  </div>
-  <div class="alert alert-warning alert-dismissible " role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  </button>
-  <strong><%= @meal.side_dish %> </strong>
-  </div>
-  <div class="alert alert-danger alert-dismissible " role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  </button>
-  <strong><%= @meal.soup %></strong>
-  </div>
-  <div class="alert alert-success alert-dismissible " role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  </button>
-  <strong><%= @meal.fruit %></strong>
-  <% else %>
-  <strong><%= @meal.staple_food %></strong>　　　　　<%= @admin_note.staple_food_amount.amount_type %>
-  </div>
-  <div class="alert alert-info alert-dismissible " role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  </button>
-  <strong><%= @meal.main_dish %></strong>　　　　　<%= @admin_note.main_dish_amount.amount_type %>
-  </div>
-  <div class="alert alert-warning alert-dismissible " role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  </button>
-  <strong><%= @meal.side_dish %> </strong>　　　　　<%= @admin_note.side_dish_amount.amount_type %>
-  </div>
-  <div class="alert alert-danger alert-dismissible " role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  </button>
-  <strong><%= @meal.soup %></strong>　　　　　<%= @admin_note.soup_amount.amount_type %>
-  </div>
-  <div class="alert alert-success alert-dismissible " role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  </button>
-  <strong><%= @meal.fruit %></strong>　　　　　<%= @admin_note.fruit_amount.amount_type %>
-  <% end %>
 
-</div>
-</div>
-</div>
-</div>
-<div class="col-md-12">
-<h1>カレンダーをクリックすると連絡帳の詳細へ飛ぶ</h1>
-  <%= link_to '連絡帳', user_notes_path %>
-<h3 class="text-center">カレンダー</h3>
-<!-- カレンダーの表示 -->
-<div id="user_calendar"></div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="x_panel">
+    <div class="x_title">
+      <h2>Daily active users <small>Sessions</small></h2>
+      <!--<ul class="nav navbar-right panel_toolbox">-->
+      <!--  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>-->
+      <!--  </li>-->
+      <!--  <li class="dropdown">-->
+      <!--    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>-->
+      <!--    <ul class="dropdown-menu" role="menu">-->
+      <!--      <li><a href="#">Settings 1</a>-->
+      <!--      </li>-->
+      <!--      <li><a href="#">Settings 2</a>-->
+      <!--      </li>-->
+      <!--    </ul>-->
+      <!--  </li>-->
+      <!--  <li><a class="close-link"><i class="fa fa-close"></i></a>-->
+      <!--  </li>-->
+      <!--</ul>-->
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+
+      <div class="bs-example" data-example-id="simple-jumbotron">
+
+      <div id="user_calendar"></div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <%= javascript_include_tag "user_calendar.js" %>
+

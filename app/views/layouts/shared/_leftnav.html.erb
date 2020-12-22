@@ -1,6 +1,13 @@
 <div class="navbar nav_title" style="border: 0;">
-  <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>○○保育園</span></a>
+
+<%= link_to(admins_top_path(), class: 'site_title', method: :get) do %>
+  <i class="fa fa-home"></i>
+    ○○保育園
+  <% end %>
 </div>
+
+
+
 
 <div class="clearfix"></div>
 

@@ -27,4 +27,5 @@ class AdminNote < ApplicationRecord
   # validates :soup_amount_id,  presence: true
   # validates :fruit_amount_id,  presence: true
 
+
 end
