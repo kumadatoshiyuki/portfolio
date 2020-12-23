@@ -1,3 +1,11 @@
+<style>
+ .form-time-select{
+  display:flex;
+ }
+ .form-group{
+  margin-bottom:0px;
+ }
+</style>
 <div class="title_left">
 <h3>連絡帳入力フォーム </h3>
 <%= render 'layouts/error_messages', item: @admin_note %>
@@ -117,7 +125,7 @@
 
 
 <%= form_with model: @admin_note, url: admin_admin_notes_path, local: true do |f| %>
-<div class="col-md-6 ">
+<div class="col-md-6 col-xs-12">
 <div class="x_panel">
 <div class="x_title">
 <h2>連絡長入力画面 <small>保育士記入欄</small></h2>
@@ -130,13 +138,32 @@
 <%= f.text_field :body_temperature, class: "form-control" %>
 
 <label>排泄回数 :</label>
-<%= f.text_field :number_toilet, class: "form-control" %>
+<%= f.select :number_toilet, [["1回", 1], ["2回", 2], ["3回", 3], ["4回", 4], ["5回以上", 5]], {include_blank: "選択して下さい"}, {class: 'form-control'} %>
 
- <div class="field">
-  <%= f.label :睡眠時間：, class: 'control-label' %>
-  <%= f.time_select :sleep_start, class: 'form-control' %>〜
-  <%= f.time_select :sleep_end, class: 'form-control' %>
+
+
+
+<div class="form-group">
+ <%= f.label :睡眠開始時間：, class: 'control-label' %>
+ <div class="clearfix"></div>
+ <div class="col-sm-12 form-group row form-time-select">
+<%= f.time_select :sleep_start, {}, {class: "form-control bootstrap-date"} %>
 </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="form-group">
+ <%= f.label :睡眠終了時間：, class: 'control-label' %>
+ <div class="clearfix"></div>
+ <div class="col-sm-12 form-group row form-time-select">
+<%= f.time_select :sleep_end, {}, {class: "form-control bootstrap-date"} %>
+</div>
+</div>
+
+
+
+<div class="clearfix"></div>
 
 <label>主食 :</label>
 <%= @meal.staple_food %>
@@ -160,7 +187,7 @@
 
 
 <label for="message">保育園での様子:</label>
-<%= f.text_field :message, class: "form-control" %>
+<%= f.text_area :message, class: "form-control" %>
 
 <%=f.label :日付, class: 'control-label'%>
 <%= f.date_field :record_date, class: 'form-control' %>

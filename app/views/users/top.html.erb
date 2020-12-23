@@ -76,7 +76,7 @@ ul.list__count li {
 <div class="col-md-6">
   <div class="x_panel">
     <div class="x_title">
-      <h2><i class="fa fa-align-left"></i>喫食量</h2>
+      <h2><i class="fa fa-cutlery"> </i>  喫食量</h2>
       <ul class="nav navbar-right panel_toolbox">
         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
         <!--</li>-->
@@ -95,48 +95,48 @@ ul.list__count li {
       <div class="clearfix"></div>
     </div>
     <div class="x_content">
-      <p>Bootstrap progress bar with animated loading bar, add right to .progress to align right</p>
+      
       <% if @meal.nil? %>
             <div class="row">
         <div class="col-md-12">
-          <div class="col-md-4">
+          <div class="col-md-4 col-xs-12">
           <span>情報がありません</span>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-8 col-xs-12">
             <div class="progress">
-              <div class="progress-bar <%= get_amount_color(@admin_note.staple_food_amount_id) %>" data-transitiongoal=<%= get_amount(@admin_note.staple_food_amount_id) %>></div>
+              <div class="progress-bar <%= get_amount_color(@admin_note,"staple_food_amount_id") %>" data-transitiongoal=<%= get_amount(@admin_note,"staple_food_amount_id") %>></div>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 col-xs-12">
           <span>情報がありません</span>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-8 col-xs-12">
             <div class="progress">
-              <div class="progress-bar <%= get_amount_color(@admin_note.main_dish_amount_id) %>" data-transitiongoal=<%= get_amount(@admin_note.main_dish_amount_id) %>></div>
+              <div class="progress-bar <%= get_amount_color(@admin_note,"main_dish_amount_id") %>" data-transitiongoal=<%= get_amount(@admin_note,"main_dish_amount_id") %>></div>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 col-xs-12">
           <span>情報がありません</span>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-8 col-xs-12">
             <div class="progress">
-              <div class="progress-bar <%= get_amount_color(@admin_note.side_dish_amount_id) %>" data-transitiongoal=<%= get_amount(@admin_note.side_dish_amount_id) %>></div>
+              <div class="progress-bar <%= get_amount_color(@admin_note,"side_dish_amount_id") %>" data-transitiongoal=<%= get_amount(@admin_note,"side_dish_amount_id") %>></div>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 col-xs-12">
           <span>情報がありません</span>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-8 col-xs-12">
             <div class="progress">
-              <div class="progress-bar <%= get_amount_color(@admin_note.soup_amount_id) %>" data-transitiongoal=<%= get_amount(@admin_note.soup_amount_id) %>></div>
+              <div class="progress-bar <%= get_amount_color(@admin_note,"soup_amount_id") %>" data-transitiongoal=<%= get_amount(@admin_note,"soup_amount_id") %>></div>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 col-xs-12">
           <span>情報がありません</span>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-8 col-xs-12">
             <div class="progress">
-              <div class="progress-bar <%= get_amount_color(@admin_note.fruit_amount_id) %>" data-transitiongoal=<%= get_amount(@admin_note.fruit_amount_id) %>></div>
+              <div class="progress-bar <%= get_amount_color(@admin_note,"fruit_amount_id") %>" data-transitiongoal=<%= get_amount(@admin_note,"fruit_amount_id") %>></div>
             </div>
           </div>
         </div>
@@ -144,44 +144,44 @@ ul.list__count li {
       <% else %>
       <div class="row">
         <div class="col-md-12">
-          <div class="col-md-4">
+          <div class="col-md-4 col-xs-12">
           <span><%= @meal.staple_food %></span>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-8 col-xs-12">
             <div class="progress">
-              <div class="progress-bar <%= get_amount_color(@admin_note.staple_food_amount_id) %>" data-transitiongoal=<%= get_amount(@admin_note.staple_food_amount_id) %>></div>
+              <div class="progress-bar <%= get_amount_color(@admin_note,"staple_food_amount_id") %>" data-transitiongoal=<%= get_amount(@admin_note,"staple_food_amount_id") %>></div>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 col-xs-12">
           <span><%= @meal.main_dish %></span>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-8 col-xs-12">
             <div class="progress">
-              <div class="progress-bar <%= get_amount_color(@admin_note.main_dish_amount_id) %>" data-transitiongoal=<%= get_amount(@admin_note.main_dish_amount_id) %>></div>
+              <div class="progress-bar <%= get_amount_color(@admin_note,"main_dish_amount_id") %>" data-transitiongoal=<%= get_amount(@admin_note,"main_dish_amount_id") %>></div>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 col-xs-12">
           <span><%= @meal.side_dish %></span>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-8 col-xs-12">
             <div class="progress">
-              <div class="progress-bar <%= get_amount_color(@admin_note.side_dish_amount_id) %>" data-transitiongoal=<%= get_amount(@admin_note.side_dish_amount_id) %>></div>
+              <div class="progress-bar <%= get_amount_color(@admin_note,"side_dish_amount_id") %>" data-transitiongoal=<%= get_amount(@admin_note,"side_dish_amount_id") %>></div>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 col-xs-12">
           <span><%= @meal.soup %></span>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-8 col-xs-12">
             <div class="progress">
-              <div class="progress-bar <%= get_amount_color(@admin_note.soup_amount_id) %>" data-transitiongoal=<%= get_amount(@admin_note.soup_amount_id) %>></div>
+              <div class="progress-bar <%= get_amount_color(@admin_note,"soup_amount_id") %>" data-transitiongoal=<%= get_amount(@admin_note,"soup_amount_id") %>></div>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 col-xs-12">
           <span><%= @meal.fruit %></span>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-8 col-xs-12">
             <div class="progress">
-              <div class="progress-bar <%= get_amount_color(@admin_note.fruit_amount_id) %>" data-transitiongoal=<%= get_amount(@admin_note.fruit_amount_id) %>></div>
+              <div class="progress-bar <%= get_amount_color(@admin_note,"fruit_amount_id") %>" data-transitiongoal=<%= get_amount(@admin_note,"fruit_amount_id") %>></div>
             </div>
           </div>
         </div>
@@ -209,16 +209,29 @@ ul.list__count li {
         <div class="flex">
           <ul class="list-inline list__count">
             <li>
-              <h3>3times</h3>
-              <span>排泄</span>
-            </li>
-            <li>
-              <h3>3h</h3>
-              <span>睡眠</span>
-            </li>
-            <li>
-              <h3>36.5</h3>
-              <span>体温</span>
+              <% if @admin_note.nil? %>
+                  <h3>情報がありません</h3>
+                  <span>排泄</span>
+                </li>
+                <li>
+                  <h3>情報がありません</h3>
+                  <span>睡眠時間</span>
+                </li>
+                <li>
+                  <h3>情報がありません</h3>
+                  <span>体温</span>
+              <% else %>
+                <h3><%= @admin_note.number_toilet %></h3>
+                  <span>排泄</span>
+                </li>
+                <li>
+                  <h3><%= get_time(@admin_note.sleep_start) %>〜<%= get_time(@admin_note.sleep_end) %></h3>
+                  <span>睡眠時間</span>
+                </li>
+                <li>
+                  <h3><%= @admin_note.body_temperature %></h3>
+                  <span>体温</span>
+              <% end %>
             </li>
           </ul>
         </div>
@@ -232,7 +245,7 @@ ul.list__count li {
 <div class="col-md-12 col-sm-12">
 <div class="x_panel">
 <div class="x_title">
-<h2>保育士からのコメント<small>Sessions</small></h2>
+<h2>保育士からのコメント</h2>
 <ul class="nav navbar-right panel_toolbox">
 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 </li>
@@ -295,7 +308,7 @@ ul.list__count li {
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="x_panel">
     <div class="x_title">
-      <h2>Daily active users <small>Sessions</small></h2>
+      <h2>連絡帳一覧</h2>
       <!--<ul class="nav navbar-right panel_toolbox">-->
       <!--  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>-->
       <!--  </li>-->

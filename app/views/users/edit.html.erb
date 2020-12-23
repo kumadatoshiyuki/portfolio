@@ -1,31 +1,16 @@
-<h1>ここはuserの編集画面</h1>
-  
+<div class="page-title">
+  <div class="title_left">
+    <h3>園児編集</h3>
+  </div>
+</div>
+
+
 <div class="col-md-12 col-xs-12">
-  
+
    <%= render 'layouts/error_messages', item: @user %>
-   
         <div class="x_panel">
-          <div class="x_title">
-            <h2>園児　編集画面 <small></small></h2>
-              <ul class="nav navbar-right panel_toolbox">
-          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Settings 1</a>
-              </li>
-              <li><a href="#">Settings 2</a>
-              </li>
-            </ul>
-          </li>
-          <li><a class="close-link"><i class="fa fa-close"></i></a>
-          </li>
-        </ul>
-              <div class="clearfix"></div>
-          </div>
           <div class="x_content">
-        <br>
+
         <!--<form class="form-horizontal form-label-left input_mask">-->
     <%= form_for(@user, url: user_path(@user), html: { method: :put }) do |f| %>
     <%= render "admins/shared/error_messages", resource: @user %>
@@ -88,8 +73,8 @@
                   <!--今回の場合はAffiliationテーブルなので選択肢として使いたいIDが1番から４番-->
               </div>
           </div>
-          
-          
+
+
           <div class="form-group row">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">ログインID</label>
             <div class="col-md-9 col-sm-9 col-xs-12">

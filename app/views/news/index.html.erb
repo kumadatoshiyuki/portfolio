@@ -1,10 +1,17 @@
+<div class="page-title">
+  <div class="title_left">
+    <h3>お知らせ一覧</h3>
+  </div>
+</div>
+
+
 <div class="col-md-12">
     <div class="x_panel">
       <div class="x_title">
         <ul class="nav navbar-right panel_toolbox">
           <%= link_to("新規登録", new_news_path(), { class: "btn btn-success"}) %>
         </ul>
-        <h2>表示しているお知らせ 一覧</h2>
+        <h2>保護者に伝えているお知らせ</h2>
         <div class="clearfix"></div>
       </div>
       <% @news.each do |news| %>
@@ -19,7 +26,7 @@
               </div>
               <div class="block_content">
                 <h2 class="title">
-                  <%= link_to news.creation_date, news_path(news) %>
+                  <%= link_to get_date(news.creation_date), news_path(news) %>
                 </h2>
                   </br>
                 <p><%= news.message%></p>

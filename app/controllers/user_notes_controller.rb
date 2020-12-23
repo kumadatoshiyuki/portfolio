@@ -1,4 +1,5 @@
 class UserNotesController < ApplicationController
+before_action :if_not_user
 
   def new
     @user_note = UserNote.new()
@@ -90,4 +91,7 @@ class UserNotesController < ApplicationController
     params.require(:user_note).permit(:body_temperature, :number_toilet, :sleep_start, :sleep_end, :breakfast, :dinner, :message, :record_date, :attendance_confirmation, :user_id)
   end
 
+  def if_not_user
+    redirect_to admins_top_path unless current_user.is_user?
+  end
 end

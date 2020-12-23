@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-    before_action :if_not_user, only: [:top]
+  before_action :if_not_admin, except: [:top]
+  before_action :if_not_user, only: [:top]
   # layout 'user.application', except: [:index,:top]
-  # layout 'user.application', only:  [:show,:edit]
+  # layout 'application', only:  [:new,:create]
   # 管理者の登録はこの画面で行う
   def top
     # 保護者の個人topページ
@@ -69,9 +70,12 @@ private
     params.require(:user).permit(:first_name, :last_name, :kana_first_name, :kana_last_name, :age, :phone, :image, :login_id, :email, :affiliation_id, :password, :role)
   end
 
-  def if_not_user
-    redirect_to admins_top_path unless current_user.user?
+  def if_not_admin
+    redirect_to top_path unless current_user.is_admin?
   end
 
+  def if_not_user
+    redirect_to admins_top_path unless current_user.is_user?
+  end
 
 end
