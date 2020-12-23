@@ -23,6 +23,12 @@ module ApplicationHelper
       return time
     end
 
+    def get_date(date)
+       # 日付のフォーマットの変更
+      time = date.strftime("%Y-%m-%d")
+      return time
+    end
+
     # item <= @admin_note
     # column <=
     # staple_food_amount
@@ -30,7 +36,11 @@ module ApplicationHelper
     # side_dish_amount
     # soup_amount
     # fruit_amount
-    def get_amount(amount_id)
+    def get_amount(item, amount_id)
+
+      if item
+        return nil
+      end
 
       # @admin_noteがあるかチェック
       if amount_id.nil?
@@ -50,14 +60,18 @@ module ApplicationHelper
         return "10"
       end
     end
-    
-    def get_amount_color(amount_id)
-      
+
+    def get_amount_color(item, amount_id)
+
+      if item
+        return nil
+      end
+
       if amount_id.nil?
         return nil
       end
-      
-      
+
+
       case amount_id
       when 1 then
         return nil
@@ -70,7 +84,7 @@ module ApplicationHelper
       when 5 then
         return "progress-bar-danger"
       end
-      
+
     end
 
 

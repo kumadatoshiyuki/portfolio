@@ -1,4 +1,5 @@
 class AdminNotesController < ApplicationController
+  before_action :if_not_admin
   def new
     @admin_note = AdminNote.new()
     @user = User.find(params[:admin_id])
@@ -31,48 +32,14 @@ class AdminNotesController < ApplicationController
   def index
     @user = User.find(params[:admin_id])
     # @user_notes = UserNote.all
-    @user_note = UserNote.where(record_date: get_today).where(user_id: params[:admin_id])
-    @admin_note = AdminNote.all
-
-
-
-
+    @admin_note = AdminNote.where(user_id: params[:admin_id]).page(params[:page])
   end
 
   def show
-                # ユーザーが取得できる。
-      # URLからadmin_idを取得し(params[:admin_id])で
-    # Userのページのデータを取得できる。
-     @user = User.find(params[:admin_id])
-    # URLからidを取得し(params[:id])
-    # AdminNoteのページのデータを取得できる。
-     @admin_note = AdminNote.find(params[:id])
-    # AdminNoteから記録日(record_date)を取得する
-     date = @admin_note.record_date
-    # UserNoteから記録日(record_date　AdomiNoteと同じ記述日)を検索　かつ、ユーザのページのものを取得
-     @user_note = UserNote.where(user_id: params[:admin_id]).find_by(record_date: date)
-    # 食事の記録日をAdminNoteから記録日を取得
-     @meal = Meal.find_by(record_date: date)
+      common()
   end
-  
-  
-  def common()
-            # ユーザーが取得できる。
-      # URLからadmin_idを取得し(params[:admin_id])で
-    # Userのページのデータを取得できる。
-     @user = User.find(params[:admin_id])
-    # URLからidを取得し(params[:id])
-    # AdminNoteのページのデータを取得できる。
-     @admin_note = AdminNote.find(params[:id])
-    # AdminNoteから記録日(record_date)を取得する
-     date = @admin_note.record_date
-    # UserNoteから記録日(record_date　AdomiNoteと同じ記述日)を検索　かつ、ユーザのページのものを取得
-     @user_notes = UserNote.where(user_id: params[:admin_id]).find_by(record_date: date)
-    # 食事の記録日をAdminNoteから記録日を取得
-     @meal = Meal.find_by(record_date: date)
-     
-  end
-  
+
+
   def create
     user = User.find(params[:admin_id])
     admin_note = AdminNote.new(admin_note_params)
@@ -91,7 +58,6 @@ class AdminNotesController < ApplicationController
 
 
   def edit
-
      common()
   end
 
@@ -99,7 +65,7 @@ class AdminNotesController < ApplicationController
   def update
     @admin_note = AdminNote.find(params[:id])
     if @admin_note.update(admin_note_params)
-      redirect_to admin_admin_note_path(@admin_note)
+      redirect_to admin_admin_note_path(@admin_note.user,@admin_note)
     else
       @user = User.find(params[:admin_id])
       @user_notes = UserNote.where(record_date: get_today).where(user_id: params[:admin_id])
@@ -117,12 +83,30 @@ class AdminNotesController < ApplicationController
     end
   end
 
+  def common()
+            # ユーザーが取得できる。
+      # URLからadmin_idを取得し(params[:admin_id])で
+    # Userのページのデータを取得できる。
+     @user = User.find(params[:admin_id])
+    # URLからidを取得し(params[:id])
+    # AdminNoteのページのデータを取得できる。
+     @admin_note = AdminNote.find(params[:id])
+    # AdminNoteから記録日(record_date)を取得する
+     date = @admin_note.record_date
+    # UserNoteから記録日(record_date　AdomiNoteと同じ記述日)を検索　かつ、ユーザのページのものを取得
+     @user_note = UserNote.where(user_id: params[:admin_id]).find_by(record_date: date)
+    # 食事の記録日をAdminNoteから記録日を取得
+     @meal = Meal.find_by(record_date: date)
+
+  end
 
   private
 
   def admin_note_params
     # formから送られてくるパラメータの取得（ストロングパラメーター）
     params.require(:admin_note).permit(:body_temperature, :number_toilet, :sleep_start, :sleep_end, :message, :record_date, :staple_food_amount_id, :main_dish_amount_id, :side_dish_amount_id, :fruit_amount_id, :soup_amount_id)
-
+  end
+   def if_not_admin
+    redirect_to top_path unless current_user.is_admin?
   end
 end

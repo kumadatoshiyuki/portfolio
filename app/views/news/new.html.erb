@@ -1,26 +1,87 @@
-<div class="x_title">
-  
-    <%= render 'layouts/error_messages', item: @news %>
-      
-      
-        <h2>お知らせ登録 <small>保護者に伝えたい内容</small></h2>
-        <div class="clearfix"></div>
-    </div>
-    <div class="x_content">
+<style>
+  input[type="radio"], input[type="checkbox"] {
+    margin: 4px 0 0;
+    margin-top: 1px \9;
+    line-height: normal;
+    display: inline-block;
+    margin-right: 10px;
+    width:			15px;
+	  height:			15px;
+	  -moz-transform:		scale(1.4);
+	  -webkit-transform:	scale(1.4);
+	  transform:		scale(1.4);
+}
+
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 15px;
+    font-weight: bold;
+    padding-right: 20px;
+}
+
+textarea.form-control{
+  height:250px;
+}
+
+
+
+</style>
+
+
+
+<div class="page-title">
+  <div class="title_left">
+    <h3>お知らせ登録</h3>
+  </div>
+</div>
+
+
+
+<%= render 'layouts/error_messages', item: @news %>
+<div class="clearfix"></div>
+
+
+
+
+
+
+
+
+<div class="x_panel">
+<div class="x_content">
       <%= form_with model:@news, local:true do |f| %>
+
+      <p>
         <%=f.label :日付：, class: 'control-label'%><br />
-        <%= f.date_field :creation_date, class: 'form-control' %>
-        <label>お知らせしたいクラス(複数選択可能)</label>
-          <p style="padding: 5px;">
-            <%= collection_check_boxes :news, :affiliation_ids, Affiliation.all, :id, :affiliation_name do |affiliation| %>
-              <%= affiliation.label { affiliation.check_box + affiliation.text } %>
-            <% end %><br>
-          </p>
-          <p>
-            <label for="message">お知らせ内容 :</label>
-            <%= f.text_area :message, class: "form-control" %><br>
-            <%= f.submit "新規登録", class: "btn btn-success" %>
-          </p>
-      <% end %>
-    </div>
+        <%= f.date_field :creation_date, class: 'calendar_form form-control' %>
+        </p>
+            <!--<label class="col-md-3 col-sm-3 col-xs-12 control-label">お知らせしたいクラス(複数選択可能)-->
+              <!--<br>-->
+              <!--<small class="text-navy">Normal Bootstrap elements</small>-->
+            <!--</label>-->
+
+            <!--<div class="col-md-9 col-sm-9 col-xs-12">-->
+            <!--  <div class="checkbox">-->
+            <!--    <label>-->
+            <!--      <input type="checkbox" class="flat" checked="checked"> Checked-->
+            <!--    </label>-->
+            <!--  </div>-->
+            <!--</div>-->
+
+      <p>
+        <%=f.label :登録クラス：, class: 'control-label'%><br />
+
+        <%= collection_check_boxes :news, :affiliation_ids, Affiliation.all, :id, :affiliation_name do |affiliation| %>
+          <%= affiliation.label { affiliation.check_box + affiliation.text } %>
+        <% end %>
+        <br>
+      </p>
+
+      <p>
+        <label for="message">お知らせ内容 :</label>
+        <%= f.text_area :message, class: "form-control" %><br>
+        <%= f.submit "新規登録", class: "btn btn-success" %>
+      </p>
+  <% end %>
 </div>

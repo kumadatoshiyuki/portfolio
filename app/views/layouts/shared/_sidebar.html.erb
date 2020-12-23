@@ -5,9 +5,13 @@
       <li>
           <%= link_to admins_top_path(), :method => :get do %>
           <i class="fa fa-home"></i>
-          トップ画面へ
+          トップ画面
           <% end %>
       </li>
+
+
+
+
 
 
       <!--<li><a><i class="fa fa-home"></i> ホーム <span class="fa fa-chevron-down"></span></a>-->
@@ -28,7 +32,6 @@
       <li><a><i class="fa fa-cutlery"></i> 食事 <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><%= link_to '献立一覧', meals_calendar_path() %></li>
-          <li><%= link_to '食事チャート', meals_chart_path() %></li>
         </ul>
       </li>
       <li><a><i class="fa fa-address-card-o"></i> 管理者 <span class="fa fa-chevron-down"></span></a>
@@ -41,6 +44,12 @@
           <li><%= link_to 'お知らせ一覧', news_index_path %></li>
           <li><%= link_to 'お知らせ登録', new_news_path %></li>
         </ul>
+      </li>
+            <li>
+          <%= link_to logout_path(), :method => :delete do %>
+            <i class="fa fa-sign-out"></i>
+            ログアウト
+            <% end %>
       </li>
     </ul>
   </div>

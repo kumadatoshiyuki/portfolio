@@ -1,17 +1,49 @@
-<div class="navbar nav_title" style="border: 0;">
+<style>
+.header__logo {
+    display: flex;
+    margin: auto;
+}
+.header__menu {
+    padding-top: 15px;
+    padding-left: 20px;
+}
+.header__icon {
+    width: 32px;
+    height: 32px;
+}
 
-<%= link_to(admins_top_path(), class: 'site_title', method: :get) do %>
-  <i class="fa fa-home"></i>
-    ○○保育園
-  <% end %>
+.header__title {
+    align-items: center;
+    letter-spacing: .15px;
+    line-height: 24px;
+    padding: 7px 8px 0 12px;
+    margin: 0;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-weight: 400;
+    font-size: 22px;
+    width: 100%;
+    color: #ECF0F1 !important;
+    margin-left: 0 !important;
+    display: block;
+    height: 55px;
+}
+</style>
+
+
+
+
+<div class="navbar nav_title" style="border: 0;">
+  <a class="header__menu header__logo" href="/">
+      <img class="header__icon" src="/assets/childs.png">
+      <span class="header__title">〇〇保育園</span>
+  </a>
 </div>
 
 
 
-
 <div class="clearfix"></div>
-
-<br />
 
 <!-- sidebar menu -->
   <%= render partial: 'layouts/shared/sidebar' %>

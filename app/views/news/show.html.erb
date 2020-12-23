@@ -1,7 +1,20 @@
+<div class="page-title">
+  <div class="title_left">
+    <h3>お知らせ詳細</h3>
+  </div>
+</div>
+
+
+
+
+
 <div class="col-md-12">
   <div class="x_panel">
     <div class="x_title">
-      <h2>お知らせ詳細<small><%= @news.creation_date%></small></h2>
+      <small><%= get_date(@news.creation_date)%></small>
+      <% @news.affiliation.each do |affiliation| %>
+         <p class="title h2_tag"><%= affiliation.affiliation_name %></p>
+      <% end %>
       <div class="clearfix"></div>
     </div>
     <div class="x_content">
@@ -9,9 +22,6 @@
         <!-- Tab panes -->
         <div class="tab-content">
           <div class="tab-pane active" id="home">
-            <% @news.affiliation.each do |affiliation| %>
-              <p class="lead"><%= affiliation.affiliation_name%></p>
-            <% end %>
             <p><%= @news.message%></p>
           </div>
           <div class="tab-pane" id="profile">Profile Tab.</div>
