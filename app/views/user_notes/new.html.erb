@@ -1,39 +1,115 @@
-<h1>user側の連絡帳</h1>
-<%= form_with model: @user_note, local: true, url: {action: 'confirm'} do |f| %>
-  <div class="field">
-    <%= f.radio_button :attendance_confirmation, :ture %>
-    <%= f.label :attendance_confirmation, "出席", {value: :ture, style: "display: inline-block;"} %>
-    <%= f.radio_button :attendance_confirmation, :false %>
-    <%= f.label :attendance_confirmation, "欠席", {value: :false, style: "display: inline-block;"} %>
+<style>
+  .redio {
+    display: flex;
+  }
+
+  .radio_label {
+    margin-right: 15px;
+    margin-left: 5px;
+  }
+
+  .bootstrap-date {
+    display: inline-block;
+    width: auto;
+  }
+
+  .btn-last {
+    margin-top:20px;
+  }
+
+  textarea.form-control{
+    height:60px;
+  }
+
+</style>
+
+
+
+
+
+<div class="page-title">
+  <div class="title_left">
+    <h3>連絡帳作成</h3>
   </div>
-  <div class="field">
-      <%= f.label :体温 %><br />
-      <%= f.text_field :body_temperature %>
+</div>
+
+
+
+<div class="x_panel" style="">
+<div class="col-sm-12">
+<%= render 'layouts/error_messages', item: @user_note %>
+</div>
+  <div class="x_content">
+
+  <%= form_with model: @user_note, local: true, url: {action: 'confirm'} do |f| %>
+    <div class="calendar-exibit">
+      <div class="col-md-3 col-sm-12">
+         記録日：
+        <div class="col-sm-12 form-group row">
+          <%= f.date_field :record_date, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-12">
+        体温：
+        <div class="col-sm-12 form-group row">
+          <%= f.text_field :body_temperature, class: "form-control"%>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12">
+        睡眠時間：
+        <div class="col-sm-12 form-group row">
+           <%= f.time_select :sleep_start, {}, {class: "form-control bootstrap-date"} %>
+                    〜
+                    <%= f.time_select :sleep_end, {}, {class: "form-control bootstrap-date"} %>
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-12">
+        排泄回数：
+        <div class="col-sm-12 form-group row">
+           <%= f.select :number_toilet, [["1回", 1], ["2回", 2], ["3回", 3], ["4回", 4], ["5回以上", 5]], {include_blank: "選択して下さい"}, {class: 'form-control'} %>
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        前日の夕食：
+        <div class="col-sm-12 form-group row">
+          <%= f.text_area :dinner, class: 'form-control text_area_form_60' %>
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        本日の朝食：
+        <div class="col-sm-12 form-group row">
+          <%= f.text_area :breakfast, class: 'form-control text_area_form_60' %>
+        </div>
+      </div>
+
+
+      <div class="col-sm-12">
+        おうちでの様子：
+        <div class="col-sm-12 form-group row">
+          <%= f.text_area :message, class: "form-control text_area_form_60" %>
+        </div>
+      </div>
+
+
+      <div class="col-sm-12">
+        出欠席：
+        <div class="redio">
+          <%= f.radio_button :attendance_confirmation, :ture, {:checked => true}%>
+          <%= f.label :attendance_confirmation, "出席", {value: :ture, style: "display: inline-block;", class: "radio_label"} %>
+          <%= f.radio_button :attendance_confirmation, :false %>
+          <%= f.label :attendance_confirmation, "欠席", {value: :false, style: "display: inline-block;",class: "radio_label"} %>
+        </div>
+      </div>
+
+
+
+      <div class="col-sm-12 btn-last">
+        <%= link_to("戻る", top_path(), { class: "btn btn btn-primary"}) %>
+        <%= f.submit "確認画面へ", class: "btn btn-success" %>
+      </div>
     </div>
-    <div class="field">
-      <%= f.label :排泄回数 %><br />
-      <%= f.text_field :number_toilet %>
-    </div>
-      <div class="field">
-      <%= f.label :睡眠時間, class: 'control-label' %><br />
-      <%= f.time_select :sleep_start, class: 'form-control' %>〜
-      <%= f.time_select :sleep_end, class: 'form-control' %>
-    </div>
-    <div class="field">
-      <%= f.label :朝食 %><br />
-      <%= f.text_field :breakfast %>
-    </div>
-    <div class="field">
-      <%= f.label :夕食 %><br />
-      <%= f.text_field :dinner %>
-    </div>
-    <div class="field">
-      <%= f.label :おうちでの様子 %><br />
-      <%= f.text_field :message %>
-    </div>
-    <div class="form-group">
-      <%=f.label :日付, class: 'control-label'%><br />
-      <%= f.date_field :record_date, class: 'form-control' %>
-    </div>
-    <%= f.submit "確認画面へ" %>
-<% end %>
+      <% end %>
+  </div>
+</div>

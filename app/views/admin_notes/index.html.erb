@@ -1,17 +1,38 @@
-<h1>管理者側からみた連絡帳一覧</h1>
-<p><%=@user.last_name%>くんの連絡帳一覧</p>
+
+<div class="page-title">
+ <div class="title_left">
+  <h3><%=@user.last_name%>さんの連絡帳一覧</h3>
+ </div>
+ <div class="title_right">
+</div>
+</div>
 
 
-<%= link_to '連絡帳作成する', new_admin_admin_note_path() %>
+<div class="col-md-12">
+  <div class="x_panel">
+      <div class="x_content">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>記録日</th>
+              <th>記録者</th>
+            </tr>
+          </thead>
+          <% @admin_note.each do |note| %>
+            <tbody>
+              <tr onclick='window.location="<%= '/admins/' + @user.id.to_s + '/admin_notes/' + note.id.to_s %>"' role="link" class="cursor">
+                <td><%= link_to note.record_date, admin_admin_note_path(@user,note) %></td>
+                <td><%= note.creator.last_name %></td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+      <div class="col-md-12 col-sm-12  text-center">
+          <%= paginate @admin_note %>
+     </div>
+      </div>
+        <%= link_to("戻る", admin_notes_path(), { class: "btn btn btn-primary"}) %>
+        <%= link_to("連絡帳作成する", new_admin_admin_note_path(), { class: "btn btn-success"}) %>
+    </div>
+</div>
 
-
-
-
-<% @user.admin_notes.each do |note| %>
-
-<!--スラの次は/admins/:admin_id/admin_notes/:id(.:format)-->
-　　　　　　　　　　<!--user_id admin_note admin_id-->
-　　　　　　　　　　<!--ここでは@userがuserの情報を持っておりidがadmin_noteのidになる。-->
-<%= link_to note.record_date, admin_admin_note_path(@user,note) %>
-
-<% end %>

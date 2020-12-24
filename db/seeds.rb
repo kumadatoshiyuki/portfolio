@@ -23,11 +23,6 @@ Affiliation.create!(
       id: 3,
       affiliation_name: "こあら組"
     },
-
-    {
-      id: 4,
-      affiliation_name: "フリー"
-    }
     ]
   )
 
@@ -61,44 +56,44 @@ Affiliation.create!(
   )
 
 
-      ToiletType.create!(
-  [
-    {
-      id: 1,
-      toilet_type: "コロコロ便"
-    },
+  #     ToiletType.create!(
+  # [
+  #   {
+  #     id: 1,
+  #     toilet_type: "コロコロ便"
+  #   },
 
-    {
-      id: 2,
-      toilet_type: "硬い便"
-    },
+  #   {
+  #     id: 2,
+  #     toilet_type: "硬い便"
+  #   },
 
-    {
-      id: 3,
-      toilet_type: "やや硬い便"
-    },
+  #   {
+  #     id: 3,
+  #     toilet_type: "やや硬い便"
+  #   },
 
-    {
-      id: 4,
-      toilet_type: "普通便"
-    },
+  #   {
+  #     id: 4,
+  #     toilet_type: "普通便"
+  #   },
 
-    {
-      id: 5,
-      toilet_type: "やや軟らかい便"
-    },
+  #   {
+  #     id: 5,
+  #     toilet_type: "やや軟らかい便"
+  #   },
 
-    {
-      id: 6,
-      toilet_type: "泥状便"
-    },
+  #   {
+  #     id: 6,
+  #     toilet_type: "泥状便"
+  #   },
 
-    {
-      id: 7,
-      toilet_type: "水様便"
-    }
-    ]
-  )
+  #   {
+  #     id: 7,
+  #     toilet_type: "水様便"
+  #   }
+  #   ]
+  # )
 
 
 
@@ -173,24 +168,24 @@ UserNote.create!(
       attendance_confirmation: true,
       body_temperature: 36.7,
       number_toilet: 0,
-      sleep_start: 12,
-      sleep_end: 15,
+      sleep_start: "12",
+      sleep_end: "15",
       breakfast: "ご飯・お味噌汁・シャケ",
       dinner: "タラコスパゲッティー",
       message: "体調変わりなく元気です！お休みの日はスカイツリーへ行きました！すごい高いと怖がりながらも気になっていた太郎でした。",
-      record_date: "2020/12/17"
+      record_date: "2020/12/18"
     },
     {
       user_id: 3,
       attendance_confirmation: true,
       body_temperature: 37.1,
       number_toilet: 1,
-      sleep_start: 1145,
-      sleep_end: 15,
+      sleep_start: "11",
+      sleep_end: "15",
       breakfast: "パン・コーンスープ・スクランブルエッグ",
       dinner: "ハンバーグ・ご飯・中華スープ",
       message: "昨日は公園で転びました。様子みてください。",
-      record_date: "2020/12/17"
+      record_date: "2020/12/18"
     }
     ]
   )
@@ -201,11 +196,12 @@ UserNote.create!(
       id:1,
       user_id: 1,
       body_temperature: 36.7,
-      sleep_start: 12,
-      sleep_end: 15,
+      number_toilet: 1,
+      sleep_start: "12",
+      sleep_end: "15",
       message: "今日は保育園で沢山遊びました！！",
       creator_id: 2,
-      record_date: "2020/12/17",
+      record_date: "2020/12/18",
       staple_food_amount_id: 1,
       main_dish_amount_id: 1,
       side_dish_amount_id: 2,
@@ -216,11 +212,12 @@ UserNote.create!(
       id:2,
       user_id: 3,
       body_temperature: 36.7,
-      sleep_start: 12,
-      sleep_end: 15,
+      number_toilet: 0,
+      sleep_start: "12",
+      sleep_end: "15",
       message: "今日は公園にいきました",
       creator_id: 4,
-      record_date: "2020/12/17",
+      record_date: "2020/12/18",
       staple_food_amount_id: 1,
       main_dish_amount_id: 1,
       side_dish_amount_id: 2,
@@ -231,37 +228,37 @@ UserNote.create!(
   )
 
 
-    ToiletTime.create!(
-  [
-    {
-      id: 1,
-      toilet_time: 12,
-      toilet_type_id: 1,
-      admin_note_id: 2
-    },
+  #   ToiletTime.create!(
+  # [
+  #   {
+  #     id: 1,
+  #     toilet_time: 12,
+  #     toilet_type_id: 1,
+  #     admin_note_id: 2
+  #   },
 
-    {
-      id: 2,
-      toilet_time: 11,
-      toilet_type_id: 4,
-      admin_note_id: 1
-    },
+  #   {
+  #     id: 2,
+  #     toilet_time: 11,
+  #     toilet_type_id: 4,
+  #     admin_note_id: 1
+  #   },
 
-    {
-      id: 3,
-      toilet_time: 4,
-      toilet_type_id: 4,
-      admin_note_id: 2
-    },
+  #   {
+  #     id: 3,
+  #     toilet_time: 4,
+  #     toilet_type_id: 4,
+  #     admin_note_id: 2
+  #   },
 
-    {
-      id: 4,
-      toilet_time: 2,
-      toilet_type_id: 7,
-      admin_note_id: 1
-    }
-    ]
-  )
+  #   {
+  #     id: 4,
+  #     toilet_time: 2,
+  #     toilet_type_id: 7,
+  #     admin_note_id: 1
+  #   }
+  #   ]
+  # )
 
 
 
@@ -294,7 +291,7 @@ Meal.create!(
       side_dish: "枝豆",
       soup: "味噌汁",
       fruit: "りんご",
-      record_date: "2020/12/14"
+      record_date: "2020/12/21"
     },
     {
       id: 2,
@@ -303,7 +300,7 @@ Meal.create!(
       side_dish: "サラダ",
       soup: "味噌汁",
       fruit: "みかん",
-      record_date: "2020/12/15"
+      record_date: "2020/12/22"
     },
         {
       id: 3,
@@ -312,7 +309,7 @@ Meal.create!(
       side_dish: "バンバンジー",
       soup: "味噌汁",
       fruit: "桃",
-      record_date: "2020/12/16"
+      record_date: "2020/12/23"
     },
     {
       id: 4,
@@ -321,7 +318,7 @@ Meal.create!(
       side_dish: "サラダ",
       soup: "味噌汁",
       fruit: "どんぐり",
-      record_date: "2020/12/17"
+      record_date: "2020/12/24"
     }
     ]
   )

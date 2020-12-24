@@ -3608,16 +3608,16 @@ form:after {
 header {
     width: 100%
 }
-// #nprogress .bar {
-//     background: #1ABB9C
-// }
-// #nprogress .peg {
-//     box-shadow: 0 0 10px #1ABB9C, 0 0 5px #1ABB9C
-// }
-// #nprogress .spinner-icon {
-//     border-top-color: #1ABB9C;
-//     border-left-color: #1ABB9C
-// }
+#nprogress .bar {
+    background: #1ABB9C
+}
+#nprogress .peg {
+    box-shadow: 0 0 10px #1ABB9C, 0 0 5px #1ABB9C
+}
+#nprogress .spinner-icon {
+    border-top-color: #1ABB9C;
+    border-left-color: #1ABB9C
+}
 .editor-wrapper {
     min-height: 250px;
     background-color: white;

@@ -1,23 +1,28 @@
 <h1>お知らせ編集画面</h1>
-
-
-
-<%= form_with model:@news, local:true do |f| %>
-    <div class="field">
-      <%= f.label :日付 %><br />
-      <%= f.text_field :creation_date %>
+  <div class="x_panel">
+    
+    <%= render 'layouts/error_messages', item: @news %>
+    
+    <div class="x_title">
+        <h2>お知らせ登録 <small>保護者に伝えたい内容</small></h2>
+        <div class="clearfix"></div>
     </div>
-    <div class="field">
-      <%= f.label :クラス %><br />
-      <%= collection_check_boxes :news, :affiliation_ids, Affiliation.all, :id, :affiliation_name do |affiliation| %>
-        <%= affiliation.label { affiliation.check_box + affiliation.text } %>
+    <div class="x_content">
+      <%= form_with model:@news, local:true do |f| %>
+        <%=f.label :日付：, class: 'control-label'%><br />
+        <%= f.date_field :creation_date, class: 'form-control' %>
+        <label>お知らせしたいクラス(複数選択可能)</label>
+          <p style="padding: 5px;">
+            <%= collection_check_boxes :news, :affiliation_ids, Affiliation.all, :id, :affiliation_name do |affiliation| %>
+              <%= affiliation.label { affiliation.check_box + affiliation.text } %>
+            <% end %><br>
+          </p>
+          <p>
+            <label for="message">お知らせ内容 :</label>
+            <%= f.text_area :message, class: "form-control" %><br>
+            <%= f.submit "更新", class: "btn btn-success" %>
+          </p>
       <% end %>
     </div>
-    <div class="field">
-      <%= f.label :お知らせ内容 %><br />
-      <%= f.text_area :message %>
-    </div>
-    <%= f.submit "Update User" %>
-<% end %>
-
-<%= link_to "戻る", news_index_path() %>
+</div>
+<%= link_to("戻る", news_index_path, { class: "btn btn-primary"}) %>

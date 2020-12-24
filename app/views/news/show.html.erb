@@ -1,11 +1,53 @@
-<h1>お知らせ詳細</h1>
+<div class="page-title">
+  <div class="title_left">
+    <h3>お知らせ詳細</h3>
+  </div>
+</div>
 
-<% @news.affiliation.each do |affiliation| %>
-  <p><%= affiliation.affiliation_name%></p>
-<% end %>
 
 
-<p><%= @news.message%></p>
-<p><%= @news.creation_date%></p>
 
+
+<div class="col-md-12">
+  <div class="x_panel">
+    <div class="x_title">
+      <small><%= get_date(@news.creation_date)%></small>
+      <% @news.affiliation.each do |affiliation| %>
+         <p class="title h2_tag"><%= affiliation.affiliation_name %></p>
+      <% end %>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+      <div class="col-xs-9">
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div class="tab-pane active" id="home">
+            <p><%= @news.message%></p>
+          </div>
+          <div class="tab-pane" id="profile">Profile Tab.</div>
+          <div class="tab-pane" id="messages">Messages Tab.</div>
+          <div class="tab-pane" id="settings">Settings Tab.</div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
 <%= link_to "編集画面へ", edit_news_path(@news), class: "btn btn-success"%>
+<%= link_to("お知らせ削除", news_path(), data: { confirm: "本当に削除しますか?", }, class: "btn btn btn-danger", method: :delete) %>
+<%= link_to "戻る", news_index_path(), class: "btn btn-primary"%>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -11,12 +11,26 @@ class Ability
     # end
     # ログイン/アウトはみんな許可
     # can :manage, :session
-    user ||= User.new
-      can :read, :all
-    # 管理者権限を持つユーザ
-    if user.admin?
-      can :manage, :all
-    end
+    # user ||= User.new
+    #   can :read, :all
+    # # 管理者権限を持つユーザ
+    # if user.admin?
+    #   can :manage, :all
+    # end
+
+    # def initialize(user)
+    #   # ログイン/アウトはみんな許可
+    #   can :manage, :session
+    #   user ||= User.new
+    #   if user.admin?
+    #     can :manage, :all
+    #   else
+    #     can :read, [UserNote, Meal]
+    #   end
+    # end
+
+
+
 
 
     # Define abilities for the passed in user here. For example:
@@ -45,5 +59,6 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+
   end
 end

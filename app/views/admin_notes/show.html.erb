@@ -1,33 +1,396 @@
-<h1>保護者が書いてきた今日の様子</h1>
-
-<h1><%= @admin_note.user.last_name %>の連絡帳</h1>
-<h1>今日のもの</h1>
-<p><%= @user_note.body_temperature %></p>
-<p><%= @user_note.number_toilet %></p>
-<p><%= @user_note.sleep_start %></p>
-<p><%= @user_note.sleep_end %></p>
-<p><%= @user_note.breakfast %></p>
-<p><%= @user_note.dinner %></p>
-<p><%= @user_note.message %></p>
-<p><%= @user_note.record_date %></p>
-
-<h1>保育士記述したもの</h1>
-<p>記入者：<%= @admin_note.creator.last_name %></p>
+<div class="page-title">
+  <div class="title_left">
+    <h3><%= @admin_note.user.last_name + @admin_note.user.first_name %>さんの連絡帳</h3>
+  </div>
+</div>
 
 
+<div class="clearfix"></div>
 
-<p><%= @admin_note.sleep_start %></p>
-<p><%= @admin_note.sleep_end %></p>
-<p><%= @admin_note.message %></p>
-<p><%= @admin_note.creator_id %></p>
-<p><%= @admin_note.record_date %></p>
-<p><%= @admin_note.user_id %></p>
-<p><%= @admin_note.staple_food_amount_id %></p>
-<p><%= @admin_note.main_dish_amount_id %></p>
-<p><%= @admin_note.side_dish_amount_id %></p>
-<p><%= @admin_note.fruit_amount_id %></p>
-<p><%= @admin_note.timestamps %></p>
-<p><%= @admin_note.soup_amount_id %></p>
+  <% if @user_note.nil? %>
+    <div class="col-md-6">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2></h2><small>保護者より</small></h2>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <table class="table table-striped">
+            <thead>
+              <tr>
 
-<div><%= link_to '編集', edit_admin_admin_note_path(@admin_note) %></div>
-<div><%= link_to '戻る', admin_admin_notes_path() %></div>
+                <th></th>
+                <th></th>
+
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td>記入日</td>
+                <td>入力がありません</td>
+              </tr>
+
+
+              <tr>
+                <td>体温</td>
+                <td>入力がありません</td>
+              </tr>
+
+              <tr>
+                <td>排泄回数</td>
+                <td>入力がありません</td>
+              </tr>
+
+              <tr>
+                <td>睡眠時間</td>
+                <td>入力がありません</td>
+              </tr>
+
+              <tr>
+                <td>朝食</td>
+                <td>入力がありません</td>
+              </tr>
+
+              <tr>
+                <td>夕食</td>
+                <td>入力がありません</td>
+              </tr>
+
+              <tr>
+                <td>おうちでの様子</td>
+                <td>入力がありません</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="col-md-6">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2><small>保護者より</small></h2>
+          <div class="clearfix"></div>
+
+        </div>
+        <div class="x_content">
+          <table class="table table-striped tbl-r02">
+            <thead>
+              <tr>
+
+                <th></th>
+                <th></th>
+
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td>記述日</td>
+                <td><%= @user_note.record_date %></td>
+              </tr>
+
+              <tr>
+                <td>体温</td>
+                <td><%= @user_note.body_temperature %></td>
+              </tr>
+
+              <tr>
+                <td>排泄回数</td>
+                <td><%= @user_note.number_toilet %></td>
+              </tr>
+
+              <tr>
+                <td>睡眠時間</td>
+                <td><%= get_time(@user_note.sleep_start) %>〜<%= get_time(@user_note.sleep_end) %></td>
+              </tr>
+
+              <tr>
+                <td>朝食</td><td><%= @user_note.breakfast %></td>
+              </tr>
+
+              <tr>
+                <td>夕食</td>
+                <td><%= @user_note.dinner %></td>
+              </tr>
+
+              <tr class="last">
+                <td class="col-md-3 col-xs-4">メッセージ</td>
+                <td class="col-md-9 col-xs-8"><%= @user_note.message %></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+
+
+
+  <% if @admin_note.nil? %>
+    <div class="col-md-6 ">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2><small>記入者：<%= @admin_note.creator.last_name %></small></h2>
+
+          <div class="clearfix"></div>
+
+        </div>
+        <div class="x_content">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+
+                <th></th>
+                <th></th>
+
+              </tr>
+            </thead>
+            <tbody>
+
+
+              <tr>
+                <td>記述日</td>
+                <td>入力がありません</td>
+              </tr>
+
+
+              <tr>
+                <td>体温</td>
+                <td>入力がありません</td>
+              </tr>
+
+              <tr>
+                <td>排泄回数</td>
+                <td>入力がありません</td>
+              </tr>
+
+              <tr>
+                <td>睡眠時間</td>
+                <td>入力がありません</td>
+              </tr>
+
+              <tr>
+                <td>主食：
+                  情報がありません
+                </td>
+                <td>入力がありません</td>
+              </tr>
+
+              <tr>
+                <td>主菜：
+                  情報がありません
+                </td>
+                <td>入力がありません</td>
+              </tr>
+
+              <tr>
+                <td>副菜：
+                  <情報がありません
+                </td>
+                <td>入力がありません</td>
+              </tr>
+
+              <tr>
+                <td>汁物：
+                  情報がありません
+                </td>
+                <td>入力がありません</td>
+              </tr>
+
+              <tr>
+                <td>果物：
+                  情報がありません
+                </td>
+                <td>入力がありません</td>
+              </tr>
+
+              <tr>
+                <td>園での様子</td>
+                <td>
+                  入力がありません
+                </td>
+              </tr>
+
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="col-md-6 ">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2><small>記入者：<%= @admin_note.creator.last_name %></small></h2>
+
+          <div class="clearfix"></div>
+
+        </div>
+        <div class="x_content">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+
+                <th></th>
+                <th></th>
+
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td>記述日</td>
+                <td><%= @admin_note.record_date %>
+                </td>
+              </tr>
+
+              <tr>
+                <td>体温</td>
+                <td><%= @admin_note.body_temperature %>
+                </td>
+              </tr>
+
+              <tr>
+                <td>排泄回数</td>
+                <td><%= @admin_note.number_toilet %></td>
+              </tr>
+
+              <tr>
+                <td>睡眠時間</td>
+                <td><%= get_time(@admin_note.sleep_start) %>〜<%= get_time(@admin_note.sleep_end) %>
+                </td>
+              </tr>
+
+              <% if @meal.nil? %>
+
+              <tr>
+                <td>主食：情報がありません
+
+                </td>
+                <td>
+                  <%= @admin_note.staple_food_amount.amount_type %>
+                </td>
+              </tr>
+
+              <tr>
+                <td>主菜：情報がありません
+                </td>
+                <td>
+                  <%= @admin_note.main_dish_amount.amount_type %>
+                </td>
+              </tr>
+
+              <tr>
+                <td>副菜：情報がありません
+                </td>
+                <td>
+                  <%= @admin_note.side_dish_amount.amount_type %>
+                </td>
+              </tr>
+
+              <tr>
+                <td>汁物：情報がありません
+                </td>
+                <td>
+                  <%= @admin_note.soup_amount.amount_type %>
+                </td>
+              </tr>
+
+              <tr>
+                <td>果物：情報がありません
+                </td>
+                <td>
+                  <%= @admin_note.fruit_amount.amount_type %>
+                </td>
+              </tr>
+
+
+
+
+
+
+
+
+
+
+
+              <% else %>
+
+              <tr>
+                <td>主食：
+                  <%= @meal.staple_food %>
+                </td>
+                <td>
+                  <%= @admin_note.staple_food_amount.amount_type %>
+                </td>
+              </tr>
+
+              <tr>
+                <td>主菜：
+                  <%= @meal.main_dish %>
+                </td>
+                <td>
+                  <%= @admin_note.main_dish_amount.amount_type %>
+                </td>
+              </tr>
+
+              <tr>
+                <td>副菜：
+                  <%= @meal.side_dish %>
+                </td>
+                <td>
+                  <%= @admin_note.side_dish_amount.amount_type %>
+                </td>
+              </tr>
+
+              <tr>
+                <td>汁物：
+                  <%= @meal.soup %>
+                </td>
+                <td>
+                  <%= @admin_note.soup_amount.amount_type %>
+                </td>
+              </tr>
+
+              <tr>
+                <td>果物：
+                  <%= @meal.fruit %>
+                </td>
+                <td>
+                  <%= @admin_note.fruit_amount.amount_type %>
+                </td>
+              </tr>
+              <% end %>
+
+              <tr>
+                <td>保育園での様子
+                </td>
+                <td>
+                  <%= @admin_note.message %>
+                </td>
+              </tr>
+
+
+
+            </tbody>
+          </table>
+        </div>
+        <!--/admins/:admin_id/admin_notes/:id/edit(.:format)-->
+        <!--edit_admin_admin_note_path(@admin_note.user,@admin_note)-->
+
+        <!--admin_id (user_id) => @admin_note.user-->
+        <!--id (admin_note_id) => @admin_note-->
+
+        <%= link_to("編集", edit_admin_admin_note_path(@admin_note.user,@admin_note), { class: "btn btn-success"}) %>
+        <%= link_to("削除", admin_admin_note_path(@admin_note.user,@admin_note), data: { confirm: "本当に削除しますか?", }, class: "btn btn btn-danger", method: :delete) %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= link_to("戻る", admin_admin_notes_path(), { class: "btn btn btn-primary"}) %>

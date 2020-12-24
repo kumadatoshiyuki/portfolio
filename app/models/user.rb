@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   enum role: { user: 1, admin: 99 }
   ROLE = {'user' => 1,'admin'=> 99}
-
   # 物理削除の代わりにユーザーの`deleted_at`をタイムスタンプで更新
   def soft_delete
     update_attribute(:is_valid, false)
@@ -34,6 +33,16 @@ class User < ApplicationRecord
   has_many :user_notes, dependent: :destroy
   belongs_to :affiliation, optional: true
   attachment :image
+
+  validates :first_name,    length: { in: 1..15 }
+  validates :last_name,    length: { in: 1..15 }
+  validates :kana_first_name,    length: { in: 1..15 }
+  validates :kana_last_name,    length: { in: 1..15 }
+  validates :age, numericality: true, length: { maximum: 2 }
+  validates :phone, numericality: true, presence: true
+  # validates :password, length: { in: 6..20 }
+  validates :login_id, uniqueness: true, length: { in: 6..20 }
+  validates :affiliation_id, presence: true
 
 
 

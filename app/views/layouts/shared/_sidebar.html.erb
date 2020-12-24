@@ -1,0 +1,57 @@
+<!-- sidebar menu -->
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+  <div class="menu_section">
+    <ul class="nav side-menu">
+      <li>
+          <%= link_to admins_top_path(), :method => :get do %>
+          <i class="fa fa-home"></i>
+          トップ画面
+          <% end %>
+      </li>
+
+
+
+
+
+
+      <!--<li><a><i class="fa fa-home"></i> ホーム <span class="fa fa-chevron-down"></span></a>-->
+        <!--<ul class="nav child_menu">-->
+        <!--</ul>-->
+      <!--</li>-->
+      <li><a><i class="fa  fa-user"></i> 園児 <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><%= link_to '園児一覧', users_path() %></li>
+          <li><%= link_to '園児登録', new_user_registration_path() %></li>
+        </ul>
+      </li>
+      <li><a><i class="fa fa-edit"></i> 連絡帳 <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><%= link_to '連絡帳一覧', admin_notes_path() %></li>
+        </ul>
+      </li>
+      <li><a><i class="fa fa-cutlery"></i> 食事 <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><%= link_to '献立一覧', meals_calendar_path() %></li>
+        </ul>
+      </li>
+      <li><a><i class="fa fa-address-card-o"></i> 管理者 <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><%= link_to '管理者一覧', admins_path() %></li>
+        </ul>
+      </li>
+      <li><a><i class="fa  fa-comments-o"></i> お知らせ <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><%= link_to 'お知らせ一覧', news_index_path %></li>
+          <li><%= link_to 'お知らせ登録', new_news_path %></li>
+        </ul>
+      </li>
+            <li>
+          <%= link_to logout_path(), :method => :delete do %>
+            <i class="fa fa-sign-out"></i>
+            ログアウト
+            <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- /sidebar menu -->

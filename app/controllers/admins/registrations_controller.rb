@@ -2,7 +2,12 @@
 
 class Admins::RegistrationsController < Devise::RegistrationsController
   prepend_before_action :require_no_authentication, only: [:cancel]
-  layout 'user.application'
+
+  layout 'application'
+
+  before_action :if_not_admin
+
+  # layout 'user.application'
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -31,6 +36,14 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+
+  def after_sign_up_path_for(resource)
+    admins_path
+  end
+
+  def if_not_admin
+    redirect_to top_path unless current_user.is_admin?
+  end
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
   # in to be expired now. This is useful if the user wants to
@@ -58,7 +71,5 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+
 end

@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  before_action :if_not_admin, except: [:top]
+  before_action :if_not_user, only: [:top]
   # layout 'user.application', except: [:index,:top]
-  layout 'user.application', only:  [:show,:edit]
+  # layout 'application', only:  [:new,:create]
   # 管理者の登録はこの画面で行う
   def top
     # 保護者の個人topページ
@@ -8,10 +10,10 @@ class UsersController < ApplicationController
     @news = News.all
     @admin_note = AdminNote.where(user_id: current_user.id).find_by(record_date: get_today)
 
+
   end
 
   def index
-    @users = User.get_user().without_deleted
     # 保護者の一覧ページ
     # without_deletedを使用することでtureのユーザのみ表示される
     @user_or_post = params[:option]
@@ -20,12 +22,15 @@ class UsersController < ApplicationController
       if @affiliation.nil?
         render template: "users/index"
       else
-        @users = User.get_user().without_deleted.where(affiliation_id: @affiliation.id).all
+        users = User.get_user().without_deleted.where(affiliation_id: @affiliation.id)
       end
+    elsif @user_or_post == "2"
+      users = User.search(params[:search], @user_or_post)
     else
-      @users = User.search(params[:search], @user_or_post)
+      users = User.get_user().without_deleted
     end
 
+    @users = users.page(params[:page])
   end
 
   def show
@@ -64,4 +69,13 @@ private
   def user_params
     params.require(:user).permit(:first_name, :last_name, :kana_first_name, :kana_last_name, :age, :phone, :image, :login_id, :email, :affiliation_id, :password, :role)
   end
+
+  def if_not_admin
+    redirect_to top_path unless current_user.is_admin?
+  end
+
+  def if_not_user
+    redirect_to admins_top_path unless current_user.is_user?
+  end
+
 end

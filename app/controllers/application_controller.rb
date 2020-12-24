@@ -1,13 +1,24 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_user!
   layout :layout_by_resource
 
   # authorize_resource :class => false
-  #   # 権限が無いページへアクセス時の例外処理
-  #   rescue_from CanCan::AccessDenied do |exception|
+  # # 権限が無いページへアクセス時の例外処理
+  # rescue_from CanCan::AccessDenied do |exception|
   #   # root_urlにかっ飛ばす。
-  #   redirect_to singin_path
+  #   redirect_to top_path
   # end
+  
+  # authorize_resource
+
+  # # 権限が無いページへアクセス時の例外処理
+  # rescue_from CanCan::AccessDenied do |exception|
+  #   # root_urlにかっ飛ばす。
+  #   redirect_to meals_path
+  # end
+  
+  
 
     CONFIRMATION = {true => '出席',false=> '欠席'}
 
@@ -61,6 +72,11 @@ class ApplicationController < ActionController::Base
   #   end
   # end
 
+
+
+
+
+
   protected
     def configure_permitted_parameters
       added_attrs = [:first_name, :last_name, :kana_first_name, :kana_last_name, :age, :phone, :login_id, :email, :affiliation_id, :password, :role, :image ]
@@ -74,7 +90,7 @@ class ApplicationController < ActionController::Base
 
   def layout_by_resource
     if devise_controller?
-      false
+      "devise.application"
     else
       "application"
     end
