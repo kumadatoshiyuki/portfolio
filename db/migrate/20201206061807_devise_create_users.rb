@@ -14,7 +14,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.boolean :is_valid, null: false, default:true
       t.string :login_id, null: false
       t.string :email,              null: false, default: ""
-      t.references :affiliation, foreign_key: true
+      # t.references :affiliation, foreign_key: true
 
       t.string :encrypted_password, null: false, default: ""
 
