@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2020_12_24_104422) do
     t.string "kana_first_name", null: false
     t.string "kana_last_name", null: false
     t.integer "age", null: false
-    t.integer "phone", null: false
+    t.bigint "phone", null: false
     t.string "image_id"
     t.boolean "is_valid", default: true, null: false
     t.string "login_id", null: false
