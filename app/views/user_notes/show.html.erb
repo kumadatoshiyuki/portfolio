@@ -62,7 +62,7 @@
 <div class="col-md-6 ">
 <div class="x_panel">
 <div class="x_title">
-<h2><%= @user_note.record_date %><small>のもの</small></h2>
+<h2><%= @user_note.record_date %><small></small></h2>
 <div class="clearfix"></div>
 
 </div>
@@ -94,14 +94,15 @@
 </tr>
 
 <tr>
+<td>夕食</td>
+<td><%= @user_note.dinner %></td>
+</tr>
+
+<tr>
 <td>朝食</td>
 <td><%= @user_note.breakfast %></td>
 </tr>
 
-<tr>
-<td>夕食</td>
-<td><%= @user_note.dinner %></td>
-</tr>
 
 <tr>
 <td>おうちでの様子</td>
@@ -190,7 +191,7 @@
 <div class="col-md-6 ">
 <div class="x_panel">
 <div class="x_title">
-<h2><%= @admin_note.record_date %>保育園での<%= @user.last_name %>さんの様子<small>記入者：<%= @admin_note.creator.last_name %></small></h2>
+<h2>保育園での様子<small>記入者：<%= @admin_note.creator.last_name + @admin_note.creator.first_name %></small></h2>
 <div class="clearfix"></div>
 
 </div>
@@ -218,7 +219,7 @@
 
 <tr>
 <td>睡眠時間</td>
-<td><%= @admin_note.sleep_start %>〜<%= @admin_note.sleep_end %></td>
+<td><%= get_time(@admin_note.sleep_start) %>〜<%= get_time(@admin_note.sleep_end) %></td>
 </tr>
 
 <% if @meal.nil? %>

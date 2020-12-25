@@ -50,20 +50,19 @@
             <tr>
               <td>睡眠時間：</td>
               <td>
-                <%= @user_note.sleep_start %>〜
-                  <%= @user_note.sleep_end %>
-              </td>
-            </tr>
-            <tr>
-              <td>朝食：</td>
-              <td>
-                <%= @user_note.breakfast %>
+                <%= get_time(@user_note.sleep_start) %>〜<%= get_time(@user_note.sleep_end) %>
               </td>
             </tr>
             <tr>
               <td>夕食：</td>
               <td>
                 <%= @user_note.dinner %>
+              </td>
+            </tr>
+            <tr>
+              <td>朝食：</td>
+              <td>
+                <%= @user_note.breakfast %>
               </td>
             </tr>
             <tr>
@@ -74,6 +73,7 @@
             </tr>
           </tbody>
         </table>
+        <%= f.submit '戻る', name: 'back',class: "btn btn-primary" %>
         <%= f.submit "連絡帳登録", class: "btn btn-success" %>
       </div>
     <% end %>

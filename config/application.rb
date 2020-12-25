@@ -4,6 +4,12 @@ require_relative 'boot'
 require 'rails/all'
 require 'date'
 
+require 'faker'
+# require 'Set'
+
+  # config.i18n.available_locales = %i[ja en]
+  # config.i18n.default_locale = :ja
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)

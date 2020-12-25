@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   def index
+    @users = User.get_user().without_deleted.page(params[:page])
     # 保護者の一覧ページ
     # without_deletedを使用することでtureのユーザのみ表示される
     @user_or_post = params[:option]
@@ -22,16 +23,18 @@ class UsersController < ApplicationController
       if @affiliation.nil?
         render template: "users/index"
       else
-        users = User.get_user().without_deleted.where(affiliation_id: @affiliation.id)
+        @users = User.get_user().without_deleted.where(affiliation_id: @affiliation.id).get_user().without_deleted.page(params[:page])
       end
     elsif @user_or_post == "2"
-      users = User.search(params[:search], @user_or_post)
+      @users = User.search(params[:search], @user_or_post).without_deleted.page(params[:page])
     else
-      users = User.get_user().without_deleted
+      @users = User.get_user().without_deleted
     end
 
-    @users = users.page(params[:page])
+    @users
   end
+  
+  
 
   def show
     # 保護者詳細
