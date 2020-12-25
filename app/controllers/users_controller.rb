@@ -21,20 +21,19 @@ class UsersController < ApplicationController
     if @user_or_post == "1"
       @affiliation = Affiliation.search(params[:search], @user_or_post).first
       if @affiliation.nil?
-        render template: "users/index"
+        affiliation_id = 0
       else
-        @users = User.get_user().without_deleted.where(affiliation_id: @affiliation.id).get_user().without_deleted.page(params[:page])
+        affiliation_id = @affiliation.id
       end
+        @users = User.get_user().without_deleted.where(affiliation_id: affiliation_id).get_user().without_deleted.page(params[:page])
     elsif @user_or_post == "2"
       @users = User.search(params[:search], @user_or_post).without_deleted.page(params[:page])
     else
-      @users = User.get_user().without_deleted
+      @users = User.get_user().without_deleted.page(params[:page])
     end
-
-    @users
   end
-  
-  
+
+
 
   def show
     # 保護者詳細

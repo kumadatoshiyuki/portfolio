@@ -15,18 +15,16 @@ class AdminNotesController < ApplicationController
     if @user_or_post == "1"
       @affiliation = Affiliation.search(params[:search], @user_or_post).first
       if @affiliation.nil?
-        render "admin_notes/top"
+         affiliation_id = 0
       else
-        @users = User.where(affiliation_id: @affiliation.id).get_user().without_deleted.page(params[:page])
+        affiliation_id = @affiliation.id
       end
+        @users = User.where(affiliation_id: affiliation_id).get_user().without_deleted.page(params[:page])
     elsif @user_or_post == "2"
       @users = User.search(params[:search], @user_or_post).get_user().without_deleted.page(params[:page])
     else
       @users
     end
-
-
-
   end
 
   def index
