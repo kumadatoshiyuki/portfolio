@@ -108,8 +108,10 @@ GEM
       railties (>= 3.2)
     erubi (1.10.0)
     execjs (2.7.0)
+    faker (2.15.1)
+      i18n (>= 1.6, < 2)
     fastclick-rails (1.0.1)
-    ffi (1.14.1)
+    ffi (1.14.2)
     flot-rails (0.0.7)
       jquery-rails
     font-awesome-sass (4.7.0)
@@ -135,6 +137,8 @@ GEM
       sass-rails (>= 5.0)
       select2-rails
       switchery-rails
+    gimei (0.5.1)
+      romaji
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     gon (6.4.0)
@@ -248,7 +252,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
     rake (13.0.3)
-    ransack (2.4.0)
+    ransack (2.4.1)
       activerecord (>= 5.2.4)
       activesupport (>= 5.2.4)
       i18n
@@ -269,6 +273,8 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    romaji (0.2.4)
+      rake (>= 0.8.0)
     ruby2_keywords (0.0.2)
     ruby_dep (1.5.0)
     rubyzip (2.3.0)
@@ -345,8 +351,10 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   dotenv-rails
+  faker
   fullcalendar-rails
   gentelella-rails
+  gimei
   gon
   jbuilder (~> 2.5)
   jquery-rails

@@ -81,6 +81,10 @@ class User < ApplicationRecord
        User.get_user().without_deleted
     end
   end
+  
+  
+  
+  
 
 
 

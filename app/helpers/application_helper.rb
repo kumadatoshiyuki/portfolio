@@ -30,24 +30,25 @@ module ApplicationHelper
     end
 
     # item <= @admin_note
-    # column <=
+    # amount_id <=
     # staple_food_amount
     # main_dish_amount
     # side_dish_amount
     # soup_amount
     # fruit_amount
-    def get_amount(item, amount_id)
+    def get_amount(item, column)
 
-      if item
+      if item.nil?
         return nil
       end
 
+
       # @admin_noteがあるかチェック
-      if amount_id.nil?
+      if item.send(column).nil?
         return 0
       end
 
-      case amount_id
+      case item.send(column)
       when 1 then
         return "100"
       when 2 then
@@ -61,18 +62,17 @@ module ApplicationHelper
       end
     end
 
-    def get_amount_color(item, amount_id)
-
-      if item
+    def get_amount_color(item, column)
+      if item.nil?
         return nil
       end
 
-      if amount_id.nil?
+      if item.send(column).nil?
         return nil
       end
 
 
-      case amount_id
+      case item.send(column)
       when 1 then
         return nil
       when 2 then

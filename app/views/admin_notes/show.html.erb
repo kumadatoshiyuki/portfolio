@@ -108,13 +108,15 @@
               </tr>
 
               <tr>
-                <td>朝食</td><td><%= @user_note.breakfast %></td>
-              </tr>
-
-              <tr>
                 <td>夕食</td>
                 <td><%= @user_note.dinner %></td>
               </tr>
+              
+              <tr>
+                <td>朝食</td>
+                <td><%= @user_note.breakfast %></td>
+              </tr>
+
 
               <tr class="last">
                 <td class="col-md-3 col-xs-4">メッセージ</td>
@@ -135,7 +137,7 @@
     <div class="col-md-6 ">
       <div class="x_panel">
         <div class="x_title">
-          <h2><small>記入者：<%= @admin_note.creator.last_name %></small></h2>
+          <h2><small>記入者：情報がありません</small></h2>
 
           <div class="clearfix"></div>
 
@@ -227,7 +229,7 @@
     <div class="col-md-6 ">
       <div class="x_panel">
         <div class="x_title">
-          <h2><small>記入者：<%= @admin_note.creator.last_name %></small></h2>
+          <h2><small>記入者：<%= @admin_note.creator.last_name + @admin_note.creator.first_name %></small></h2>
 
           <div class="clearfix"></div>
 
