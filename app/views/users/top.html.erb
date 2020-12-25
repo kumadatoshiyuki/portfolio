@@ -63,11 +63,11 @@
   /*  padding: 5px;*/
   /*  height: 52px;*/
   /*}*/
-  
+
   .message {
     font-size: 10;
   }
-  
+
 </style>
 
 
@@ -112,7 +112,7 @@
             </div>
             <div class="col-md-8 col-xs-12">
               <div class="progress">
-                <div class="progress-bar <%= get_amount_color(@admin_note," staple_food_amount_id ") %>" data-transitiongoal=<%=g et_amount(@admin_note, "staple_food_amount_id") %>></div>
+                <div class="progress-bar <%= get_amount_color(@admin_note,"staple_food_amount_id") %>" data-transitiongoal=<%=get_amount(@admin_note, "staple_food_amount_id") %>></div>
               </div>
             </div>
             <div class="col-md-4 col-xs-12">
@@ -120,7 +120,7 @@
             </div>
             <div class="col-md-8 col-xs-12">
               <div class="progress">
-                <div class="progress-bar <%= get_amount_color(@admin_note," main_dish_amount_id ") %>" data-transitiongoal=<%=g et_amount(@admin_note, "main_dish_amount_id") %>></div>
+                <div class="progress-bar <%= get_amount_color(@admin_note,"main_dish_amount_id") %>" data-transitiongoal=<%=get_amount(@admin_note, "main_dish_amount_id") %>></div>
               </div>
             </div>
             <div class="col-md-4 col-xs-12">
@@ -128,7 +128,7 @@
             </div>
             <div class="col-md-8 col-xs-12">
               <div class="progress">
-                <div class="progress-bar <%= get_amount_color(@admin_note," side_dish_amount_id ") %>" data-transitiongoal=<%=get_amount(@admin_note, "side_dish_amount_id") %>></div>
+                <div class="progress-bar <%= get_amount_color(@admin_note,"side_dish_amount_id") %>" data-transitiongoal=<%=get_amount(@admin_note, "side_dish_amount_id") %>></div>
               </div>
             </div>
             <div class="col-md-4 col-xs-12">
@@ -136,7 +136,7 @@
             </div>
             <div class="col-md-8 col-xs-12">
               <div class="progress">
-                <div class="progress-bar <%= get_amount_color(@admin_note," soup_amount_id ") %>" data-transitiongoal=<%=get_amount(@admin_note, "soup_amount_id") %>></div>
+                <div class="progress-bar <%= get_amount_color(@admin_note,"soup_amount_id") %>" data-transitiongoal=<%=get_amount(@admin_note, "soup_amount_id") %>></div>
               </div>
             </div>
             <div class="col-md-4 col-xs-12">
@@ -144,7 +144,7 @@
             </div>
             <div class="col-md-8 col-xs-12">
               <div class="progress">
-                <div class="progress-bar <%= get_amount_color(@admin_note," fruit_amount_id ") %>" data-transitiongoal=<%=get_amount(@admin_note, "fruit_amount_id") %>></div>
+                <div class="progress-bar <%= get_amount_color(@admin_note,"ruit_amount_id") %>" data-transitiongoal=<%=get_amount(@admin_note, "fruit_amount_id") %>></div>
               </div>
             </div>
           </div>
@@ -157,7 +157,7 @@
               </div>
               <div class="col-md-8 col-xs-12">
                 <div class="progress">
-                  <div class="progress-bar <%= get_amount_color(@admin_note," staple_food_amount_id ") %>" data-transitiongoal=<%=get_amount(@admin_note, "staple_food_amount_id") %>></div>
+                  <div class="progress-bar <%= get_amount_color(@admin_note,"staple_food_amount_id") %>" data-transitiongoal=<%=get_amount(@admin_note, "staple_food_amount_id") %>></div>
                 </div>
               </div>
               <div class="col-md-4 col-xs-12">
@@ -165,7 +165,7 @@
               </div>
               <div class="col-md-8 col-xs-12">
                 <div class="progress">
-                  <div class="progress-bar <%= get_amount_color(@admin_note," main_dish_amount_id ") %>" data-transitiongoal=<%=get_amount(@admin_note, "main_dish_amount_id") %>></div>
+                  <div class="progress-bar <%= get_amount_color(@admin_note,"main_dish_amount_id") %>" data-transitiongoal=<%=get_amount(@admin_note, "main_dish_amount_id") %>></div>
                 </div>
               </div>
               <div class="col-md-4 col-xs-12">
@@ -173,7 +173,7 @@
               </div>
               <div class="col-md-8 col-xs-12">
                 <div class="progress">
-                  <div class="progress-bar <%= get_amount_color(@admin_note," side_dish_amount_id ") %>" data-transitiongoal=<%=get_amount(@admin_note, "side_dish_amount_id") %>></div>
+                  <div class="progress-bar <%= get_amount_color(@admin_note,"side_dish_amount_id") %>" data-transitiongoal=<%=get_amount(@admin_note, "side_dish_amount_id") %>></div>
                 </div>
               </div>
               <div class="col-md-4 col-xs-12">
@@ -181,7 +181,7 @@
               </div>
               <div class="col-md-8 col-xs-12">
                 <div class="progress">
-                  <div class="progress-bar <%= get_amount_color(@admin_note," soup_amount_id ") %>" data-transitiongoal=<%=get_amount(@admin_note, "soup_amount_id") %>></div>
+                  <div class="progress-bar <%= get_amount_color(@admin_note,"soup_amount_id") %>" data-transitiongoal=<%=get_amount(@admin_note, "soup_amount_id") %>></div>
                 </div>
               </div>
               <div class="col-md-4 col-xs-12">
@@ -275,7 +275,7 @@
         <article class="media event">
           <div class="media-body">
             <p class="title h2_tag">お知らせはありません</p>
-            
+
           <div class="margin_top7">
             お知らせはありません
           </div>
@@ -373,7 +373,7 @@
   <%= attachment_image_tag @admin_note.creator, :image, format: 'jpeg', fallback: "user.png", class: "img-circle img-fluid" %>
   </span>
   <span>
-  <span>記入者：<%= @admin_note.creator.last_name %></span>
+  <span>記入者：<%= @admin_note.creator.last_name + @admin_note.creator.first_name %></span>
   <!--<span class="time">3 mins ago</span>-->
   </span>
   <span class="message"><%= @admin_note.message %>

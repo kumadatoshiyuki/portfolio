@@ -22,7 +22,7 @@
             <tbody>
               <tr onclick='window.location="<%= '/admins/' + @user.id.to_s + '/admin_notes/' + note.id.to_s %>"' role="link" class="cursor">
                 <td><%= link_to note.record_date, admin_admin_note_path(@user,note) %></td>
-                <td><%= note.creator.last_name %></td>
+                <td><%= note.creator.last_name + note.creator.first_name %></td>
               </tr>
             </tbody>
           <% end %>

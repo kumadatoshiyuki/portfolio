@@ -71,7 +71,6 @@ textarea.form-control{
 
       <p>
         <%=f.label :登録クラス：, class: 'control-label'%><br />
-
         <%= collection_check_boxes :news, :affiliation_ids, Affiliation.all, :id, :affiliation_name do |affiliation| %>
           <%= affiliation.label { affiliation.check_box + affiliation.text } %>
         <% end %>

@@ -4,5 +4,5 @@ class News < ApplicationRecord
 
   validates :message,presence: true, length: { maximum: 600 }
   validates :creation_date, presence: true
-  validates :affiliation_ids, presence: true
+  # validates :affiliation_ids, presence: true
 end

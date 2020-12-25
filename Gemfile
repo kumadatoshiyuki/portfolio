@@ -86,3 +86,7 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 # gonを使ったRailsとJavascriptの連携
 gem 'gon'
+# seed生成
+gem 'faker'
+# 日本語seed
+gem 'gimei'

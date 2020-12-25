@@ -79,11 +79,14 @@ before_action :if_not_user
   def create
       @user_note = UserNote.new(user_note_params)
       @user_note.user_id = current_user.id
-    if @user_note.save
-      redirect_to top_path()
-    else
-      render ("user_notes/new")
-    end
+      if params[:back]
+        # 戻るボタンを押した時
+        render :new
+      elsif @user_note.save
+        redirect_to top_path()
+      else
+        render :new
+      end
   end
 
   private
