@@ -17,9 +17,31 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
+  def create
+    super
+    user = resource
+    if resource.save
+      if user.image
+        tags = Vision.get_image_data(user.image)
+        flash[:api] = 'アップロードされた画像はAIにより' + tags.join(',') + 'と認識されました。'
+      end
+    end
+
+  end
+
+  #     def create
   #   super
-  #   current_user.add_role :user
+
+  #   if resource.save
+  #     user = resource
+  #     tags = Vision.get_image_data(user.image)
+  #     tags.each do |tag|
+  #       list.tags.create(name: tag)
+  #     end
+  #   else
+  #     binding.pry
+  #   end
+  # end
   # end
 
   # GET /resource/edit
@@ -46,11 +68,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
-  # def current_user_is_admin?
-  #   user_signed_in? && current_user.has_role?(:admin)
-  # end
+  def current_user_is_admin?
+    user_signed_in? && current_user.is_admin?
+  end
 
   def after_sign_up_path_for(resource)
     users_path
@@ -59,11 +81,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def if_not_admin
     redirect_to top_path unless current_user.is_admin?
   end
-  # def sign_up(resource_name, resource)
-  #   if !current_user_is_admin?
-  #     sign_in(resource_name, resource)
-  #   end
-  # end
+  def sign_up(resource_name, resource)
+    if !current_user_is_admin?
+      sign_in(resource_name, resource)
+    end
+  end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
@@ -80,4 +102,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up for inactive accounts.
+
+  private
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :kana_first_name, :kana_last_name, :age, :phone, :image, :login_id, :email, :affiliation_id, :password, :role)
+  end
 end
