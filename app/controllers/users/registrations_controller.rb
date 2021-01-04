@@ -17,9 +17,29 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
+  def create
+    super
+    user = resource
+    if resource.save
+      if user.image
+        tags = Vision.get_image_data(user.image)
+      end
+    end
+  end
+
+  #     def create
   #   super
-  #   current_user.add_role :user
+
+  #   if resource.save
+  #     user = resource
+  #     tags = Vision.get_image_data(user.image)
+  #     tags.each do |tag|
+  #       list.tags.create(name: tag)
+  #     end
+  #   else
+  #     binding.pry
+  #   end
+  # end
   # end
 
   # GET /resource/edit
@@ -80,4 +100,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up for inactive accounts.
+
+  private
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :kana_first_name, :kana_last_name, :age, :phone, :image, :login_id, :email, :affiliation_id, :password, :role)
+  end
 end
