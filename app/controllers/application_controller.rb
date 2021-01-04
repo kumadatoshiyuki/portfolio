@@ -49,6 +49,7 @@ class ApplicationController < ActionController::Base
   end
 
   def path(current_type)
+
     if current_type.is_admin? == true
       # //管理者画面
       admins_top_path
@@ -71,8 +72,11 @@ class ApplicationController < ActionController::Base
   #     tasks_path
   #   end
   # end
-
-
+  
+  
+  def after_inactive_sign_up_path_for(resource)
+    users_path
+  end
 
 
 
