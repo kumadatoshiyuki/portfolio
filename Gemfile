@@ -90,3 +90,5 @@ gem 'gon'
 gem 'faker'
 # 日本語seed
 gem 'gimei'
+# バッチ処理
+gem 'whenever', require: false

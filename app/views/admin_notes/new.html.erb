@@ -1,121 +1,105 @@
-<style>
- .form-time-select{
-  display:flex;
- }
- .form-group{
-  margin-bottom:0px;
- }
-</style>
 <div class="title_left">
-<h3>連絡帳入力フォーム </h3>
-<%= render 'layouts/error_messages', item: @admin_note %>
-</div>
-<div class="col-md-6 ">
-<div class="x_panel">
-<div class="x_title">
-
-<h2><%= @user.last_name + @user.first_name %> <small>保護者より</small></h2>
-
-<div class="clearfix"></div>
-<% if @user_notes.nil? %>
-</div>
-<div class="x_content">
-<table class="table table-striped">
-<thead>
-<tr>
-
-<th></th>
-<th></th>
-
-</tr>
-</thead>
-<tbody>
-
-<tr>
-<td>体温</td>
-<td>入力がありません</td>
-</tr>
-
-<tr>
-<td>排泄回数</td>
-<td>入力がありません</td>
-</tr>
-
-<tr>
-<td>睡眠時間</td>
-<td>入力がありません</td>
-</tr>
-
-<tr>
-<td>朝食</td>
-<td>入力がありません</td>
-</tr>
-
-<tr>
-<td>夕食</td>
-<td>入力がありません</td>
-</tr>
-
-<tr>
-<td>おうちでの様子</td>
-<td>入力がありません</td>
-</tr>
-
-</tbody>
-</table>
-</div>
-</div>
-</div>
+  <h3>連絡帳入力フォーム </h3>
+    <%= render 'layouts/error_messages', item: @admin_note %>
+  </div>
+  <div class="col-md-6 ">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2><%= @user.last_name + @user.first_name %> <small>保護者より</small></h2>
+        <div class="clearfix"></div>
+        <% if @user_notes.nil? %>
+          </div>
+          <div class="x_content">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+              
+                <tr>
+                  <td>体温</td>
+                  <td>入力がありません</td>
+                </tr>
+                
+                <tr>
+                  <td>排泄回数</td>
+                  <td>入力がありません</td>
+                </tr>
+                
+                <tr>
+                  <td>睡眠時間</td>
+                  <td>入力がありません</td>
+                </tr>
+                
+                <tr>
+                  <td>朝食</td>
+                  <td>入力がありません</td>
+                </tr>
+                
+                <tr>
+                  <td>夕食</td>
+                  <td>入力がありません</td>
+                </tr>
+                
+                <tr>
+                  <td>おうちでの様子</td>
+                  <td>入力がありません</td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
 
 <% else %>
 
 <% @user_notes.each do |user_note| %>
 </div>
-<div class="x_content">
-<table class="table table-striped">
-<thead>
-<tr>
-
-<th><%= user_note.record_date %></th>
-<th></th>
-
-</tr>
-</thead>
-<tbody>
-
-<tr>
-<td>体温</td>
-<td><%= user_note.body_temperature %></td>
-</tr>
-
-<tr>
-<td>排泄回数</td>
-<td><%= user_note.number_toilet %></td>
-</tr>
-
-<tr>
-<td>睡眠時間</td>
-<td><%= user_note.sleep_start %>〜<%= user_note.sleep_end %></td>
-</tr>
-
-<tr>
-<td>朝食</td>
-<td><%= user_note.breakfast %></td>
-</tr>
-
-<tr>
-<td>夕食</td>
-<td><%= user_note.dinner %></td>
-</tr>
-
-<tr>
-<td>おうちでの様子</td>
-<td><%= user_note.message %></td>
-</tr>
-
-</tbody>
-</table>
-</div>
+  <div class="x_content">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><%= user_note.record_date %></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>体温</td>
+          <td><%= user_note.body_temperature %></td>
+        </tr>
+        
+        <tr>
+          <td>排泄回数</td>
+          <td><%= user_note.number_toilet %></td>
+        </tr>
+        
+        <tr>
+          <td>睡眠時間</td>
+          <td><%= user_note.sleep_start %>〜<%= user_note.sleep_end %></td>
+        </tr>
+        
+        <tr>
+          <td>朝食</td>
+          <td><%= user_note.breakfast %></td>
+        </tr>
+        
+        <tr>
+          <td>夕食</td>
+          <td><%= user_note.dinner %></td>
+        </tr>
+        
+        <tr>
+          <td>おうちでの様子</td>
+          <td><%= user_note.message %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 <% end %>
 </div>
