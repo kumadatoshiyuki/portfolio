@@ -50,7 +50,7 @@ class AdminNotesController < ApplicationController
     if admin_note.save
       redirect_to admin_admin_note_path(user,admin_note)
     else
-      render ("admins_notes/new")
+      render ("admin_notes/new")
     end
   end
 

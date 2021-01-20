@@ -21,14 +21,14 @@
               <div class="tags">
                 <!--<a class="tag">-->
                 <% news.affiliation.each  do |affiliation| %>
-                  <%= affiliation.affiliation_name %></br>
+                  <%= affiliation.affiliation_name %><br>
                 <% end %>
               </div>
               <div class="block_content">
                 <h2 class="title">
                   <%= link_to get_date(news.creation_date), news_path(news) %>
                 </h2>
-                  </br>
+                  <br>
                 <p><%= news.message%></p>
               </div>
             </div>
