@@ -110,3 +110,32 @@
 .margin_top7{
   margin-top:7px;
 }
+
+.staple_food,
+.main_dish,
+.side_dish,
+.soup,
+.fruit{
+    background-color: #fff !important;
+}
+
+.staple_food{
+    border-left: 5px solid red !important;
+    border-color:red;
+}
+.main_dish{
+    border-left: 5px solid skyblue !important;
+    border-color:skyblue !important;
+}
+.side_dish{
+    border-left: 5px solid gold !important;
+    border-color:gold !important;
+}
+.fruit{
+    border-left: 5px solid grey !important;
+    border-color:grey !important;
+}
+.soup{
+    border-left: 5px solid #99ff99 !important;
+    border-color: #99ff99 !important;
+}
