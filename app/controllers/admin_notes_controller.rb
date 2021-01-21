@@ -3,7 +3,7 @@ class AdminNotesController < ApplicationController
   def new
     @admin_note = AdminNote.new()
     @user = User.find(params[:admin_id])
-    @user_notes = UserNote.where(record_date: get_today).where(user_id: params[:admin_id])
+    @user_notes = UserNote.where(user_id: params[:admin_id]).find_by(record_date: get_today)
     @meal = Meal.find_by(record_date: get_today)
 
   end
@@ -39,17 +39,22 @@ class AdminNotesController < ApplicationController
 
 
   def create
-    user = User.find(params[:admin_id])
-    admin_note = AdminNote.new(admin_note_params)
+    @user = User.find(params[:admin_id])
+    @admin_note = AdminNote.new(admin_note_params)
     # 管理者の連絡帳記述の際は
     # 下のuser_idは園児
     # 記述したものは園児のもですよ
-    admin_note.user_id = user.id
+    @admin_note.user_id = @user.id
     # adminノートを記述したのはログインしている人ですよ
-    admin_note.creator_id = current_user.id
-    if admin_note.save
-      redirect_to admin_admin_note_path(user,admin_note)
+    @admin_note.creator_id = current_user.id
+
+    if @admin_note.save
+      redirect_to admin_admin_note_path(@user,@admin_note)
     else
+
+     @user_notes = UserNote.where(user_id: params[:admin_id]).find_by(record_date: get_today)
+
+     @meal = Meal.find_by(record_date: get_today)
       render ("admin_notes/new")
     end
   end

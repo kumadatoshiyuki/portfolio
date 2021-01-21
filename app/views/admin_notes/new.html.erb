@@ -7,10 +7,11 @@
       <div class="x_title">
         <h2><%= @user.last_name + @user.first_name %> <small>保護者より</small></h2>
         <div class="clearfix"></div>
+      </div>
+
+      <div class="x_content">
         <% if @user_notes.nil? %>
-          </div>
-          <div class="x_content">
-            <table class="table table-striped">
+        <table class="table table-striped">
               <thead>
                 <tr>
                   <th></th>
@@ -18,93 +19,83 @@
                 </tr>
               </thead>
               <tbody>
-              
+
                 <tr>
                   <td>体温</td>
                   <td>入力がありません</td>
                 </tr>
-                
+
                 <tr>
                   <td>排泄回数</td>
                   <td>入力がありません</td>
                 </tr>
-                
+
                 <tr>
                   <td>睡眠時間</td>
                   <td>入力がありません</td>
                 </tr>
-                
+
                 <tr>
                   <td>朝食</td>
                   <td>入力がありません</td>
                 </tr>
-                
+
                 <tr>
                   <td>夕食</td>
                   <td>入力がありません</td>
                 </tr>
-                
+
                 <tr>
                   <td>おうちでの様子</td>
                   <td>入力がありません</td>
                 </tr>
-                
+
               </tbody>
             </table>
-          </div>
-        </div>
-      </div>
-
-<% else %>
-
-<% @user_notes.each do |user_note| %>
-</div>
-  <div class="x_content">
-    <table class="table table-striped">
+        <% else %>
+        <table class="table table-striped">
       <thead>
         <tr>
-          <th><%= user_note.record_date %></th>
+          <th><%= @user_notes.record_date %></th>
           <th></th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>体温</td>
-          <td><%= user_note.body_temperature %></td>
+          <td><%= @user_notes.body_temperature %></td>
         </tr>
-        
+
         <tr>
           <td>排泄回数</td>
-          <td><%= user_note.number_toilet %></td>
+          <td><%= @user_notes.number_toilet %></td>
         </tr>
-        
+
         <tr>
           <td>睡眠時間</td>
-          <td><%= user_note.sleep_start %>〜<%= user_note.sleep_end %></td>
+          <td><%= @user_notes.sleep_start %>〜<%= @user_notes.sleep_end %></td>
         </tr>
-        
+
         <tr>
           <td>朝食</td>
-          <td><%= user_note.breakfast %></td>
+          <td><%= @user_notes.breakfast %></td>
         </tr>
-        
+
         <tr>
           <td>夕食</td>
-          <td><%= user_note.dinner %></td>
+          <td><%= @user_notes.dinner %></td>
         </tr>
-        
+
         <tr>
           <td>おうちでの様子</td>
-          <td><%= user_note.message %></td>
+          <td><%= @user_notes.message %></td>
         </tr>
       </tbody>
     </table>
+        <% end %>
+      </div>
+    </div>
   </div>
-</div>
-<% end %>
-</div>
-
-<% end %>
 
 
 
@@ -150,6 +141,7 @@
 <div class="clearfix"></div>
 
 <label>主食 :</label>
+
 <%= @meal.staple_food %>
 <%= f.select :staple_food_amount_id,Amount.all.collect { |p| [ p.amount_type, p.id ] }, {include_blank: "選択して下さい"}, {class: 'form-control'} %>
 
